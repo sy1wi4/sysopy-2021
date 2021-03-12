@@ -17,7 +17,6 @@ int main(int argc, char *argv[]) {
     }
 
     if (argc == 5){
-        // TODO: czemu tu sie nie zmienia last_added_idx ???
         printf("merged at idx: %d\n", merge_files(main_arr, argv[1], argv[2]));
 //        printf("no i co %s\n\n", main_arr.blocks[0].rows[0]);
         printf("ostatni lur %d\n", main_arr.last_added_idx);
