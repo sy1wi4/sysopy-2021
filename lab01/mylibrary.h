@@ -20,7 +20,6 @@ struct MainArray{
 
 struct MainArray create_main_arr(int size);
 
-
 struct Block create_merged_block(char* file1, char* file2);
 
 int merge_files(struct MainArray main_arr, char* file1, char* file2);

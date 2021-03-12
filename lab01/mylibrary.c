@@ -17,7 +17,6 @@ struct MainArray create_main_arr(int size){
 struct Block create_merged_block(char* file_name1, char* file_name2){
     struct Block block;
 
-    printf("\nmerguj to\n\n");
     FILE* file1 = fopen(file_name1, "r");
     FILE* file2 = fopen(file_name2, "r");
 
@@ -53,9 +52,8 @@ struct Block create_merged_block(char* file_name1, char* file_name2){
         strcpy(row,line);
         block.rows[idx++] = row;
 
-        printf("%s\n", line);
+//        printf("%s\n", line);
     }
-
     block.rows_number = idx;
 
     fclose(file1);
@@ -68,8 +66,11 @@ struct Block create_merged_block(char* file_name1, char* file_name2){
 
 int merge_files(struct MainArray main_arr, char* file1, char* file2){
     struct Block new_block = create_merged_block(file1, file2);
+    printf("%s\n", new_block.rows[0]);
     main_arr.blocks[main_arr.last_added_idx++] = new_block;
-    printf("%d\n", new_block.rows_number);
+
+    printf("blocks: %d\n", new_block.rows_number);
+    printf("last added: %d\n", main_arr.last_added_idx);
     return main_arr.last_added_idx;
 }
 
