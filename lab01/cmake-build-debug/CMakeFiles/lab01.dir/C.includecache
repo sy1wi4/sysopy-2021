@@ -6,10 +6,10 @@
 
 #IncludeRegexTransform: 
 
-/home/sylwia/sysopy/lab01/main.c
-stdio.h
--
+/home/sylwia/sysopy/lab01/mylibrary.c
 stdlib.h
+-
+string.h
 -
 mylibrary.h
 /home/sylwia/sysopy/lab01/mylibrary.h

@@ -15,18 +15,21 @@ struct Block{
 struct MainArray{
     int size;
     int last_added_idx;
-    struct Block* blocks;
+    struct Block** blocks;
 };
 
-struct MainArray create_main_arr(int size);
+struct MainArray* create_main_arr(int size);
 
-struct Block create_merged_block(char* file1, char* file2);
+struct Block* create_merged_block(char* file1, char* file2);
 
-int merge_files(struct MainArray main_arr, char* file1, char* file2);
+int merge_files(struct MainArray* main_arr, char* file1, char* file2);
 
-//test
-void print_arr(struct MainArray arr);
+int get_rows_number(struct Block* block);
 
-void print_block(struct Block block);
+void remove_block(struct MainArray* arr, int idx);
+
+void remove_row(struct MainArray* arr, int block_idx, int row_idx);
+
+void print_main_arr(struct MainArray* arr);
 
 #endif //LAB01_MYLIBRARY_H

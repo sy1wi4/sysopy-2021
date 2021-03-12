@@ -6,17 +6,18 @@
 #include <string.h>
 #include "mylibrary.h"
 
-struct MainArray create_main_arr(int size){
-    struct MainArray arr;
-    arr.size = size;
-    arr.blocks = (struct Block*)calloc(size, sizeof(struct Block));
+struct MainArray* create_main_arr(int size){
+    struct MainArray* arr = calloc(1, sizeof(struct MainArray));
+
+    arr->size = size;
+    arr->blocks = (struct Block*)calloc(size, sizeof(struct Block));
+    printf("xdfsdgs\n");
 
     return arr;
 }
 
-struct Block create_merged_block(char* file_name1, char* file_name2){
-    struct Block block;
-
+struct Block* create_merged_block(char* file_name1, char* file_name2){
+    struct Block* block = calloc(1, sizeof(struct Block));
     FILE* file1 = fopen(file_name1, "r");
     FILE* file2 = fopen(file_name2, "r");
 
@@ -43,18 +44,18 @@ struct Block create_merged_block(char* file_name1, char* file_name2){
     fclose(temp);
     fopen("temp.txt", "r");
 
-    block.rows = (char**)calloc(lines, sizeof(char*));
+    block->rows = (char**)calloc(lines, sizeof(char*));
 
     int idx = 0;
     char* line = (char*)calloc(256,sizeof(char));
     while(fgets(line, 256*sizeof(char), temp)){
         char* row = (char*)calloc(256,sizeof(char));
         strcpy(row,line);
-        block.rows[idx++] = row;
+        block->rows[idx++] = row;
 
 //        printf("%s\n", line);
     }
-    block.rows_number = idx;
+    block->rows_number = idx;
 
     fclose(file1);
     fclose(file2);
@@ -64,21 +65,41 @@ struct Block create_merged_block(char* file_name1, char* file_name2){
 }
 
 
-int merge_files(struct MainArray main_arr, char* file1, char* file2){
-    struct Block new_block = create_merged_block(file1, file2);
-    printf("%s\n", new_block.rows[0]);
-    main_arr.blocks[main_arr.last_added_idx++] = new_block;
-
-    printf("blocks: %d\n", new_block.rows_number);
-    printf("last added: %d\n", main_arr.last_added_idx);
-    return main_arr.last_added_idx;
+int merge_files(struct MainArray* main_arr, char* file1, char* file2){
+    struct Block* new_block = create_merged_block(file1, file2);
+    main_arr->blocks[main_arr->last_added_idx+1] = new_block;
+    printf("blocks: %d\n", new_block->rows_number);
+    return main_arr->last_added_idx;
 }
 
-//test
-void print_arr(struct MainArray arr){
-    printf("number of blocks: %d\n", arr.size);
+int get_rows_number(struct Block* block){
+    return block->rows_number;
 }
 
-void print_block(struct Block block){
-    printf("\n%s", block.rows[0]);
+void remove_block(struct MainArray* arr, int idx){
+    free(arr->blocks[idx]);
+    arr->blocks[idx] = NULL;
+    printf("Removed block at idx %d\n\n", idx);
 }
+
+void remove_row(struct MainArray* arr, int block_idx, int row_idx){
+    if (arr->blocks[block_idx] == NULL) return;
+    free(arr->blocks[block_idx]->rows[row_idx]);
+//    arr->blocks[block_idx]->rows[row_idx] = NULL;
+}
+
+void print_main_arr(struct MainArray* arr){
+    struct Block *block;
+    for (int i = 0; i < arr->size; i++){
+        block = arr->blocks[i];
+        if (block == NULL) continue;
+        printf("BLOCK NUMBER %d\n", i);
+        printf("%d\n", block->rows_number);
+        for (int j = 0; j < block->rows_number; j++){
+            printf("%d: %s\n", j, block->rows[j]);
+        }
+        printf("\n");
+    }
+}
+
+
