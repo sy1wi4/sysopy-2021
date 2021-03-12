@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sylwia/sysopy/lab01/main.c
+stdio.h
+-
+stdlib.h
+-
+mylibrary.h
+/home/sylwia/sysopy/lab01/mylibrary.h
+
+/home/sylwia/sysopy/lab01/mylibrary.c
+stdlib.h
+-
+string.h
+-
+mylibrary.h
+/home/sylwia/sysopy/lab01/mylibrary.h
+
+/home/sylwia/sysopy/lab01/mylibrary.h
+stdio.h
+-
+
