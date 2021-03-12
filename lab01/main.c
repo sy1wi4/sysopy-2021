@@ -1,30 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "mylibrary.h"
 
-// liczba par plikow i lista zadan do wykonania
 int main(int argc, char *argv[]) {
 
-    struct MainArray* main_arr = create_main_arr(3);
-    main_arr->last_added_idx = -1;
-    printf("xdfsdgs\n");
+    struct MainArray *main_arr = NULL;
 
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "create_table") == 0) {
+            int size = atoi(argv[++i]);
+            main_arr = create_main_arr(size);
+        }
 
-    if (argc == 3){
-        printf("merged at idx: %d\n", merge_files(main_arr, argv[1], argv[2]));
-    }
+        else if (strcmp(argv[i], "merge_files") == 0) {
+            char* file1 = (char*)calloc(strlen(argv[i]), sizeof(char));
+            char* file2 = (char*)calloc(strlen(argv[i]), sizeof(char));
 
-    if (argc == 5){
-        int i = merge_files(main_arr, argv[1], argv[2]);
-        printf("merged at idx: %d\n\n", i);
-        main_arr->last_added_idx++;
-        printf("merged at idx: %d\n\n", merge_files(main_arr, argv[3], argv[4]));
-        main_arr->last_added_idx++;
-        print_main_arr(main_arr);
+            while (i < argc - 1 && strchr(argv[++i], ':')) {
+                int file1_len = strchr(argv[i], ':') - argv[i];
+                for (int a = 0; a < file1_len; a++){
+                    file1[a] = argv[i][a];
+                }
+                for(int b = file1_len + 1; b < strlen(argv[i]); b++){
+                    file2[b-file1_len-1] = argv[i][b];
+                }
 
-        remove_block(main_arr, 1);
-        remove_row(main_arr, 0,4);
-        print_main_arr(main_arr);
+                printf("file1: %s\n", file1);
+                printf("file2: %s\n", file2);
+                merge_files(main_arr,file1,file2);
+                printf("\n");
+            }
+            if (i != argc - 1) i--;
+        }
+        else if (strcmp(argv[i], "remove_block") == 0){
+            int idx = atoi(argv[++i]);
+            remove_block(main_arr, idx);
+        }
+
+        else if (strcmp(argv[i], "remove_row") == 0){
+            int block_idx = atoi(argv[++i]);
+            int row_idx = atoi(argv[++i]);
+            remove_row(main_arr, block_idx, row_idx);
+        }
     }
 
     return 0;

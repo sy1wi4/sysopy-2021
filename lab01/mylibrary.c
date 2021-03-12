@@ -10,8 +10,9 @@ struct MainArray* create_main_arr(int size){
     struct MainArray* arr = calloc(1, sizeof(struct MainArray));
 
     arr->size = size;
+    arr->last_added_idx = -1;
     arr->blocks = (struct Block*)calloc(size, sizeof(struct Block));
-    printf("xdfsdgs\n");
+    printf("Created array of size %d\n\n", size);
 
     return arr;
 }
@@ -27,13 +28,13 @@ struct Block* create_merged_block(char* file_name1, char* file_name2){
         exit(1);
     }
 
-    char line1[256];
-    char line2[256];
+    char* line1 = (char*)calloc(256,sizeof(char));
+    char* line2 = (char*)calloc(256,sizeof(char));
 
     FILE* temp = tmpfile();
     temp = fopen("temp.txt","w");
     int lines = 0;
-    while(fgets(line1, sizeof(line1), file1) && fgets(line2, sizeof(line2), file2)) {
+    while(fgets(line1, 256*sizeof(char), file1) && fgets(line2, 256*sizeof(char), file2)) {
         fputs(line1,temp);
         if (feof(file1)){
             fputs("\n", temp);
@@ -53,7 +54,6 @@ struct Block* create_merged_block(char* file_name1, char* file_name2){
         strcpy(row,line);
         block->rows[idx++] = row;
 
-//        printf("%s\n", line);
     }
     block->rows_number = idx;
 
@@ -67,8 +67,11 @@ struct Block* create_merged_block(char* file_name1, char* file_name2){
 
 int merge_files(struct MainArray* main_arr, char* file1, char* file2){
     struct Block* new_block = create_merged_block(file1, file2);
-    main_arr->blocks[main_arr->last_added_idx+1] = new_block;
-    printf("blocks: %d\n", new_block->rows_number);
+    main_arr->blocks[main_arr->last_added_idx + 1] = new_block;
+    printf("Merged file rows: %d\n", new_block->rows_number);
+    main_arr->last_added_idx++;
+    printf("Added block at index %d\n", main_arr->last_added_idx);
+
     return main_arr->last_added_idx;
 }
 
@@ -86,6 +89,8 @@ void remove_row(struct MainArray* arr, int block_idx, int row_idx){
     if (arr->blocks[block_idx] == NULL) return;
     free(arr->blocks[block_idx]->rows[row_idx]);
 //    arr->blocks[block_idx]->rows[row_idx] = NULL;
+    printf("Removed row at idx %d (block %d)\n\n", row_idx, block_idx);
+
 }
 
 void print_main_arr(struct MainArray* arr){
