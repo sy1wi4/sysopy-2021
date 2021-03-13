@@ -32,4 +32,6 @@ void remove_row(struct MainArray* arr, int block_idx, int row_idx);
 
 void print_main_arr(struct MainArray* arr);
 
+void print_block(struct Block* block);
+
 #endif //LAB01_MYLIBRARY_H

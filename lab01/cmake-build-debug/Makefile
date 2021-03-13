@@ -143,59 +143,59 @@ lab01/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/build
 .PHONY : lab01/fast
 
-main.o: main.c.o
+zad2/main.o: zad2/main.c.o
 
-.PHONY : main.o
-
-# target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/main.c.o
-.PHONY : main.c.o
-
-main.i: main.c.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/main.c.i
-.PHONY : main.c.i
-
-main.s: main.c.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/main.c.s
-.PHONY : main.c.s
-
-mylibrary.o: mylibrary.c.o
-
-.PHONY : mylibrary.o
+.PHONY : zad2/main.o
 
 # target to build an object file
-mylibrary.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/mylibrary.c.o
-.PHONY : mylibrary.c.o
+zad2/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/zad2/main.c.o
+.PHONY : zad2/main.c.o
 
-mylibrary.i: mylibrary.c.i
+zad2/main.i: zad2/main.c.i
 
-.PHONY : mylibrary.i
+.PHONY : zad2/main.i
 
 # target to preprocess a source file
-mylibrary.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/mylibrary.c.i
-.PHONY : mylibrary.c.i
+zad2/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/zad2/main.c.i
+.PHONY : zad2/main.c.i
 
-mylibrary.s: mylibrary.c.s
+zad2/main.s: zad2/main.c.s
 
-.PHONY : mylibrary.s
+.PHONY : zad2/main.s
 
 # target to generate assembly for a file
-mylibrary.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/mylibrary.c.s
-.PHONY : mylibrary.c.s
+zad2/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/zad2/main.c.s
+.PHONY : zad2/main.c.s
+
+zad2/mylibrary.o: zad2/mylibrary.c.o
+
+.PHONY : zad2/mylibrary.o
+
+# target to build an object file
+zad2/mylibrary.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/zad2/mylibrary.c.o
+.PHONY : zad2/mylibrary.c.o
+
+zad2/mylibrary.i: zad2/mylibrary.c.i
+
+.PHONY : zad2/mylibrary.i
+
+# target to preprocess a source file
+zad2/mylibrary.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/zad2/mylibrary.c.i
+.PHONY : zad2/mylibrary.c.i
+
+zad2/mylibrary.s: zad2/mylibrary.c.s
+
+.PHONY : zad2/mylibrary.s
+
+# target to generate assembly for a file
+zad2/mylibrary.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab01.dir/build.make CMakeFiles/lab01.dir/zad2/mylibrary.c.s
+.PHONY : zad2/mylibrary.c.s
 
 # Help Target
 help:
@@ -206,12 +206,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... lab01"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... mylibrary.o"
-	@echo "... mylibrary.i"
-	@echo "... mylibrary.s"
+	@echo "... zad2/main.o"
+	@echo "... zad2/main.i"
+	@echo "... zad2/main.s"
+	@echo "... zad2/mylibrary.o"
+	@echo "... zad2/mylibrary.i"
+	@echo "... zad2/mylibrary.s"
 .PHONY : help
 
 

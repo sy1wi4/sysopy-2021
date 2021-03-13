@@ -88,10 +88,18 @@ void remove_block(struct MainArray* arr, int idx){
 void remove_row(struct MainArray* arr, int block_idx, int row_idx){
     if (arr->blocks[block_idx] == NULL) return;
     free(arr->blocks[block_idx]->rows[row_idx]);
-//    arr->blocks[block_idx]->rows[row_idx] = NULL;
+    arr->blocks[block_idx]->rows[row_idx] = NULL;
     printf("Removed row at idx %d (block %d)\n\n", row_idx, block_idx);
-    print_main_arr(arr);
+    print_block(arr->blocks[block_idx]);
+}
 
+void print_block(struct Block* block){
+    for (int j = 0; j < block->rows_number; j++){
+        if (block->rows[j] != NULL) {
+            printf("%d: %s\n", j, block->rows[j]);
+        }
+    }
+    printf("\n");
 }
 
 void print_main_arr(struct MainArray* arr){
@@ -101,7 +109,9 @@ void print_main_arr(struct MainArray* arr){
         if (block == NULL) continue;
         printf("BLOCK NUMBER %d\n", i);
         for (int j = 0; j < block->rows_number; j++){
-            printf("%d: %s\n", j, block->rows[j]);
+            if (block->rows[j] != NULL) {
+                printf("%d: %s\n", j, block->rows[j]);
+            }
         }
         printf("\n");
     }

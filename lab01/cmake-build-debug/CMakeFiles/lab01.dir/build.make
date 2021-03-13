@@ -77,42 +77,42 @@ include CMakeFiles/lab01.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab01.dir/flags.make
 
-CMakeFiles/lab01.dir/main.c.o: CMakeFiles/lab01.dir/flags.make
-CMakeFiles/lab01.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sylwia/sysopy/lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/lab01.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/lab01.dir/main.c.o   -c /home/sylwia/sysopy/lab01/main.c
+CMakeFiles/lab01.dir/zad2/main.c.o: CMakeFiles/lab01.dir/flags.make
+CMakeFiles/lab01.dir/zad2/main.c.o: ../zad2/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sylwia/sysopy/lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/lab01.dir/zad2/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/lab01.dir/zad2/main.c.o   -c /home/sylwia/sysopy/lab01/zad2/main.c
 
-CMakeFiles/lab01.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/lab01.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/sylwia/sysopy/lab01/main.c > CMakeFiles/lab01.dir/main.c.i
+CMakeFiles/lab01.dir/zad2/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/lab01.dir/zad2/main.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/sylwia/sysopy/lab01/zad2/main.c > CMakeFiles/lab01.dir/zad2/main.c.i
 
-CMakeFiles/lab01.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/lab01.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/sylwia/sysopy/lab01/main.c -o CMakeFiles/lab01.dir/main.c.s
+CMakeFiles/lab01.dir/zad2/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/lab01.dir/zad2/main.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/sylwia/sysopy/lab01/zad2/main.c -o CMakeFiles/lab01.dir/zad2/main.c.s
 
-CMakeFiles/lab01.dir/mylibrary.c.o: CMakeFiles/lab01.dir/flags.make
-CMakeFiles/lab01.dir/mylibrary.c.o: ../mylibrary.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sylwia/sysopy/lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/lab01.dir/mylibrary.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/lab01.dir/mylibrary.c.o   -c /home/sylwia/sysopy/lab01/mylibrary.c
+CMakeFiles/lab01.dir/zad2/mylibrary.c.o: CMakeFiles/lab01.dir/flags.make
+CMakeFiles/lab01.dir/zad2/mylibrary.c.o: ../zad2/mylibrary.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sylwia/sysopy/lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/lab01.dir/zad2/mylibrary.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/lab01.dir/zad2/mylibrary.c.o   -c /home/sylwia/sysopy/lab01/zad2/mylibrary.c
 
-CMakeFiles/lab01.dir/mylibrary.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/lab01.dir/mylibrary.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/sylwia/sysopy/lab01/mylibrary.c > CMakeFiles/lab01.dir/mylibrary.c.i
+CMakeFiles/lab01.dir/zad2/mylibrary.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/lab01.dir/zad2/mylibrary.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/sylwia/sysopy/lab01/zad2/mylibrary.c > CMakeFiles/lab01.dir/zad2/mylibrary.c.i
 
-CMakeFiles/lab01.dir/mylibrary.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/lab01.dir/mylibrary.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/sylwia/sysopy/lab01/mylibrary.c -o CMakeFiles/lab01.dir/mylibrary.c.s
+CMakeFiles/lab01.dir/zad2/mylibrary.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/lab01.dir/zad2/mylibrary.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/sylwia/sysopy/lab01/zad2/mylibrary.c -o CMakeFiles/lab01.dir/zad2/mylibrary.c.s
 
 # Object files for target lab01
 lab01_OBJECTS = \
-"CMakeFiles/lab01.dir/main.c.o" \
-"CMakeFiles/lab01.dir/mylibrary.c.o"
+"CMakeFiles/lab01.dir/zad2/main.c.o" \
+"CMakeFiles/lab01.dir/zad2/mylibrary.c.o"
 
 # External object files for target lab01
 lab01_EXTERNAL_OBJECTS =
 
-lab01: CMakeFiles/lab01.dir/main.c.o
-lab01: CMakeFiles/lab01.dir/mylibrary.c.o
+lab01: CMakeFiles/lab01.dir/zad2/main.c.o
+lab01: CMakeFiles/lab01.dir/zad2/mylibrary.c.o
 lab01: CMakeFiles/lab01.dir/build.make
 lab01: CMakeFiles/lab01.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sylwia/sysopy/lab01/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable lab01"

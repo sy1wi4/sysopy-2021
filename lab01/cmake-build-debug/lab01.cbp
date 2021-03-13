@@ -79,13 +79,13 @@
 		<Unit filename="/home/sylwia/sysopy/lab01/cmake-build-debug/lab01">
 			<Option target="lab01"/>
 		</Unit>
-		<Unit filename="/home/sylwia/sysopy/lab01/main.c">
+		<Unit filename="/home/sylwia/sysopy/lab01/zad2/main.c">
 			<Option target="lab01"/>
 		</Unit>
-		<Unit filename="/home/sylwia/sysopy/lab01/mylibrary.c">
+		<Unit filename="/home/sylwia/sysopy/lab01/zad2/mylibrary.c">
 			<Option target="lab01"/>
 		</Unit>
-		<Unit filename="/home/sylwia/sysopy/lab01/mylibrary.h">
+		<Unit filename="/home/sylwia/sysopy/lab01/zad2/mylibrary.h">
 			<Option target="lab01"/>
 		</Unit>
 		<Unit filename="/home/sylwia/sysopy/lab01/CMakeLists.txt">
