@@ -24,7 +24,6 @@ struct Block* create_merged_block(char* file1, char* file2);
 
 int merge_files(struct MainArray* main_arr, char* file1, char* file2);
 
-
 int get_rows_number(struct Block* block);
 
 void remove_block(struct MainArray* arr, int idx);

@@ -11,7 +11,7 @@ struct MainArray* create_main_arr(int size){
 
     arr->size = size;
     arr->last_added_idx = -1;
-    arr->blocks = (struct Block*)calloc(size, sizeof(struct Block));
+    arr->blocks = calloc(size, sizeof(struct Block));
     printf("Created array of size %d\n\n", size);
 
     return arr;
@@ -71,7 +71,7 @@ int merge_files(struct MainArray* main_arr, char* file1, char* file2){
     printf("Merged file rows: %d\n", new_block->rows_number);
     main_arr->last_added_idx++;
     printf("Added block at index %d\n", main_arr->last_added_idx);
-
+    print_main_arr(main_arr);
     return main_arr->last_added_idx;
 }
 
@@ -90,6 +90,7 @@ void remove_row(struct MainArray* arr, int block_idx, int row_idx){
     free(arr->blocks[block_idx]->rows[row_idx]);
 //    arr->blocks[block_idx]->rows[row_idx] = NULL;
     printf("Removed row at idx %d (block %d)\n\n", row_idx, block_idx);
+    print_main_arr(arr);
 
 }
 
@@ -99,7 +100,6 @@ void print_main_arr(struct MainArray* arr){
         block = arr->blocks[i];
         if (block == NULL) continue;
         printf("BLOCK NUMBER %d\n", i);
-        printf("%d\n", block->rows_number);
         for (int j = 0; j < block->rows_number; j++){
             printf("%d: %s\n", j, block->rows[j]);
         }
