@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/sylwia/sysopy/lab01/zad2/main.c
-stdio.h
--
-stdlib.h
--
-string.h
--
-mylibrary.h
-/home/sylwia/sysopy/lab01/zad2/mylibrary.h
-
 /home/sylwia/sysopy/lab01/zad2/mylibrary.c
 stdlib.h
 -
