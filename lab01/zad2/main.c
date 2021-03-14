@@ -53,9 +53,7 @@ int main(int argc, char *argv[]) {
 
                 printf("file1: %s\n", file1);
                 printf("file2: %s\n", file2);
-                for (int i=0; i<1000; i++){
-                    merge_files(main_arr,file1,file2);
-                }
+                merge_files(main_arr,file1,file2);
                 printf("\n");
             }
             if (i != argc - 1) i--;
@@ -82,15 +80,6 @@ int main(int argc, char *argv[]) {
             fprintf(report, "remove_row\n");
             print_res(report, clock_start, clock_end, start_tms, end_tms);
         }
-
-
-        clock_end = times(&end_tms);
-        //TODO: cos tu sie popsulo
-        printf("real %Lf\n", time_sec(clock_end - clock_start));
-        printf("user %Lf\n", time_sec(end_tms.tms_utime - start_tms.tms_utime));
-        printf("sys  %Lf\n", time_sec(end_tms.tms_stime - start_tms.tms_stime));
-
     }
-
     return 0;
 }
