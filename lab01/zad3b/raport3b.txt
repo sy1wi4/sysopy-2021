@@ -1,0 +1,7658 @@
+~~~~~~~~~~~~~~~~~~~STATIC LIBRARIES TEST~~~~~~~~~~~~~~~~~~~
+-------------------------
+Optimization level: -O0 
+-------------------------
+
+########### SMALL TESTS ###########
+
+6 files, 14 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### SMALL add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM TESTS ###########
+
+50 files, 144 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE TESTS ###########
+
+100 files, 10400  lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 1.050000
+user 0.260000
+sys  0.760000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.140000
+user 0.030000
+sys  0.090000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.130000
+user 0.050000
+sys  0.080000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.130000
+user 0.040000
+sys  0.100000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+-------------------------
+Optimization level: -O2
+-------------------------
+
+########### SMALL TESTS ###########
+
+6 files, 14 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### SMALL add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM TESTS ###########
+
+50 files, 144 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.020000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE TESTS ###########
+
+100 files, 10400  lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.890000
+user 0.270000
+sys  0.610000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.130000
+user 0.030000
+sys  0.090000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.140000
+user 0.060000
+sys  0.070000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.120000
+user 0.040000
+sys  0.090000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+-------------------------
+Optimization level: -O3
+-------------------------
+
+########### SMALL TESTS ###########
+
+6 files, 14 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### SMALL add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM TESTS ###########
+
+50 files, 144 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.020000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE TESTS ###########
+
+100 files, 10400  lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.970000
+user 0.300000
+sys  0.650000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.120000
+user 0.050000
+sys  0.070000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.130000
+user 0.040000
+sys  0.090000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.130000
+user 0.020000
+sys  0.100000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+-------------------------
+Optimization level: -Os
+-------------------------
+
+########### SMALL TESTS ###########
+
+6 files, 14 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### SMALL add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM TESTS ###########
+
+50 files, 144 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE TESTS ###########
+
+100 files, 10400  lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 1.010000
+user 0.280000
+sys  0.720000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.130000
+user 0.020000
+sys  0.110000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.170000
+user 0.040000
+sys  0.110000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.200000
+user 0.040000
+sys  0.160000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+~~~~~~~~~~~~~~~~~~~SHARED LIBRARIES TESTS~~~~~~~~~~~~~~~~~~~
+-------------------------
+Optimization level: -O0 
+-------------------------
+
+########### SMALL TESTS ###########
+
+6 files, 14 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### SMALL add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM TESTS ###########
+
+50 files, 144 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE TESTS ###########
+
+100 files, 10400  lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 1.200000
+user 0.420000
+sys  0.780000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.150000
+user 0.030000
+sys  0.110000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.140000
+user 0.050000
+sys  0.100000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.150000
+user 0.050000
+sys  0.090000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+-------------------------
+Optimization level: -O2
+-------------------------
+
+########### SMALL TESTS ###########
+
+6 files, 14 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### SMALL add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM TESTS ###########
+
+50 files, 144 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE TESTS ###########
+
+100 files, 10400  lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 1.080000
+user 0.350000
+sys  0.680000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.190000
+user 0.040000
+sys  0.110000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.200000
+user 0.060000
+sys  0.100000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.130000
+user 0.020000
+sys  0.100000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+-------------------------
+Optimization level: -O3
+-------------------------
+
+########### SMALL TESTS ###########
+
+6 files, 14 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### SMALL add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM TESTS ###########
+
+50 files, 144 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE TESTS ###########
+
+100 files, 10400  lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 1.160000
+user 0.410000
+sys  0.730000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.150000
+user 0.020000
+sys  0.120000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.210000
+user 0.050000
+sys  0.150000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.190000
+user 0.050000
+sys  0.140000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+-------------------------
+Optimization level: -Os
+-------------------------
+
+########### SMALL TESTS ###########
+
+6 files, 14 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### SMALL add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM TESTS ###########
+
+50 files, 144 lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### MEDIUM add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.010000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE TESTS ###########
+
+100 files, 10400  lines
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 1.120000
+user 0.290000
+sys  0.710000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_row
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+
+
+########### LARGE add remove repeat ###########
+
+create_table
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.150000
+user 0.020000
+sys  0.120000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.140000
+user 0.040000
+sys  0.100000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+merge_files
+real 0.280000
+user 0.060000
+sys  0.140000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+remove_block
+real 0.000000
+user 0.000000
+sys  0.000000
+
+total_execution
+real 0.000000
+user 0.000000
+sys  0.000000
+

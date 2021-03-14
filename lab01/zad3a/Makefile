@@ -16,47 +16,51 @@ clean:
 	@rm -rf *.o *.a *.so file*.txt main
 
 tests:
-	rm -f raport2.txt
-
 	make -s test_static
 
 	make -s test_shared
+
+	@#	make -s test_dynamic
 
 
 test_static: static
 	$(CC) -c main.c
 	$(CC) main.o libmylibrary.a -o main
 
-	@echo "~~~~~~~~~~~~~~~~~~~STATIC TEST~~~~~~~~~~~~~~~~~~~" >> raport2.txt
-	make  --no-print-directory small >> raport2.txt
-	make --no-print-directory medium >> raport2.txt
-	make --no-print-directory large >> raport2.txt
+	@echo "~~~~~~~~~~~~~~~~~~~STATIC LIBRARIES TEST~~~~~~~~~~~~~~~~~~~" >> raport3a.txt
+	make  --no-print-directory small >> raport3a.txt
+	make --no-print-directory medium >> raport3a.txt
+	make --no-print-directory large >> raport3a.txt
 
 
 test_shared: shared
 	export LD_LIBRARY_PATH=$(DIR):$LD_LIBRARY_PATH
 	$(CC) main.c -lmylibrary -L ./ -o main
 
-	@echo "~~~~~~~~~~~~~~~~~~~SHARED TEST~~~~~~~~~~~~~~~~~~~" >> raport2.txt
+	@echo "~~~~~~~~~~~~~~~~~~~SHARED LIBRARIES TESTS~~~~~~~~~~~~~~~~~~~" >> raport3a.txt
 	# --no-print-directory - to not print  “Entering/Leaving directory ...” messages
-	make --no-print-directory small >> raport2.txt
-	make --no-print-directory medium >> raport2.txt
-	make --no-print-directory large >> raport2.txt
+	make --no-print-directory small >> raport3a.txt
+	make --no-print-directory medium >> raport3a.txt
+	make --no-print-directory large >> raport3a.txt
+
+test_dynamic: shared
+	# TODO: :(
+	@#	echo "~~~~~~~~~~~~~~~~~~~DYNAMIC LIBRARIES TESTS~~~~~~~~~~~~~~~~~~~" >> raport3a.txt
 
 
 small:
 	chmod +x gen.sh
 	./gen.sh 6 10 file
 
-	@echo "\n########### SMALL TESTS ###########\n" >> raport2.txt
-	@echo "6 files, 14 lines\n" >> raport2.txt
+	@echo "\n########### SMALL TESTS ###########\n" >> raport3a.txt
+	@echo "6 files, 14 lines\n" >> raport3a.txt
 	@# @ makes silent
 	@./main create_table 10 merge_files \
 	file0.txt:file1.txt file2.txt:file3.txt file4.txt:file5.txt \
 	remove_row 0 0 remove_row 1 0 remove_row 2 1 remove_row 2 3 \
 	remove_block 2 remove_block 0 remove_block 1
 
-	@echo "\n########### SMALL add remove repeat ###########\n" >> raport2.txt
+	@echo "\n########### SMALL add remove repeat ###########\n" >> raport3a.txt
 	@./main create_table 10 merge_files \
 	file0.txt:file1.txt file2.txt:file3.txt file4.txt:file5.txt \
 	remove_row 0 0 remove_row 1 0 remove_row 2 1 remove_row 2 3 \
@@ -71,13 +75,12 @@ small:
 	remove_block 2 remove_block 0 remove_block 1
 
 
-# TODO: generowanie duzych
 medium:
 	chmod +x gen.sh
 	./gen.sh 50 1000 file
 
-	@echo "\n########### MEDIUM TESTS ###########\n" >> raport2.txt
-	@echo "50 files, 144 lines\n" >> raport2.txt
+	@echo "\n########### MEDIUM TESTS ###########\n" >> raport3a.txt
+	@echo "50 files, 144 lines\n" >> raport3a.txt
 	@# @ makes silent
 	@./main create_table 1000 merge_files \
 		 file0.txt:file1.txt \
@@ -149,7 +152,7 @@ medium:
         	remove_block 6 \
         	remove_block 7
 
-	@echo "\n########### MEDIUM add remove repeat ###########\n" >> raport2.txt
+	@echo "\n########### MEDIUM add remove repeat ###########\n" >> raport3a.txt
 	@./main create_table 1000 merge_files \
 		file0.txt:file1.txt \
          file1.txt:file2.txt \
@@ -250,8 +253,8 @@ large:
 	chmod +x gen.sh
 	./gen.sh 100 800000 file
 
-	@echo "\n########### LARGE TESTS ###########\n" >> raport2.txt
-	@echo "100 files, 26000  lines\n" >> raport2.txt
+	@echo "\n########### LARGE TESTS ###########\n" >> raport3a.txt
+	@echo "100 files, 10400 lines\n" >> raport3a.txt
 	@# @ makes silent
 	@./main create_table 1000 merge_files \
 		 file0.txt:file1.txt \
@@ -373,7 +376,7 @@ large:
         	remove_block 6 \
         	remove_block 7
 
-	@echo "\n########### LARGE add remove repeat ###########\n" >> raport2.txt
+	@echo "\n########### LARGE add remove repeat ###########\n" >> raport3a.txt
 	@./main create_table 1000 merge_files \
 		file0.txt:file1.txt \
          file1.txt:file2.txt \
@@ -468,9 +471,6 @@ large:
         	remove_block 12 \
         	remove_block 13 \
         	remove_block 14
-
-
-
 
 
 

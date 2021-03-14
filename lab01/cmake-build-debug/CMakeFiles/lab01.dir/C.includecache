@@ -20,6 +20,14 @@ sys/times.h
 unistd.h
 -
 
+/home/sylwia/sysopy/lab01/zad2/mylibrary.c
+stdlib.h
+-
+string.h
+-
+mylibrary.h
+/home/sylwia/sysopy/lab01/zad2/mylibrary.h
+
 /home/sylwia/sysopy/lab01/zad2/mylibrary.h
 stdio.h
 -

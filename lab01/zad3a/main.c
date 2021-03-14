@@ -15,8 +15,7 @@ void print_res(clock_t clock_start, clock_t clock_end, struct tms start_tms, str
     printf("sys  %Lf\n\n", time_sec(end_tms.tms_stime - start_tms.tms_stime));
 }
 
-int main(int argc, char *argv[]) {
-
+int main(int argc, char* argv[]) {
 
     struct tms start_tms;
     struct tms end_tms;
@@ -26,12 +25,14 @@ int main(int argc, char *argv[]) {
     struct MainArray *main_arr = NULL;
 
     for (int i = 1; i < argc; i++) {
-        printf("%s\n", argv[i]);
         clock_start = times(&start_tms);
 
         if (strcmp(argv[i], "create_table") == 0) {
             int size = atoi(argv[++i]);
             main_arr = create_main_arr(size);
+
+            printf("create_table\n");
+
         }
 
         else if (strcmp(argv[i], "merge_files") == 0) {
@@ -46,19 +47,30 @@ int main(int argc, char *argv[]) {
                 for(int b = file1_len + 1; b < strlen(argv[i]); b++){
                     file2[b-file1_len-1] = argv[i][b];
                 }
+
                 merge_files(main_arr,file1,file2);
+//                printf("");
             }
             if (i != argc - 1) i--;
+
+            printf("merge_files\n");
+
         }
         else if (strcmp(argv[i], "remove_block") == 0){
             int idx = atoi(argv[++i]);
             remove_block(main_arr, idx);
+
+            printf("remove_block\n");
+
         }
 
         else if (strcmp(argv[i], "remove_row") == 0){
             int block_idx = atoi(argv[++i]);
             int row_idx = atoi(argv[++i]);
             remove_row(main_arr, block_idx, row_idx);
+
+            printf("remove_row\n");
+
         }
 
         clock_end = times(&end_tms);
@@ -66,8 +78,9 @@ int main(int argc, char *argv[]) {
 
     }
     clock_end = times(&end_tms);
-    printf("TOTAL EXECUTION TIME\n");
+    printf("total_execution\n");
     print_res(clock_start, clock_end, start_tms, end_tms);
+
 
     return 0;
 }
