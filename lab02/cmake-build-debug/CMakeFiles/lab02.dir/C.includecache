@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sylwia/sysopy/lab02/zad1/main.c
+stdio.h
+-
+stdlib.h
+-
+fcntl.h
+-
+unistd.h
+-
+stdbool.h
+-
+
