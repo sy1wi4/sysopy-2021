@@ -6,15 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/sylwia/sysopy/lab02/zad1/main.c
+/home/sylwia/sysopy/lab02/zad2/main.c
 stdio.h
 -
 stdlib.h
 -
+stdbool.h
+-
+string.h
+-
 fcntl.h
 -
 unistd.h
--
-stdbool.h
 -
 

@@ -103,4 +103,5 @@ int main(int argc, char* argv[]){
     printf("\n\n------SYS------\n\n");
     open_sys(filename1, filename2);
 
+    return 0;
 }
