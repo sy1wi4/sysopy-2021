@@ -13,4 +13,10 @@ stdlib.h
 -
 stdbool.h
 -
+string.h
+-
+fcntl.h
+-
+unistd.h
+-
 
