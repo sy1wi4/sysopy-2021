@@ -20,6 +20,7 @@ void find_char_lib(char ch, char* filename){
     int size;
     bool found;
     char buffer;
+    char *row;
 
     do {
         found = false;
@@ -35,7 +36,7 @@ void find_char_lib(char ch, char* filename){
 
         if (found) {
             fseek(file, -1 * (size + 1), 1);   // go backward
-            char *row = calloc(sizeof(char), size);
+            row = calloc(sizeof(char), size);
             fread(row, sizeof(char), size + 1, file);
             printf("%s", row);
         }
