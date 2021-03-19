@@ -112,9 +112,9 @@ void create_files_sys(char* file){
         exit(1);
     }
 
-    int a_sys = open("a_sys.txt",O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
-    int b_sys = open("b_sys.txt", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
-    int c_sys = open("c_sys.txt", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+    int a_sys = open("a_sys.txt",O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+    int b_sys = open("b_sys.txt",O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+    int c_sys = open("c_sys.txt",O_WRONLY | O_CREAT |O_TRUNC, S_IRUSR | S_IWUSR);
 
     int even = 0, num, size;
     char buffer;

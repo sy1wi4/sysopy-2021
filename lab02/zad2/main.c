@@ -24,7 +24,7 @@ void find_char_lib(char ch, char* filename){
 
     do {
         found = false;
-        size = -1;
+        size = 0;
         do {
             fread(&buffer, sizeof(char), 1, file);
             if (feof(file)) break;
@@ -35,10 +35,10 @@ void find_char_lib(char ch, char* filename){
         } while (buffer != '\n');
 
         if (found) {
-            fseek(file, -1 * (size + 1), 1);   // go backward
-            row = calloc(sizeof(char), size);
-            fread(row, sizeof(char), size + 1, file);
-            printf("%s", row);
+            fseek(file, -1 * (size), 1);   // go backward
+            row = calloc(sizeof(char), size - 1);
+            fread(row, sizeof(char), size - 1, file);
+            printf("%s\n", row);
         }
     } while(!feof(file));
 
@@ -60,7 +60,7 @@ void find_char_sys(char ch, char* filename) {
 
     while(!end) {
         found = false;
-        size = -1;
+        size = 0;
         do {
             if (read(file_d, &buffer, sizeof(char)) == 0) {
                 end = true;
@@ -74,10 +74,11 @@ void find_char_sys(char ch, char* filename) {
 
 
         if (found) {
-            lseek(file_d, -1 * (size + 1), SEEK_CUR);   // go backward
-            char *row = calloc(sizeof(char), size);
-            read(file_d, row, (size + 1) * sizeof(char));
-            printf("%s", row);
+            lseek(file_d, -1 * (size), SEEK_CUR);   // go backward
+            char *row = calloc(sizeof(char), size - 1);
+            read(file_d, row, (size - 1) * sizeof(char));
+            read(file_d, &buffer, sizeof(char));
+            printf("%s\n", row);
         }
     }
 
