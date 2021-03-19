@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/lab02.dir/zad2/main.c.o  -o lab02 
+/usr/bin/cc -g   CMakeFiles/lab02.dir/zad5/main.c.o  -o lab02 

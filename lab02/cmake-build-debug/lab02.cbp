@@ -82,7 +82,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/sylwia/sysopy/lab02/zad2/main.c">
+		<Unit filename="/home/sylwia/sysopy/lab02/zad5/main.c">
 			<Option target="lab02"/>
 		</Unit>
 		<Unit filename="/home/sylwia/sysopy/lab02/CMakeLists.txt">

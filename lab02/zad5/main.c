@@ -1,9 +1,5 @@
 //
-// Created by sylwia on 3/18/21.
-//
-
-//
-// Created by sylwia on 3/18/21.
+// Created by sylwia on 3/19/21.
 //
 
 #include <stdio.h>
@@ -14,30 +10,22 @@
 #include <unistd.h>
 
 
-char*  replace(char* line, char* str1, char* str2){
+char*  break_lines(char* line){
     // count occurrences of str1 in line
-    int ctr = 0;
-    int i;
+    int ctr = strlen(line) / 50;
     char* occ;
-    for (i = 0; i < strlen(line); i++){
-        occ = strstr(&line[i], str1);
-        if (occ == &line[i]) {
-            ctr++;
-            i += strlen(str1) - 1;
-        }
-    }
 
     char* new_line;
-    new_line = calloc(sizeof(char), i + ctr * (strlen(str2) - strlen(str1)) + 1);
+    new_line = calloc(sizeof(char), strlen(line) + ctr + 1);
 
     int idx = 0;  // of new line
+    int current = 0;
     while(*line){
-        occ = strstr(line, str1);
+        current++;
         // swap words
-        if (occ == line){
-            strcpy(&new_line[idx], str2);
-            idx += strlen(str2);
-            line += strlen(str1);
+        if (current % 51 == 0){
+            strcpy(&new_line[idx], "\n");
+            idx += 1;
         }
         else{
             strcpy(&new_line[idx], line);
@@ -49,7 +37,7 @@ char*  replace(char* line, char* str1, char* str2){
 }
 
 
-void read_lines_lib(char* input_file, char* output_file, char* str1, char* str2){
+void read_lines_lib(char* input_file, char* output_file){
     FILE* i_file = fopen(input_file, "r");
     FILE* o_file = fopen(output_file, "w");
 
@@ -72,23 +60,20 @@ void read_lines_lib(char* input_file, char* output_file, char* str1, char* str2)
             line = calloc(sizeof(char), size - 1);
             fread(line, sizeof(char), size - 1, i_file);
             fread(&buffer, sizeof(char), 1, i_file);  // '\n'
-            printf("%d\n", size);
-            printf("%s\n", line);
             if (size == 1) break;
-            new_line = replace(line, str1, str2);
+            new_line = break_lines(line);
 
             fwrite(new_line, sizeof(char), strlen(new_line), o_file);
             fwrite("\n", sizeof(char), 1, o_file);
             size = 0;
         }
-
     }
 
     fclose(i_file);
     fclose(o_file);
 }
 
-void read_lines_sys(char* input_file, char* output_file, char* str1, char* str2) {
+void read_lines_sys(char* input_file, char* output_file) {
 
     int i_file = open(input_file, O_RDONLY);
     int o_file = open(output_file,O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
@@ -113,7 +98,7 @@ void read_lines_sys(char* input_file, char* output_file, char* str1, char* str2)
             read(i_file, line, (size - 1) * sizeof(char));
             read(i_file, &buffer, sizeof(char));
             if (size == 1) break;
-            new_line = replace(line, str1, str2);
+            new_line = break_lines(line);
 
             write(o_file, new_line, sizeof(char) * strlen(new_line));
             write(o_file, "\n", sizeof(char));
@@ -124,26 +109,23 @@ void read_lines_sys(char* input_file, char* output_file, char* str1, char* str2)
 
     close(i_file);
     close(o_file);
-
 }
 
 
 int main(int argc, char* argv[]) {
 
-    // lorem.txt output.txt Lorem REPLACED
-    // poem.txt output.txt to REPLACED
+    // poem.txt output5.txt
 
-    if (argc != 5){
+    if (argc != 3){
         perror("Wrong number of arguments!");
         exit(1);
     }
 
     char* input_file = argv[1];
     char* output_file = argv[2];
-    char* str1 = argv[3];
-    char* str2 = argv[4];
 
-    read_lines_lib(input_file, output_file, str1, str2);
+    read_lines_lib(input_file, output_file);
+    read_lines_sys(input_file, output_file);
 
     return 0;
 }

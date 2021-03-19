@@ -143,32 +143,32 @@ lab02/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/build
 .PHONY : lab02/fast
 
-zad2/main.o: zad2/main.c.o
+zad5/main.o: zad5/main.c.o
 
-.PHONY : zad2/main.o
+.PHONY : zad5/main.o
 
 # target to build an object file
-zad2/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/zad2/main.c.o
-.PHONY : zad2/main.c.o
+zad5/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/zad5/main.c.o
+.PHONY : zad5/main.c.o
 
-zad2/main.i: zad2/main.c.i
+zad5/main.i: zad5/main.c.i
 
-.PHONY : zad2/main.i
+.PHONY : zad5/main.i
 
 # target to preprocess a source file
-zad2/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/zad2/main.c.i
-.PHONY : zad2/main.c.i
+zad5/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/zad5/main.c.i
+.PHONY : zad5/main.c.i
 
-zad2/main.s: zad2/main.c.s
+zad5/main.s: zad5/main.c.s
 
-.PHONY : zad2/main.s
+.PHONY : zad5/main.s
 
 # target to generate assembly for a file
-zad2/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/zad2/main.c.s
-.PHONY : zad2/main.c.s
+zad5/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab02.dir/build.make CMakeFiles/lab02.dir/zad5/main.c.s
+.PHONY : zad5/main.c.s
 
 # Help Target
 help:
@@ -179,9 +179,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... lab02"
-	@echo "... zad2/main.o"
-	@echo "... zad2/main.i"
-	@echo "... zad2/main.s"
+	@echo "... zad5/main.o"
+	@echo "... zad5/main.i"
+	@echo "... zad5/main.s"
 .PHONY : help
 
 
