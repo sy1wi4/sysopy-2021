@@ -90,11 +90,10 @@ void create_files_lib(char* filename){
         }
     }
 
-    printf("%d", even);
-
     fwrite("Liczb parzystych jest ", sizeof(char), 22, a_lib);
     str = int_to_string(even);
     fwrite(str, sizeof(char), strlen(str), a_lib);
+    fwrite("\n", sizeof(char), 1, a_lib);
 
     fclose(file);
     fclose(a_lib);
@@ -158,7 +157,7 @@ void create_files_sys(char* file){
     write(a_sys, "Liczb parzystych jest ", 22 * sizeof(char));
     str = int_to_string(even);
     write(a_sys, str, strlen(str));
-
+    write(a_sys, "\n", 1);
 
     close(file_d);
     close(a_sys);

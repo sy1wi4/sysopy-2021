@@ -72,8 +72,6 @@ void read_lines_lib(char* input_file, char* output_file, char* str1, char* str2)
             line = calloc(sizeof(char), size - 1);
             fread(line, sizeof(char), size - 1, i_file);
             fread(&buffer, sizeof(char), 1, i_file);  // '\n'
-            printf("%d\n", size);
-            printf("%s\n", line);
             if (size == 1) break;
             new_line = replace(line, str1, str2);
 
@@ -134,8 +132,8 @@ int main(int argc, char* argv[]) {
     // poem.txt output.txt to REPLACED
 
     if (argc != 5){
-        perror("Wrong number of arguments!");
-        exit(1);
+        printf("Wrong number of arguments!\n");
+        return 1;
     }
 
     char* input_file = argv[1];

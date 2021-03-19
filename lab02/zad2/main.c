@@ -86,8 +86,8 @@ void find_char_sys(char ch, char* filename) {
 }
 
 
-
 int main(int argc, char* argv[]) {
+    // f poem.txt
 
     char ch;
     char* filename;
@@ -106,8 +106,8 @@ int main(int argc, char* argv[]) {
     }
 
     else {
-        perror("Wrong number of arguments!");
-        exit(1);
+        printf("Wrong number of arguments!\n");
+        return 1;
     }
 
     return 0;

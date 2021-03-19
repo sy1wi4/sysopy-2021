@@ -11,7 +11,6 @@
 
 
 char*  break_lines(char* line){
-    // count occurrences of str1 in line
     int ctr = strlen(line) / 50;
     char* occ;
 
@@ -22,7 +21,7 @@ char*  break_lines(char* line){
     int current = 0;
     while(*line){
         current++;
-        // swap words
+        // add "\n"
         if (current % 51 == 0){
             strcpy(&new_line[idx], "\n");
             idx += 1;
@@ -117,8 +116,8 @@ int main(int argc, char* argv[]) {
     // poem.txt output5.txt
 
     if (argc != 3){
-        perror("Wrong number of arguments!");
-        exit(1);
+        printf("Wrong number of arguments!\n");
+        return 1;
     }
 
     char* input_file = argv[1];

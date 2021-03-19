@@ -78,6 +78,8 @@ void open_sys(char* filename1, char* filename2){
 
 
 int main(int argc, char* argv[]){
+    // poem.txt lorem.txt
+
     char* filename1;
     char* filename2;
 
@@ -98,9 +100,9 @@ int main(int argc, char* argv[]){
     }
 
 
-    printf("------LIB------\n\n");
+    printf("\n------------LIB------------\n");
     open_lib(filename1, filename2);
-    printf("\n\n------SYS------\n\n");
+    printf("\n\n------------SYS------------\n");
     open_sys(filename1, filename2);
 
     return 0;
