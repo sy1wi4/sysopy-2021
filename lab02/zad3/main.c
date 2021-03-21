@@ -8,6 +8,24 @@
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/times.h>
+
+
+long double time_sec(clock_t time){
+    return (long double)(time) / sysconf(_SC_CLK_TCK);
+}
+
+void print_res(clock_t clock_start, clock_t clock_end, struct tms start_tms, struct tms end_tms, FILE* file){
+    printf("\nEXECUTION TIME\n");
+    printf("real %Lf\n", time_sec(clock_end - clock_start));
+    printf("user %Lf\n", time_sec(end_tms.tms_utime - start_tms.tms_utime));
+    printf("sys  %Lf\n\n", time_sec(end_tms.tms_stime - start_tms.tms_stime));
+    fprintf(file, "\nEXECUTION TIME\n");
+    fprintf(file, "real %Lf\n", time_sec(clock_end - clock_start));
+    fprintf(file, "user %Lf\n", time_sec(end_tms.tms_utime - start_tms.tms_utime));
+    fprintf(file, "sys  %Lf\n\n", time_sec(end_tms.tms_stime - start_tms.tms_stime));
+}
+
 
 bool check_digit(int n){
     if (n / 10 == 0) return false;
@@ -47,9 +65,9 @@ void create_files_lib(char* filename){
         exit(1);
     }
 
-    FILE* a_lib = fopen("a_lib.txt", "w");
-    FILE* b_lib = fopen("b_lib.txt", "w");
-    FILE* c_lib = fopen("c_lib.txt", "w");
+    FILE* a_lib = fopen("a.txt", "w");
+    FILE* b_lib = fopen("b.txt", "w");
+    FILE* c_lib = fopen("c.txt", "w");
 
     int even = 0, num, size;
     char buffer;
@@ -111,9 +129,9 @@ void create_files_sys(char* file){
         exit(1);
     }
 
-    int a_sys = open("a_sys.txt",O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-    int b_sys = open("b_sys.txt",O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-    int c_sys = open("c_sys.txt",O_WRONLY | O_CREAT |O_TRUNC, S_IRUSR | S_IWUSR);
+    int a_sys = open("a.txt",O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+    int b_sys = open("b.txt",O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+    int c_sys = open("c.txt",O_WRONLY | O_CREAT |O_TRUNC, S_IRUSR | S_IWUSR);
 
     int even = 0, num, size;
     char buffer;
@@ -168,7 +186,35 @@ void create_files_sys(char* file){
 
 int main() {
 
+    // execution time
+    FILE* result_file = fopen("pomiar_zad_3.txt", "w");
+    struct tms start_tms;
+    struct tms end_tms;
+    clock_t clock_start;
+    clock_t clock_end;
+    struct tms start_tms2;
+    struct tms end_tms2;
+    clock_t clock_start2;
+    clock_t clock_end2;
+
+
+    clock_start = times(&start_tms);
     create_files_lib("dane.txt");
+    clock_end = times(&end_tms);
+
+    clock_start2 = times(&start_tms2);
     create_files_sys("dane.txt");
+    clock_end2 = times(&end_tms2);
+
+
+    fprintf(result_file, "\n------LIB-----");
+    printf("\n------LIB-----");
+    print_res(clock_start, clock_end, start_tms, end_tms,result_file);
+
+    fprintf(result_file, "\n------SYS-----");
+    printf("\n------SYS-----");
+    print_res(clock_start2, clock_end2, start_tms2, end_tms2, result_file);
+
+
     return 0;
 }

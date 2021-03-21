@@ -1,0 +1,14 @@
+
+------LIB-----
+EXECUTION TIME
+real 0.130000
+user 0.090000
+sys  0.030000
+
+
+------SYS-----
+EXECUTION TIME
+real 2.040000
+user 0.870000
+sys  1.170000
+

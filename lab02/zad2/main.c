@@ -8,6 +8,23 @@
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/times.h>
+
+
+long double time_sec(clock_t time){
+    return (long double)(time) / sysconf(_SC_CLK_TCK);
+}
+
+void print_res(clock_t clock_start, clock_t clock_end, struct tms start_tms, struct tms end_tms, FILE* file){
+    printf("\nEXECUTION TIME\n");
+    printf("real %Lf\n", time_sec(clock_end - clock_start));
+    printf("user %Lf\n", time_sec(end_tms.tms_utime - start_tms.tms_utime));
+    printf("sys  %Lf\n\n", time_sec(end_tms.tms_stime - start_tms.tms_stime));
+    fprintf(file, "\nEXECUTION TIME\n");
+    fprintf(file, "real %Lf\n", time_sec(clock_end - clock_start));
+    fprintf(file, "user %Lf\n", time_sec(end_tms.tms_utime - start_tms.tms_utime));
+    fprintf(file, "sys  %Lf\n\n", time_sec(end_tms.tms_stime - start_tms.tms_stime));
+}
 
 void find_char_lib(char ch, char* filename){
     FILE* file = fopen(filename, "r");
@@ -89,6 +106,18 @@ void find_char_sys(char ch, char* filename) {
 int main(int argc, char* argv[]) {
     // f poem.txt
 
+    // execution time
+    FILE* result_file = fopen("pomiar_zad_2.txt", "w");
+    struct tms start_tms;
+    struct tms end_tms;
+    clock_t clock_start;
+    clock_t clock_end;
+    struct tms start_tms2;
+    struct tms end_tms2;
+    clock_t clock_start2;
+    clock_t clock_end2;
+
+
     char ch;
     char* filename;
 
@@ -99,16 +128,29 @@ int main(int argc, char* argv[]) {
         printf("File: %s\n\n", filename);
 
         printf("------LIB------\n\n");
+        clock_start = times(&start_tms);
         find_char_lib(ch, filename);
-        printf("\n\n------SYS------\n\n");
-        find_char_sys(ch, filename);
+        clock_end = times(&end_tms);
 
+        printf("\n\n------SYS------\n\n");
+        clock_start2 = times(&start_tms2);
+        find_char_lib(ch, filename);
+        clock_end2 = times(&end_tms2);
     }
 
     else {
         printf("Wrong number of arguments!\n");
         return 1;
     }
+
+    fprintf(result_file, "\n------LIB-----");
+    printf("\n------LIB-----");
+    print_res(clock_start, clock_end, start_tms, end_tms,result_file);
+
+    fprintf(result_file, "\n------SYS-----");
+    printf("\n------SYS-----");
+    print_res(clock_start2, clock_end2, start_tms2, end_tms2, result_file);
+
 
     return 0;
 }
