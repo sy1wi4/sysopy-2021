@@ -28,7 +28,6 @@ int main(int argc, char* argv[]){
                 printf("child PID %d, parent PID %d\n", getpid(), getppid());
                 exit(0);  // exit before child call fork
             }
-
             else printf("not child\n");
         }
 
