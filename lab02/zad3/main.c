@@ -185,6 +185,7 @@ void create_files_sys(char* file){
 
 
 int main() {
+    // make
 
     // execution time
     FILE* result_file = fopen("pomiar_zad_3.txt", "w");

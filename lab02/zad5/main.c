@@ -130,6 +130,7 @@ void read_lines_sys(char* input_file, char* output_file) {
 int main(int argc, char* argv[]) {
 
     // poem.txt output.txt
+    // make ARGS="file.txt output.txt"
 
     if (argc != 3){
         printf("Wrong number of arguments!\n");

@@ -18,16 +18,17 @@ int main(int argc, char* argv[]){
         printf("current: %d  parent: %d\n\n", getpid(), getppid());
 
         int n = atoi(argv[1]);
-        int pid;
+        pid_t pid;
 
         for (int i = 0; i < n; i++) {
             printf("--- %d ---\n", i);
 
             pid = fork();
             if (pid == 0) {
-                printf("child PID %d , parent PID %d\n", getpid(), getppid());
+                printf("child PID %d, parent PID %d\n", getpid(), getppid());
                 exit(0);  // exit before child call fork
             }
+            else printf("not child\n");
         }
 
         for (int i = 0; i < 5; i++) wait(NULL);

@@ -105,6 +105,7 @@ void find_char_sys(char ch, char* filename) {
 
 int main(int argc, char* argv[]) {
     // f poem.txt
+    // make ARGS="f file.txt"
 
     // execution time
     FILE* result_file = fopen("pomiar_zad_2.txt", "w");

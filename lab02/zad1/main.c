@@ -94,6 +94,7 @@ void open_sys(char* filename1, char* filename2){
 
 int main(int argc, char* argv[]){
     // poem.txt lorem.txt
+    // make ARGS="file1.txt file2.txt"
 
     char* filename1;
     char* filename2;

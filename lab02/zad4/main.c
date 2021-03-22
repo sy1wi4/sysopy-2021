@@ -142,6 +142,7 @@ void read_lines_sys(char* input_file, char* output_file, char* str1, char* str2)
 int main(int argc, char* argv[]) {
 
     // lorem.txt output.txt Lorem REPLACED
+    // make ARGS="file.txt output.txt to REPLACED"
 
     if (argc != 5){
         printf("Wrong number of arguments!\n");
