@@ -21,16 +21,16 @@ int main(int argc, char* argv[]){
         pid_t pid;
 
         for (int i = 0; i < n; i++) {
-            printf("--- %d ---\n", i);
-
             pid = fork();
             if (pid == 0) {
-                printf("child PID %d, parent PID %d\n", getpid(), getppid());
-                exit(0);  // exit before child call fork
+                printf("%d.  Child PID: %d, parent PID: %d\n", i + 1, getpid(), getppid());
+                exit(0);  // exit before child call fork()
             }
-            else printf("not child\n");
         }
 
-        for (int i = 0; i < 5; i++) wait(NULL);
+        // block parent process until any of children has finished
+        // if child terminates before parent process reaches wait(NULL) then the child
+        // process turns to a zombie process until its parent waits on it and its released from memory.
+        for (int i = 0; i < n; i++) wait(NULL);
     }
 }
