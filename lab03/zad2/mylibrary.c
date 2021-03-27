@@ -6,7 +6,6 @@
 #include <string.h>
 #include "mylibrary.h"
 #include <stdio.h>
-#include <unistd.h>
 
 struct MainArray* create_main_arr(int size){
     struct MainArray* arr = calloc(1, sizeof(struct MainArray));
@@ -72,7 +71,6 @@ void merge_files(char* file_name1, char* file_name2){
     FILE* file1 = fopen(file_name1, "r");
     FILE* file2 = fopen(file_name2, "r");
 
-//    printf("\nTO MERGE  %s %s\n", file_name1, file_name2);
     if(file1 == NULL || file2 == NULL) {
         perror("Cannot open file ");
         exit(1);
@@ -95,11 +93,10 @@ void merge_files(char* file_name1, char* file_name2){
 
     rewind(temp);
 
-    char* buffer = calloc(256,sizeof(char));
-    while (fgets(buffer, 256, temp))
-        printf("PID: %d   %s", getpid(), buffer);
-
-    printf("\n");
+//    char* buffer = calloc(256,sizeof(char));
+//    while (fgets(buffer, 256, temp))
+//        printf("PID: %d   %s", getpid(), buffer);
+//    printf("\n");
 
     fclose(file1);
     fclose(file2);

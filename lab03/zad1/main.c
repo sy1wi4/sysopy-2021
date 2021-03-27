@@ -9,6 +9,8 @@
 
 
 int main(int argc, char* argv[]){
+    // make ARGS="10"
+
     if (argc != 2){
         printf("Wrong number of arguments");
         return -1;
@@ -33,4 +35,6 @@ int main(int argc, char* argv[]){
         // process turns to a zombie process until its parent waits on it and its released from memory.
         for (int i = 0; i < n; i++) wait(NULL);
     }
+
+    return 0;
 }

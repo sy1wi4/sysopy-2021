@@ -27,7 +27,7 @@ bool check_if_contains(FILE* file, char* str){
 }
 
 void search_dir(char* dir_name, char* str, int depth){
-    if (depth == -1) exit(0);
+    if (depth == 0) exit(0);
 
     DIR* dir;
     FILE* file;

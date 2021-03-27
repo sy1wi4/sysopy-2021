@@ -17,7 +17,7 @@ void print_res(clock_t clock_start, clock_t clock_end, struct tms start_tms, str
 }
 
 int main(int argc, char *argv[]) {
-    // ./main file1.txt:file2.txt file3.txt:file4.txt
+    // make ARGS="file1.txt:file2.txt file3.txt:file4.txt"
 
     struct tms start_tms;
     struct tms end_tms;
@@ -27,7 +27,6 @@ int main(int argc, char *argv[]) {
     clock_start = times(&start_tms);
 
     pid_t pid;
-    printf("\n");
     for (int i = 1; i < argc ; i++) {
         char* file1 = (char*)calloc(strlen(argv[i]), sizeof(char));
         char* file2 = (char*)calloc(strlen(argv[i]), sizeof(char));
@@ -50,7 +49,7 @@ int main(int argc, char *argv[]) {
     for (int i = 1; i < argc ; i++) wait(NULL);
 
     clock_end = times(&end_tms);
-    printf("\n\nTOTAL EXECUTION TIME\n");
+    printf("TOTAL EXECUTION TIME\n");
     print_res(clock_start, clock_end, start_tms, end_tms);
 
     return 0;
