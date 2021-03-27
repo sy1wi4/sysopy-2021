@@ -17,7 +17,7 @@ void print_res(clock_t clock_start, clock_t clock_end, struct tms start_tms, str
 }
 
 int main(int argc, char *argv[]) {
-    // make ARGS="file1.txt:file2.txt file3.txt:file4.txt"
+    // make ARGS="f1.txt:f2.txt f3.txt:f4.txt"
 
     struct tms start_tms;
     struct tms end_tms;

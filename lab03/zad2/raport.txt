@@ -5,7 +5,7 @@
 6 files, 14 lines
 
 TOTAL EXECUTION TIME
-real 0.140000
+real 0.130000
 user 0.000000
 sys  0.000000
 
@@ -15,7 +15,7 @@ sys  0.000000
 50 files, 274 lines
 
 TOTAL EXECUTION TIME
-real 0.270000
+real 0.480000
 user 0.000000
 sys  0.000000
 
