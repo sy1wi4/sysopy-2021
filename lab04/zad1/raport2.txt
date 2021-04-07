@@ -1,0 +1,84 @@
+----------------------------------------------------------
+
+WNIOSKI - fork:
+
+Proces potomny dziedziczy ustawienia w przypadku wywołania:
+"ignore"
+"handler"
+"mask"
+
+W przypadku "pending" sygnał oczekujący
+w przodku NIE jest widoczny w potomku.
+
+----------------------------------------------------------
+
+WNIOSKI - exec:
+
+Proces potomny dziedziczy ustawienia w przypadku wywołania:
+"ignore"
+"mask"
+"pending"
+
+W przeciwieństwie do funkcji fork, tym razem sygnał
+oczekujący w przodku jest także widoczny w potomku.
+
+----------------------------------------------------------
+
+
+
+
+test output:
+
+#################################################
+FORK TEST FORK TEST FORK TEST FORK TEST FORK TEST
+#################################################
+
+------------ TESTING "ignore" ------------
+Going to raise a signal...
+Going to raise a signal in child process...
+
+------------ TESTING "handler" ------------
+Going to raise a signal...
+Received signal 10. PID: 6105, PPID: 6097
+Going to raise a signal in child process...
+Received signal 10. PID: 6106, PPID: 6105
+
+------------ TESTING "mask" ------------
+Going to raise a signal...
+Signal pending
+Going to raise a signal in child process...
+Signal pending [in child process]
+
+------------ TESTING "pending" ------------
+Going to raise a signal...
+Signal pending
+Child process here
+Signal NOT pending [in child process]
+
+
+
+
+#################################################
+EXEC TEST EXEC TEST EXEC TEST EXEC TEST EXEC TEST
+#################################################
+
+------------ TESTING "ignore" ------------
+Going to raise a signal...
+Going to call execl()...
+Child here!
+Going to raise a signal in child process...
+
+------------ TESTING "mask" ------------
+Going to raise a signal...
+Signal pending
+Going to call execl()...
+Child here!
+Going to raise a signal in child process...
+Signal pending [in child process]
+
+------------ TESTING "pending" ------------
+Going to raise a signal...
+Signal pending
+Going to call execl()...
+Child here!
+Signal pending [in child process]

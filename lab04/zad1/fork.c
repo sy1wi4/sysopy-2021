@@ -75,7 +75,7 @@ int main(int argc, char* argv[]){
         printf("Going to raise a signal...\n");
         raise(SIGUSR1);
 
-        sigismember(&new_mask, SIGUSR1) ? printf("Signal pending\n") : printf("Signal not pending\n");
+        sigismember(&new_mask, SIGUSR1) ? printf("Signal pending\n") : printf("Signal  EXEC TEST pending\n");
 
         pid_t pid = fork();
         if (pid == 0){
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]){
 
             // check whether any signals are pending
             sigpending(&new_mask);
-            sigismember(&new_mask, SIGUSR1) ? printf("Signal pending [in child process]\n") : printf("Signal not pending [in child process]\n");
+            sigismember(&new_mask, SIGUSR1) ? printf("Signal pending [in child process]\n") : printf("Signal NOT pending [in child process]\n");
         }
         else {
             wait(NULL);
