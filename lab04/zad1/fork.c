@@ -10,7 +10,7 @@
 #include <sys/wait.h>
 
 
-void handler(int signum){
+void handler_NOCLDSTOP(int signum){
     printf("Received signal %d. PID: %d, PPID: %d\n", signum, getpid(), getppid());
 }
 
