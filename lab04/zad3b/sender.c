@@ -7,17 +7,20 @@
 #include <string.h>
 #include <signal.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 int caught = 0;
 int to_send;
 char* mode;
+bool wait_for_signal;
+
 
 // install a handler for this signal using the SA_SIGINFO flag to get si_value (sent from catcher with SIGUSR1)
 // si_value is number of signal which was send back by catcher - we could compare how many signals arrived and how many should
 // -- [only needed if mode is "queue"] --
 void handler1(int sig, siginfo_t *info, void *ucontext) {
     caught++;
-
+    wait_for_signal = false; // got signal back - sender can send next signal now
     if (strcmp(mode,"queue") == 0) {
         printf("\nSender handler1 here. New SIGUSR1 caught.\n");
         printf("Number of signal caught and sent back from catcher is [%d].\n", info->si_value.sival_int);
@@ -28,7 +31,7 @@ void handler1(int sig, siginfo_t *info, void *ucontext) {
 void handler2(int signum) {
     printf("\n--------------------------- ALL SIGNALS SENT BACK --------------------------------\n\n");
     printf("Sender handler2 here. SIGUSR2 caught.\n");
-    printf("\nSender caught [%d] SIGUSR signals, should have caught [%d].\n", caught, to_send);
+    printf("\nSender caught [%d] SIGUSR1 signals, should have caught [%d].\n", caught, to_send);
     printf("\n///////// EXIT /////////\n\n");
     exit(0);
 }
@@ -45,6 +48,7 @@ int main(int argc, char* argv[]){
     int catcher_PID = atoi(argv[1]);
     to_send = atoi(argv[2]);
     mode = argv[3];
+    wait_for_signal = false;
 
     printf("\n\nSender here! My PID: %d\n", getpid());
     printf("Catcher PID: %d\n", catcher_PID);
@@ -72,11 +76,16 @@ int main(int argc, char* argv[]){
         sigaction(SIGRTMIN + 2, &act_SIGUSR2, NULL);
 
     printf("\nSender going to send %d SIGUSR1 signals ......\n", to_send);
-    for (int i = 0; i < to_send; i++) {
 
+    int sent = 0;
+    while(sent < to_send){
+
+        while(wait_for_signal){}
+        // wait for the catcher to send back the signal
+        wait_for_signal = true;
+        sent++;
         if (strcmp(mode, "kill") == 0) {
             kill(catcher_PID, SIGUSR1);
-
         }
 
         else if (strcmp(mode, "queue") == 0) {
@@ -94,8 +103,9 @@ int main(int argc, char* argv[]){
         }
     }
 
+    while(wait_for_signal){}
 
-    printf("Sender sent all [%d] SIGUSR1 signals.\n\n", to_send);
+    printf("\nSender sent all [%d] SIGUSR1 signals.\n\n", to_send);
 
     // send SIGUSR2
 
