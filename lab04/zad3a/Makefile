@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -g
 
-all: run
+all: test
 
 compile:
 	@$(CC) $(FLAGS) catcher.c -o catcher
@@ -14,6 +14,25 @@ run: compile
 	@./catcher $(ARGS) &
 	@./sender `pidof catcher` 10000 $(ARGS)
 
+test: compile
+	@echo "\nTESTS FOR 5000 SIGNALS (with signal loss)"
+	@echo "\n#########################################################################"
+	@echo "#############################   mode: kill   ############################"
+	@echo "#########################################################################"
+	@./catcher kill &
+	@./sender `pidof catcher` 5000 kill
+
+	@echo "\n#########################################################################"
+	@echo "#############################   mode: queue   ###########################"
+	@echo "#########################################################################"
+	@./catcher queue &
+	@./sender `pidof catcher` 5000 queue
+
+	@echo "\n#########################################################################"
+	@echo "#############################   mode: sigrt   ###########################"
+	@echo "#########################################################################"
+	@./catcher sigrt &
+	@./sender `pidof catcher` 5000 sigrt
 
 clean:
 	rm -f sender catcher catcher.out

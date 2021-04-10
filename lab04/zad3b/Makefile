@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -g
 
-all: run
+all: test
 
 compile:
 	@$(CC) $(FLAGS) catcher.c -o catcher
@@ -13,6 +13,27 @@ run: compile
 	@# With & the process starts in the background, so you do not have to wait until the script is finished
 	@./catcher $(ARGS) &
 	@./sender `pidof catcher` 5000 $(ARGS)
+
+test: compile
+	@echo "\nTESTS FOR 5000 SIGNALS (without signal loss)"
+	@echo "\n#########################################################################"
+	@echo "#############################   mode: kill   ############################"
+	@echo "#########################################################################"
+	@./catcher kill &
+	@./sender `pidof catcher` 5000 kill
+
+	@echo "\n#########################################################################"
+	@echo "#############################   mode: queue   ###########################"
+	@echo "#########################################################################"
+	@./catcher queue &
+	@./sender `pidof catcher` 5000 queue
+
+	@echo "\n#########################################################################"
+	@echo "#############################   mode: sigrt   ###########################"
+	@echo "#########################################################################"
+	@./catcher sigrt &
+	@./sender `pidof catcher` 5000 sigrt
+
 
 
 clean:
