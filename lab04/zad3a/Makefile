@@ -12,7 +12,7 @@ run: compile
 	@# kill -9 `pidof catcher`
 	@# With & the process starts in the background, so you do not have to wait until the script is finished
 	@./catcher $(ARGS) &
-	@./sender `pidof catcher` 10000 $(ARGS)
+	@./sender `pidof catcher` 1000 $(ARGS)
 
 test: compile
 	@echo "\nTESTS FOR 5000 SIGNALS (with signal loss)"
@@ -20,19 +20,19 @@ test: compile
 	@echo "#############################   mode: kill   ############################"
 	@echo "#########################################################################"
 	@./catcher kill &
-	@./sender `pidof catcher` 5000 kill
+	@./sender `pidof catcher` 1000 kill
 
 	@echo "\n#########################################################################"
 	@echo "#############################   mode: queue   ###########################"
 	@echo "#########################################################################"
 	@./catcher queue &
-	@./sender `pidof catcher` 5000 queue
+	@./sender `pidof catcher` 1000 queue
 
 	@echo "\n#########################################################################"
 	@echo "#############################   mode: sigrt   ###########################"
 	@echo "#########################################################################"
 	@./catcher sigrt &
-	@./sender `pidof catcher` 5000 sigrt
+	@./sender `pidof catcher` 1000 sigrt
 
 clean:
 	rm -f sender catcher catcher.out

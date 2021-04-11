@@ -26,7 +26,7 @@ void handler2(int sig, siginfo_t *info, void *ucontext){
 
     // SIGUSR2 handled - send back SIGUSR1 (caught times)
     for (int i = 0; i < caught; i++){
-
+        printf("Sending back SIGUSR1 (%d)...\n", i + 1);
         if (strcmp(mode,"kill") == 0){
             kill(sender_PID, SIGUSR1);
         }
@@ -121,8 +121,7 @@ int main(int argc, char* argv[]) {
 
     while(1){
 //        printf("Catcher waiting for signal...\n");
-//        sigsuspend(&mask);
+        sigsuspend(&mask);
     }
 
-    return 0;
 }

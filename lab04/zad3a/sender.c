@@ -73,7 +73,7 @@ int main(int argc, char* argv[]){
 
     printf("\nSender going to send %d SIGUSR1 signals ......\n", to_send);
     for (int i = 0; i < to_send; i++) {
-
+        printf("Sending SIGUSR1 (%d)...\n", i + 1);
         if (strcmp(mode, "kill") == 0) {
             kill(catcher_PID, SIGUSR1);
 
