@@ -75,7 +75,7 @@ int main(int argc, char* argv[]){
         printf("Going to raise a signal...\n");
         raise(SIGUSR1);
 
-        sigismember(&new_mask, SIGUSR1) ? printf("Signal pending\n") : printf("Signal  EXEC TEST pending\n");
+        sigismember(&new_mask, SIGUSR1) ? printf("Signal pending\n") : printf("Signal NOT pending\n");
 
         pid_t pid = fork();
         if (pid == 0){
