@@ -77,6 +77,7 @@ int* get_lines_to_execute(char* line){
 
 void get_lines(FILE* file){
     char* line = (char*)calloc(256, sizeof(char));
+    char* current_line = (char*)calloc(256, sizeof(char));
     char** commands;
     char** args;
     int i;
@@ -106,90 +107,98 @@ void get_lines(FILE* file){
             }
 
             // execute all commands
-            printf("\nexecuting first...\n");
-            commands = parse(lines[lines_num[0]]);
+            for (i = 0; lines_num[i] != -1; i++) {
+                current_line = lines[lines_num[i]];
+                printf("\nexecuting line %d:  %s \n", i, current_line);
 
-            // print parsed commands
-            i = 0;
-            while (commands[i] != NULL) {
-                printf("com%d:  %s\n", i + 1, commands[i]);
-                i++;
-            }
+                commands = parse(lines[lines_num[i]]);
 
-            ////
-            // idx 0 - fd for the read end
-            // idx 1 - fd for the write end
+                // print parsed commands
+                int m = 0;
+                while (commands[m] != NULL) {
+                    printf("com%d:  %s\n", m + 1, commands[m]);
+                    m++;
+                }
 
-            int pipe_in[2];
-            int pipe_out[2];
+                ////
+                // idx 0 - fd for the read end
+                // idx 1 - fd for the write end
 
-            if (pipe(pipe_out) != 0) {
-                printf("Error while creating a pipe!\n");
-                exit(1);
-            }
-            printf("num of commands %d\n\n", i);
-            // now i is a number of commands in current line
-            for (int j = 0; j < i; j++) {
+                int pipe_in[2];
+                int pipe_out[2];
 
-                pid_t pid = fork();
-                //////
-                if (pid == 0) {
-                    // first
-                    if (j == 0) {
-                        close(pipe_out[READ]);
-                        // redirect
-                        dup2(pipe_out[WRITE], STDOUT_FILENO);
-                    }
+                if (pipe(pipe_out) != 0) {
+                    printf("Error while creating a pipe!\n");
+                    exit(1);
+                }
+                printf("num of commands %d\n\n", m);
 
-                        // last
-                    else if (j == i - 1) {
-                        close(pipe_out[READ]);
-                        close(pipe_out[WRITE]);
+                // now m is a number of commands in current line
+
+                ////////////
+                for (int j = 0; j < m; j++) {
+
+                    pid_t pid = fork();
+                    //////
+                    if (pid == 0) {
+//                        printf("HELLO FROM CHILD PROCESS\n");
+                        // first
+                        if (j == 0) {
+                            close(pipe_out[READ]);
+                            // redirect
+                            dup2(pipe_out[WRITE], STDOUT_FILENO);
+                        }
+
+                            // last
+                        else if (j == m - 1) {
+                            close(pipe_out[READ]);
+                            close(pipe_out[WRITE]);
+                            close(pipe_in[WRITE]);
+                            dup2(pipe_in[READ], STDIN_FILENO);
+                        }
+
+                            // internal
+                        else {
+                            close(pipe_in[WRITE]);
+                            close(pipe_out[READ]);
+                            dup2(pipe_in[READ], STDIN_FILENO);
+                            dup2(pipe_out[WRITE], STDOUT_FILENO);
+                        }
+
+                        char path[256];
+                        args = get_program_args(commands[j], path);
+
+
+                        printf("----- EXEC ----- \npath: %s\n", path);
+                        // print args
+                        m = 0;
+                        while (args[m] != NULL) {
+                            printf("arg%d:  %s\n", m + 1, args[m]);
+                            m++;
+                        }
+
+
+                        // execute program
+                        if (execvp(path, args) == -1) {
+                            printf("ERROR in exec\n");
+                            exit(1);
+                        }
+                    } else {
+                        // move pipes
+//                        printf("HELLO FROM PARENT PROCESS\n");
+
                         close(pipe_in[WRITE]);
-                        dup2(pipe_in[READ], STDIN_FILENO);
-                    }
+                        pipe_in[READ] = pipe_out[READ];
+                        pipe_in[WRITE] = pipe_out[WRITE];
 
-                        // internal
-                    else {
-                        close(pipe_in[WRITE]);
-                        close(pipe_out[READ]);
-                        dup2(pipe_in[READ], STDIN_FILENO);
-                        dup2(pipe_out[WRITE], STDOUT_FILENO);
-                    }
-
-                    char path[256];
-                    args = get_program_args(commands[j], path);
-
-
-                    printf("----- EXEC ----- \npath: %s\n", path);
-                    // print args
-                    i = 0;
-                    while (args[i] != NULL) {
-                        printf("arg%d:  %s\n", i + 1, args[i]);
-                        i++;
-                    }
-
-
-                    // execute program
-                    if (execvp(path, args) == -1) {
-                        printf("ERROR in exec\n");
-                        exit(1);
+                        if (pipe(pipe_out) != 0) {
+                            printf("Error while moving pipe!\n");
+                            exit(1);
+                        }
                     }
                 }
-                else {
-                    // move pipes
-                    close(pipe_in[WRITE]);
-                    pipe_in[READ] = pipe_out[READ];
-                    pipe_in[WRITE] = pipe_out[WRITE];
-
-                    if (pipe(pipe_out) != 0) {
-                        printf("Error while moving pipe!\n");
-                        exit(1);
-                    }
-                }
-                //////
+                ////////////
             }
-
             printf("KONIEC\n");
             ////
     }
