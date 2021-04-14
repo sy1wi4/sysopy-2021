@@ -87,7 +87,7 @@ int* get_lines_to_execute(char* line){
 }
 
 
-void get_lines(FILE* file){
+void parse_execute(FILE* file){
     char** lines = (char**)calloc(MAX_LINES, sizeof(char*));   // commands: lines with "="
     char** commands;
     char** args;
@@ -211,7 +211,7 @@ void get_lines(FILE* file){
                     }
                 }
             }
-    }
+        }
 
         // wait for all the child processes to terminate
         int status = 0;
@@ -236,7 +236,7 @@ int main(int argc, char* argv[]){
         exit(1);
     }
 
-    get_lines(commands);
+    parse_execute(commands);
 
     fclose(commands);
 
