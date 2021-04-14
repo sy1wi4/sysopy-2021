@@ -1,3 +1,5 @@
-commands1 = cat /etc/passwd | wc -l
-commands2 = ls | grep '^a'
+commands1 =  cat /etc/passwd | echo hello
+commands2 = ls | grep 'com'
 commands3 = grep 11
+
+
