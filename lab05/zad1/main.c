@@ -7,7 +7,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <wait.h>
-#include <stdbool.h>
 
 #define MAX_ARGS 20  // in line
 #define MAX_LINES 10
@@ -89,15 +88,15 @@ int* get_lines_to_execute(char* line){
 
 
 void get_lines(FILE* file){
-    char* line = (char*)calloc(256, sizeof(char));
-    char* current_line = (char*)calloc(256, sizeof(char));
+    char** lines = (char**)calloc(MAX_LINES, sizeof(char*));   // commands: lines with "="
     char** commands;
     char** args;
-    int i;
-    char** lines = (char**)calloc(MAX_LINES, sizeof(char*));   // commands: lines with "="
-    int line_ctr = 0;
+    char* line = (char*)calloc(256, sizeof(char));
+    char* current_line;
     int* lines_num;
-    int lines_number = 0;
+    int line_ctr = 0;
+    int lines_number;
+    int i;
 
     while(fgets(line, 256 * sizeof(char), file)) {
         printf("\n--------------------------------------------");
