@@ -14,12 +14,14 @@ int main(int argc, char* argv[]){
         printf("Wrong number of arguments!");
         exit(1);
     }
-    printf("Producer here\n");
+    printf("\nProducer here!\n\n");
 
     char* pipe_path = argv[1];
     int row = atoi(argv[2]);
     char* file_path = argv[3];
     int N = atoi(argv[4]);
+
+    printf("Row number: %d\n", row);
 
     FILE* pipe = fopen(pipe_path, "w");
     FILE* file = fopen(file_path, "r");
@@ -28,8 +30,10 @@ int main(int argc, char* argv[]){
     char message[N + 5];
 
 
+    printf("czytaj\n");
     while(fread(buffer, sizeof(char), N, file) == N){
         snprintf(message, sizeof(message), "%d %s", row, buffer);
+        printf("PRODUCER WRITE TO PIPE: %s\n", buffer);
         fwrite(message, sizeof(char), N + 5, pipe);
         sleep(1);
     }

@@ -11,19 +11,28 @@ int main(int argc, char* argv[]){
         printf("Wrong number of arguments!");
         exit(1);
     }
-    printf("Consumer here\n");
+    printf("\nConsumer here!\n\n");
 
 
     char* pipe_path = argv[1];
     char* file_path = argv[2];
     int N = atoi(argv[3]);
 
+
     FILE* pipe = fopen(pipe_path, "r");
+    if(pipe < 0) {
+        printf("Pipe error!\n");
+    }
+
     FILE* file = fopen(file_path, "w");
+    if(file < 0) {
+        printf("File opening error!\n");
+    }
 
-    char buffer[N];
+    char buffer[N + 5];
 
-    while(fgets(buffer, N, pipe)){
+    while(fread(buffer, sizeof(char), N, pipe) == N){
+        printf("CONSUMER READ FROM PIPE: %s\n", buffer);
         fprintf(file, buffer, strlen(buffer));
     }
 
