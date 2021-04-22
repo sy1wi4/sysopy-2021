@@ -23,8 +23,8 @@ int main(int argc, char* argv[]){
 
     char buffer[N];
 
-    while(fgets(buffer, N, file)){
-        fprintf(pipe, buffer, strlen(buffer));
+    while(fgets(buffer, N, pipe)){
+        fprintf(file, buffer, strlen(buffer));
     }
 
     fclose(pipe);
