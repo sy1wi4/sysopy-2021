@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
 
@@ -14,7 +13,6 @@ int main(int argc, char* argv[]){
         printf("Wrong number of arguments!");
         exit(1);
     }
-    printf("\nProducer here!\n\n");
 
     char* pipe_path = argv[1];
     int row = atoi(argv[2]);
@@ -30,10 +28,12 @@ int main(int argc, char* argv[]){
     char message[N + 5];
 
 
-    printf("czytaj\n");
     while(fread(buffer, sizeof(char), N, file) == N){
-        snprintf(message, sizeof(message), "%d %s", row, buffer);
+
+        buffer[strlen(buffer) - 1] = '\n';
+        snprintf(message, sizeof(message), "%d.%s", row, buffer);
         printf("PRODUCER WRITE TO PIPE: %s\n", buffer);
+
         fwrite(message, sizeof(char), N + 5, pipe);
         sleep(1);
     }

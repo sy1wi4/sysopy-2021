@@ -1,0 +1,16 @@
+#######################
+######  WNIOSKI  ######
+#######################
+
+Dla wszystkich testowanych przypadkow, tj:
+
+1. wielu producentów, jeden konsument
+2. jeden producenta, wielu konsumentów
+3. wielu producentów, wielu konsumentów
+
+nie dochodzi ani do utraty, ani do zwielokrotnienia
+towaru, dane otrzymane od i-tego producenta sa
+prawidlowo umieszczane w i-tym wierszu pliku wynikowego,
+cala zawartosc pliku wejsciowego pojawia sie w pliku
+wynikowym.
+
