@@ -67,7 +67,9 @@ Utwórz plik wnioski.txt zawierający wyniki (wraz z wnioskami) następujących 
   1. wielu producentów, jeden konsument
   2. jeden producenta, wielu konsumentów
   3. wielu producentów, wielu konsumentów
+  
 Uwagi:
+
   1. Ponieważ, w tym przypadku kilka procesów będzie zapisywać do jednego, wspólnego pliku, dlatego należy użyć funkcji flock()
   2. Należy napisać program lub skrypt sprawdzający, czy zawartość pliku wejściowego, w całości, pojawiła się w odpowiedniej linii pliku wynikowego
   3. Uruchamianie powyższych przypadków testowych oraz programu/skryptu sprawdzającego  ma się odbywać za pomocą komendy make test
