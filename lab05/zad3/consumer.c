@@ -64,7 +64,7 @@ int main(int argc, char* argv[]){
     while(fread(buffer, sizeof(char), N, pipe) == N){
         printf("CONSUMER READ FROM PIPE: %s", buffer);
 
-        char* seq = strtok(buffer, ".");   // separate number of producer (before the space)
+        char* seq = strtok(buffer, ".");   // separate number of producer (before the dot)
         int num = atoi(seq);
 
         seq = strtok(NULL, "\n");
