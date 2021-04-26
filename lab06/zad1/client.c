@@ -15,7 +15,7 @@ int server_q;
 int client_q;
 int to_connect_q;
 int id;
-
+bool connected = false;
 
 
 
@@ -50,6 +50,19 @@ void send_STOP(){
 void send_CONNECT(int id_to_connect){
     message msg = {.sender_id = id, .to_connect_id = id_to_connect, .type = CONNECT};
     send_msg(server_q, &msg);
+    connected = true;
+}
+
+void send_DISCONNECT(){
+    message msg = {.sender_id = id, .type = DISCONNECT};
+    send_msg(server_q, &msg);
+    connected = false;
+}
+
+void handle_CONNECT(message* msg){
+    connected = true;
+    to_connect_q = msg->q_id;
+    printf("Connected with %d\n",msg->q_id);
 }
 
 void handle_SIGINT(){
@@ -61,6 +74,8 @@ void handle_SIGINT(){
 
 
 int main(){
+    // TODO: receive message while waiting for input, chat between clients
+
 
     printf("---- CLIENT HERE ----\n");
 
@@ -116,8 +131,21 @@ int main(){
             printf("Enter client ID: ");
             fgets(buffer, MAX_LEN, stdin);
             id_to_connect = atoi(buffer);
+            if (id_to_connect == id){
+                printf("You cannot connect with yourself!\n");
+                continue;
+            }
             send_CONNECT(id_to_connect);
         }
+
+        else if (strcmp("DISCONNECT\n", buffer) == 0){
+            if (!connected){
+                printf("You are not connected!\n");
+                continue;
+            }
+            send_DISCONNECT();
+        }
+
     }
 
     msgctl(server_q, IPC_RMID, NULL);

@@ -19,13 +19,10 @@ client clients[MAX_CLIENTS];
 int server_q;
 
 void delete_server_q(){
-    // TODO: ...
-
     delete_queue(server_q);
 }
 
 int assign_id(){
-    printf("xddd\n");
     for(int i = 0; i < MAX_CLIENTS; i++){
         if (clients[i].connected == false){
             printf("id assigned: %d\n", i);
@@ -74,6 +71,9 @@ void connect_with_client(message* msg){
     message to_send = {.q_id = q_id_sender, .type = CONNECT};
     send_msg(q_id_to_connect, &to_send);
 
+    printf("Connect with %d\n",q_id_to_connect);
+    printf("Connect with %d\n",q_id_sender);
+
     clients[msg->to_connect_id].connected_id = msg->sender_id;
     clients[msg->sender_id].connected_id = msg->to_connect_id;
 
@@ -90,6 +90,8 @@ void disconnect_sender(message* msg){
 
     clients[sender_id].available = true;
     clients[connected_id].available = true;
+
+    // send disconnect to other client
 }
 
 void stop_sender(message* msg){
@@ -97,9 +99,6 @@ void stop_sender(message* msg){
 
     int client_id = msg->sender_id;
     clients[client_id].connected = false;
-
-    // odeslanie STOP do klienta by usunal kolejke???
-
 }
 
 void init_client(message* msg){
@@ -177,7 +176,7 @@ int main(){
 
     printf("server queue id: %d\n", server_q);
 
-//    init_clients();
+    init_clients();
 
     signal(SIGINT, handle_SIGINT);
 

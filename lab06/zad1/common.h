@@ -20,6 +20,7 @@
 #define LIST 3
 #define CONNECT 4
 #define INIT 5
+#define CHAT 6
 
 #define MAX_CLIENTS 10
 #define MAX_LEN 128
