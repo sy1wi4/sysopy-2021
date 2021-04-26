@@ -41,9 +41,16 @@ typedef struct {
     bool available;   // for connection
 } client;
 
-void send_msg(int q_id, message* msg_back){
-    if(msgsnd(q_id, msg_back, sizeof(message) - sizeof(long), 0) == -1){
+void send_msg(int q_id, message* msg){
+    if(msgsnd(q_id, msg, sizeof(message) - sizeof(long), 0) == -1){
         printf("Error while sending message!");
+        exit(1);
+    }
+}
+
+void receive_msg(int q_id, message* msg, long type){
+    if(msgrcv(q_id, msg, sizeof(message) - sizeof(long), type,0) == -1){
+        printf("Error while receiving message!");
         exit(1);
     }
 }

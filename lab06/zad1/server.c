@@ -15,7 +15,7 @@
 
 #include "common.h"
 
-client* clients[MAX_CLIENTS];
+client clients[MAX_CLIENTS];
 int server_q;
 
 void delete_server_q(){
@@ -25,8 +25,10 @@ void delete_server_q(){
 }
 
 int assign_id(){
+    printf("xddd\n");
     for(int i = 0; i < MAX_CLIENTS; i++){
-        if (clients[i]->connected == false){
+        if (clients[i].connected == false){
+            printf("id assigned: %d\n", i);
             return i;
         }
     }
@@ -45,20 +47,24 @@ void handle_SIGINT(){
 void list_clients(message* msg){
     printf("\nserver:  LIST received\n");
 
-    printf("CLIENTS:\n");
+    printf("--------------------------------------------");
+    printf("\nCLIENTS:\n");
     for (int i = 0; i < MAX_CLIENTS; i++){
-        if (clients[i]->connected){
-            printf("%d   %s available\n", clients[i]->id, clients[i]->available ? "" : "not");
+        if (clients[i].connected){
+            printf("id: %d   q_id: %d   status: %s available\n", clients[i].id,
+                   clients->q_id, clients[i].available ? "" : "not");
         }
     }
+    printf("-------------------------------------------\n");
+
 }
 
 void connect_with_client(message* msg){
 
     printf("\nserver:  CONNECT received\n");
 
-    int q_id_to_connect = clients[msg->to_connect_id]->q_id;
-    int q_id_sender = clients[msg->sender_id]->q_id;
+    int q_id_to_connect = clients[msg->to_connect_id].q_id;
+    int q_id_sender = clients[msg->sender_id].q_id;
 
     // send back q_id of the client to connect to
     message msg_back = {.q_id = q_id_to_connect, .type = CONNECT};
@@ -68,8 +74,11 @@ void connect_with_client(message* msg){
     message to_send = {.q_id = q_id_sender, .type = CONNECT};
     send_msg(q_id_to_connect, &to_send);
 
-    clients[clients[msg->to_connect_id]->available] = false;
-    clients[clients[msg->sender_id]->available] = false;
+    clients[msg->to_connect_id].connected_id = msg->sender_id;
+    clients[msg->sender_id].connected_id = msg->to_connect_id;
+
+    clients[msg->to_connect_id].available = false;
+    clients[msg->sender_id].available = false;
 
 }
 
@@ -77,17 +86,17 @@ void disconnect_sender(message* msg){
     printf("\nserver:  DISCONNECT received\n");
 
     int sender_id = msg->sender_id;
-    int connected_id = clients[sender_id]->connected_id;
+    int connected_id = clients[sender_id].connected_id;
 
-    clients[sender_id]->available = true;
-    clients[connected_id]->available = true;
+    clients[sender_id].available = true;
+    clients[connected_id].available = true;
 }
 
 void stop_sender(message* msg){
     printf("\nserver:  STOP received\n");
 
     int client_id = msg->sender_id;
-    clients[client_id]->connected = false;
+    clients[client_id].connected = false;
 
     // odeslanie STOP do klienta by usunal kolejke???
 
@@ -103,11 +112,11 @@ void init_client(message* msg){
         exit(1);
     }
     client new_client = {.q_id = q_id, .connected = true, .available = true, .id = id};
-    clients[id] = &new_client;
+    clients[id] = new_client;
 
     message msg_back = {.type = INIT, .sender_id = id, .sender_pid = getpid()};
     send_msg(q_id, &msg_back);
-
+    printf("message sent to %d\n", q_id);
 }
 
 
@@ -140,9 +149,10 @@ void handle_msg(message* msg){
 }
 
 void init_clients(){
+    printf("init clients\n");
     for(int i = 0; i < MAX_CLIENTS; i++){
-        clients[i]->available = true;
-        clients[i]->connected = false;
+        clients[i].available = true;
+        clients[i].connected = false;
     }
 }
 
@@ -152,8 +162,6 @@ int main(){
     // IPC_CREAT - fails if the queue already exists)
     printf("---- SERVER HERE ----\n");
     atexit(delete_server_q);
-
-//    init_clients();
 
     key_t key = ftok(get_home_path(), ID);
     if (key == -1){
@@ -168,6 +176,8 @@ int main(){
     }
 
     printf("server queue id: %d\n", server_q);
+
+//    init_clients();
 
     signal(SIGINT, handle_SIGINT);
 
@@ -185,7 +195,6 @@ int main(){
     }
 
 
-    // delete queue (STOP)
     msgctl(server_q, IPC_RMID, NULL);
 
 }

@@ -17,11 +17,7 @@ int to_connect_q;
 int id;
 
 
-void handle_SIGINT(){
-    printf("Delete server queue...");
-    msgctl(server_q, IPC_RMID, NULL);
-    exit(0);
-}
+
 
 void delete_client_q(){
     delete_queue(client_q);
@@ -30,12 +26,39 @@ void delete_client_q(){
 void init(){
     message msg = {.q_id = client_q, .type = INIT};
     send_msg(server_q, &msg);
+
+    message received;
+    receive_msg(client_q, &received, INIT);
+    printf("received id: %d\n", received.sender_id);
+    id = received.sender_id;
 }
 
 void send_LIST(){
+    printf("send LIST\n");
     message msg = {.type = LIST};
     send_msg(server_q, &msg);
 }
+
+void send_STOP(){
+    printf("send STOP\n");
+    message msg = {.sender_id = id, .type = STOP};
+    send_msg(server_q, &msg);
+    msgctl(client_q, IPC_RMID, NULL);
+    exit(0);
+}
+
+void send_CONNECT(int id_to_connect){
+    message msg = {.sender_id = id, .to_connect_id = id_to_connect, .type = CONNECT};
+    send_msg(server_q, &msg);
+}
+
+void handle_SIGINT(){
+    send_STOP();
+    printf("Delete server queue...");
+    msgctl(server_q, IPC_RMID, NULL);
+    exit(0);
+}
+
 
 int main(){
 
@@ -76,15 +99,24 @@ int main(){
     printf("client queue id: %d\n", client_q);
 
 
-
     init();
-
+    int id_to_connect;
     char buffer[MAX_LEN];
-    while((fgets (buffer, MAX_LEN - 2, stdin))){
+    while((fgets(buffer, MAX_LEN, stdin))){
         printf("line: %s\n", buffer);
         if (strcmp("LIST\n", buffer) == 0){
-            printf("send list\n");
             send_LIST();
+        }
+
+        else if (strcmp("STOP\n", buffer) == 0){
+            send_STOP();
+        }
+
+        else if (strcmp("CONNECT\n", buffer) == 0){
+            printf("Enter client ID: ");
+            fgets(buffer, MAX_LEN, stdin);
+            id_to_connect = atoi(buffer);
+            send_CONNECT(id_to_connect);
         }
     }
 
