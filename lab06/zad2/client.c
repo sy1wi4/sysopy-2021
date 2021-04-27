@@ -25,12 +25,8 @@ void delete_client_q(){
 
 void init(){
     message msg = {.q_id = client_q, .type = INIT};
+    strcpy(msg.text, get_client_q_name());
     send_msg(server_q, &msg);
-
-    message received;
-    receive_msg(client_q, &received, INIT);
-    printf("--- CLIENT ID ---\n%d\n\n", received.sender_id);
-    id = received.sender_id;
 }
 
 void send_LIST(){
@@ -82,10 +78,12 @@ void send_CHAT_msg(){
 void handle_STOP(){
     printf("Client received STOP\n");
 
-    // send back STOP to server
-    message msg = {.type = STOP};
-    send_msg(server_q, &msg);
-    msgctl(client_q, IPC_RMID, NULL);
+    // close client_q and server_q
+    mq_close(client_q);
+
+    // usun kolejke klienta
+//    mq_unlink()
+    mq_close(server_q);
     exit(0);
 }
 
@@ -117,18 +115,20 @@ void handle_SIGINT(){
 }
 
 bool is_empty(int q){
-    struct msqid_ds buf;
-    msgctl(q, IPC_STAT, &buf);
-
-    if (buf.msg_qnum != 0) return false;
-    else return true;
+    struct mq_attr attr;
+    mq_getattr(q, &attr);
+    if (attr.mq_curmsgs == 0) return true;
+    else return false;
 }
+
 
 void catcher(){
 
+//    printf("CATCHER HERE\n");
     while (!is_empty(client_q)){
         message msg;
-        receive_msg_nowait(client_q, &msg, 0);
+        unsigned int type;
+        receive_msg(client_q, &msg, &type);
 
         switch (msg.type)
         {
@@ -171,35 +171,19 @@ int main(){
 
     atexit(delete_client_q);
 
-
     // server
-    key_t key_s = ftok(get_home_path(), ID);
-    if (key_s == -1){
-        printf("Error while generating key!\n");
-        return -1;
-    }
-
-    server_q = msgget(key_s, 0);
-    if (server_q == -1){
-        printf("Error while creating server queue!\n");
-        return -1;
-    }
-
+    server_q = mq_open(SERVER_Q, O_WRONLY);
     printf("server queue id: %d\n", server_q);
 
     // client
-    key_t key_c = ftok(get_home_path(), CLIENT_ID);
-    if (key_c == -1){
-        printf("Error while generating key!\n");
-        return -1;
-    }
+    struct mq_attr attr;
+    attr.mq_maxmsg = MAX_MSG;
+    attr.mq_msgsize = sizeof(message);
+    attr.mq_flags = 0;
+    attr.mq_curmsgs = 0;
 
-    client_q = msgget(key_c,IPC_CREAT | IPC_EXCL | 0666);
-    if (client_q == -1){
-        printf("Error while creating client queue!\n");
-        return -1;
-    }
-
+    // set O_NONBLOCK so that mq_receive() call does not block process
+    client_q = mq_open(get_client_q_name(),O_RDONLY | O_CREAT | O_EXCL | O_NONBLOCK, 0666, &attr);
     printf("client queue id: %d\n", client_q);
 
 

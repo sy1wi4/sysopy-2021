@@ -11,20 +11,21 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <signal.h>
+#include <mqueue.h>
+#include <string.h>
+#include <errno.h>
 
 #include "common.h"
 
 client clients[MAX_CLIENTS];
 int server_q;
 
-void delete_server_q(){
-    delete_queue(server_q);
-}
 
 
 void stop_server(){
+
+    // close all opened queues and
     // send stop to all connected clients
-    // then should receive STOP back
     printf("STOPPING SERVER...\n");
     message msg;
     int client_q;
@@ -35,12 +36,12 @@ void stop_server(){
             msg.type = STOP;
             send_msg(client_q, &msg);
 
-            receive_msg(server_q, &msg, STOP);
-            printf("STOP received from client\n");
+            mq_close(clients[i].q_id);
         }
     }
 
-    delete_server_q();
+    mq_close(server_q);
+    mq_unlink(SERVER_Q);
     printf("\nSERVER STOPPED!\n");
 }
 
@@ -127,17 +128,22 @@ void stop_sender(message* msg){
 void init_client(message* msg){
     printf("\nserver:  INIT received\n");
 
-    int q_id = msg->q_id;
     int id = assign_id();
     if (id == -1){
         printf("Server is full!");
         exit(1);
     }
-    client new_client = {.q_id = q_id, .connected = true, .available = true, .id = id};
+    client new_client = {.connected = true, .available = true, .id = id};
+    strcpy(new_client.q_name, msg->text);
     clients[id] = new_client;
+    if ((clients[id].q_id = mq_open(msg->text, O_WRONLY)) == -1){
+        printf("Error while creating client queue!\n");
+        exit(1);
+    }
 
+    // send back assigned id
     message msg_back = {.type = INIT, .sender_id = id, .sender_pid = getpid()};
-    send_msg(q_id, &msg_back);
+    send_msg(clients[id].q_id, &msg_back);
 }
 
 
@@ -178,26 +184,27 @@ void init_clients(){
 }
 
 int main(){
-    // create mew message queue - key to recognize message queue
-    // and flag (IPC_CREAT - create queue if not exists, IPC_EXCL, with
-    // IPC_CREAT - fails if the queue already exists)
     printf("---- SERVER HERE ----\n");
 
     atexit(stop_server);
 
-    key_t key = ftok(get_home_path(), ID);
-    if (key == -1){
-        printf("Error while generating key!\n");
-        return -1;
-    }
+    // set up the attribute structure
+    struct mq_attr attr;
+    attr.mq_maxmsg = MAX_MSG;
+    attr.mq_msgsize = sizeof(message);
+    attr.mq_flags = 0;
+    attr.mq_curmsgs = 0;
 
-    server_q = msgget(key, IPC_CREAT | IPC_EXCL | 0666);
+    // open a queue with the attribute structure
+    server_q = mq_open(SERVER_Q,  O_RDONLY | O_CREAT | O_EXCL, 0666, &attr);
+
     if (server_q == -1){
-        printf("Error while creating queue!\n");
+        printf("Error while creating queue! %s\n", strerror(errno));
         return -1;
     }
 
-    printf("server queue id: %d\n", server_q);
+    printf("server queue descriptor: %d\n", server_q);
+
 
     init_clients();
 
@@ -205,12 +212,9 @@ int main(){
 
     // receive messages from queue
     message msg;
+    unsigned int type;
     while(true){
-        int msgsz = sizeof(message) - sizeof(msg.type);
-        if (msgrcv(server_q, &msg, msgsz, -INIT-1, 0) == -1){
-            printf("Error while receiving message!\n");
-            return -1;
-        }
+        receive_msg(server_q, &msg, &type);
 
         handle_msg(&msg);
 

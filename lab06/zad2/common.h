@@ -9,7 +9,7 @@
 #include <pwd.h>
 #include <unistd.h>
 #include <stdbool.h>
-
+#include <mqueue.h>
 
 #define ID 'S'
 #define CLIENT_ID getpid()
@@ -24,10 +24,13 @@
 
 #define MAX_CLIENTS 10
 #define MAX_LEN 128
+#define MAX_MSG 10
+
+#define SERVER_Q "/server_q"
 
 typedef struct {
     long type;    // message's type as specified by the sending process
-    char text[MSG_LEN];
+    char text[MAX_LEN];
     pid_t sender_pid;
     int q_id;
     int sender_id;
@@ -40,41 +43,32 @@ typedef struct {
     int connected_id;
     bool connected;
     bool available;   // for connection
+    char q_name[MAX_LEN];
 } client;
 
 void send_msg(int q_id, message* msg){
-    if(msgsnd(q_id, msg, sizeof(message) - sizeof(long), 0) == -1){
+    if (mq_send(q_id, (char *) msg, sizeof(message), msg->type) == -1){
         printf("Error while sending message!\n");
         exit(1);
     }
 }
 
-// if no message of the requested type is available and IPC_NOWAIT isn't
-// specified in msgflg, the calling process is blocked
-void receive_msg(int q_id, message* msg, long type){
-    if(msgrcv(q_id, msg, sizeof(message) - sizeof(long), type,0) == -1){
+void receive_msg(int q_id, message* msg, unsigned int* type){
+    if(mq_receive(q_id, (char *) msg, sizeof(message), type) == -1){
         printf("Error while receiving message!\n");
         exit(1);
     }
 }
 
-void receive_msg_nowait(int q_id, message* msg, long type){
-    if(msgrcv(q_id, msg, sizeof(message) - sizeof(long), type,IPC_NOWAIT) == -1){
-        printf("Error while receiving message (NOWAIT)!\n");
-        exit(1);
-    }
-}
-
-char* get_home_path(){
-    char* path = getenv("HOME");
-    if (path == NULL) {
-        path = getpwuid(getuid())->pw_dir;
-    }
-    return path;
-}
 
 void delete_queue(int q) {
     msgctl(q, IPC_RMID, NULL);
+}
+
+char* get_client_q_name(){
+    char* name = calloc(MAX_LEN, sizeof(char));
+    sprintf(name, "/client_q_%d", getpid());
+    return name;
 }
 
 #endif //LAB06_COMMON_H
