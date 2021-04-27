@@ -45,6 +45,7 @@ void send_STOP(){
     message msg = {.sender_id = id, .type = STOP};
     send_msg(server_q, &msg);
     msgctl(client_q, IPC_RMID, NULL);
+    exit(0);
 }
 
 void send_CONNECT(int id_to_connect){
@@ -80,7 +81,12 @@ void send_CHAT_msg(){
 
 void handle_STOP(){
     printf("Client received STOP\n");
-    // TODO: send back STOP to server
+
+    // send back STOP to server
+    message msg = {.type = STOP};
+    send_msg(server_q, &msg);
+    msgctl(client_q, IPC_RMID, NULL);
+    exit(0);
 }
 
 
@@ -108,9 +114,6 @@ void handle_CHAT_msg(message* msg){
 
 void handle_SIGINT(){
     send_STOP();
-    printf("Delete server queue...");
-    msgctl(server_q, IPC_RMID, NULL);
-    exit(0);
 }
 
 bool is_empty(int q){
@@ -209,7 +212,6 @@ int main(){
         if (check_input()) {
             fgets(buffer, MAX_LEN, stdin);
 
-            printf("line: %s\n", buffer);
             if (strcmp("LIST\n", buffer) == 0) {
                 send_LIST();
             } else if (strcmp("STOP\n", buffer) == 0) {

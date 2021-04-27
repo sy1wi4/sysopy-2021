@@ -1,8 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -g
 
-all: run
-
+all: compile
 compile:
 	$(CC) $(FLAGS) server.c -o server
 	$(CC) $(FLAGS) client.c -o client
@@ -12,11 +11,8 @@ server:
 	./server
 
 client:
+	@# if client exists: make -B client
 	$(CC) $(CFLAGS) client.c -o client
-	./client
-
-run: compile
-	./server &
 	./client
 
 clean:

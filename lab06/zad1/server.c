@@ -8,7 +8,6 @@
 #include <sys/ipc.h>
 #include <sys/msg.h>
 #include <stdlib.h>
-#include <pwd.h>
 #include <unistd.h>
 #include <stdbool.h>
 #include <signal.h>
@@ -30,16 +29,19 @@ void stop_server(){
     message msg;
     int client_q;
     for (int i = 0; i < MAX_CLIENTS; i++){
-        printf("Sending stop to client, id: %d\n", i);
-        client_q = clients[i].q_id;
-        msg.type = STOP;
-        send_msg(client_q, &msg);
+        if (clients[i].connected) {
+            printf("Sending stop to client, id: %d\n", i);
+            client_q = clients[i].q_id;
+            msg.type = STOP;
+            send_msg(client_q, &msg);
 
-        receive_msg(server_q, &msg, STOP);
-        printf("STOP received from client\n");
+            receive_msg(server_q, &msg, STOP);
+            printf("STOP received from client\n");
+        }
     }
 
     delete_server_q();
+    printf("\nSERVER STOPPED!\n");
 }
 
 
@@ -57,8 +59,6 @@ int assign_id(){
 // CTRL + C  ->  stop server
 void handle_SIGINT(){
     printf("\nserver:  SIGINT received\n");
-    printf("Delete server queue...");
-    msgctl(server_q, IPC_RMID, NULL);
     exit(0);
 }
 
@@ -215,8 +215,5 @@ int main(){
         handle_msg(&msg);
 
     }
-
-
-    msgctl(server_q, IPC_RMID, NULL);
 
 }

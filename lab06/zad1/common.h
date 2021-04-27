@@ -61,7 +61,6 @@ void receive_msg_nowait(int q_id, message* msg, long type){
         printf("Error while receiving message (NOWAIT!\n");
         exit(1);
     }
-    printf("MSG received, q_id: %d\n", q_id);
 }
 
 char* get_home_path(){
