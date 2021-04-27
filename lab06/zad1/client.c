@@ -13,7 +13,7 @@
 
 int server_q;
 int client_q;
-int to_connect_q;
+int connected_queue;
 int id;
 bool connected = false;
 
@@ -63,20 +63,34 @@ void send_DISCONNECT(){
 
 
 void send_CHAT_msg(){
-    printf("Client send CHAT\n");
+    if (!connected){
+        printf("You are not connected, stupid!\n");
+        return;
+    }
+
+
+    printf("Enter msg:\n");
+    message msg = {.sender_id = id, .type = CHAT};
+    fgets(msg.text, MAX_LEN, stdin);
+
+    send_msg(connected_queue, &msg);
+    printf("SENT!\n");
 }
 
 
 void handle_STOP(){
     printf("Client received STOP\n");
+    // TODO: send back STOP to server
 }
 
 
 void handle_CONNECT(message* msg){
     printf("Client received CONNECT\n");
     connected = true;
-    to_connect_q = msg->q_id;
+    connected_queue = msg->q_id;
     printf("Client [%d] connected with [%d]\n", id, msg->sender_id);
+
+    printf("__________CHAT__________\n");
 }
 
 
@@ -87,8 +101,8 @@ void handle_DISCONNECT(message* msg){
 
 
 void handle_CHAT_msg(message* msg){
-    printf("Client received CHAT\n");
-
+    printf("NEW MSG:\n");
+    printf("%s\n", msg->text);
 }
 
 
@@ -216,7 +230,15 @@ int main(){
                     continue;
                 }
                 send_DISCONNECT();
-            } else {
+            } else if (strcmp("CHAT\n", buffer) == 0){
+                if (!connected) {
+                    printf("You are not connected!\n");
+                    continue;
+                }
+                send_CHAT_msg();
+            }
+
+            else {
                 printf("Unknown command: %s\n", buffer);
             }
         }
