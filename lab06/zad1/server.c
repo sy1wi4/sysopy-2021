@@ -22,6 +22,27 @@ void delete_server_q(){
     delete_queue(server_q);
 }
 
+
+void stop_server(){
+    // send stop to all connected clients
+    // then should receive STOP back
+    printf("STOPPING SERVER...\n");
+    message msg;
+    int client_q;
+    for (int i = 0; i < MAX_CLIENTS; i++){
+        printf("Sending stop to client, id: %d\n", i);
+        client_q = clients[i].q_id;
+        msg.type = STOP;
+        send_msg(client_q, &msg);
+
+        receive_msg(server_q, &msg, STOP);
+        printf("STOP received from client\n");
+    }
+
+    delete_server_q();
+}
+
+
 int assign_id(){
     for(int i = 0; i < MAX_CLIENTS; i++){
         if (clients[i].connected == false){
@@ -64,15 +85,15 @@ void connect_with_client(message* msg){
     int q_id_sender = clients[msg->sender_id].q_id;
 
     // send back q_id of the client to connect to
-    message msg_back = {.q_id = q_id_to_connect, .type = CONNECT};
+    message msg_back = {.q_id = q_id_to_connect, .type = CONNECT, .sender_id = msg->to_connect_id};
     send_msg(q_id_sender, &msg_back);
+    printf("q_id of %d send to queue: %d\n", q_id_to_connect, q_id_sender);
 
     // send q_id of sender to the client to connect to
-    message to_send = {.q_id = q_id_sender, .type = CONNECT};
+    message to_send = {.q_id = q_id_sender, .type = CONNECT, .sender_id = msg->sender_id};
     send_msg(q_id_to_connect, &to_send);
+    printf("q_id of %d send to queue: %d\n", q_id_sender, q_id_to_connect);
 
-    printf("Connect with %d\n",q_id_to_connect);
-    printf("Connect with %d\n",q_id_sender);
 
     clients[msg->to_connect_id].connected_id = msg->sender_id;
     clients[msg->sender_id].connected_id = msg->to_connect_id;
@@ -91,7 +112,9 @@ void disconnect_sender(message* msg){
     clients[sender_id].available = true;
     clients[connected_id].available = true;
 
-    // send disconnect to other client
+    // send DISCONECT to connected client
+    message to_send = {.type=DISCONNECT};
+    send_msg(clients[connected_id].q_id, &to_send);
 }
 
 void stop_sender(message* msg){
@@ -115,7 +138,6 @@ void init_client(message* msg){
 
     message msg_back = {.type = INIT, .sender_id = id, .sender_pid = getpid()};
     send_msg(q_id, &msg_back);
-    printf("message sent to %d\n", q_id);
 }
 
 
@@ -160,7 +182,8 @@ int main(){
     // and flag (IPC_CREAT - create queue if not exists, IPC_EXCL, with
     // IPC_CREAT - fails if the queue already exists)
     printf("---- SERVER HERE ----\n");
-    atexit(delete_server_q);
+
+    atexit(stop_server);
 
     key_t key = ftok(get_home_path(), ID);
     if (key == -1){

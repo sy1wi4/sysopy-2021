@@ -44,16 +44,24 @@ typedef struct {
 
 void send_msg(int q_id, message* msg){
     if(msgsnd(q_id, msg, sizeof(message) - sizeof(long), 0) == -1){
-        printf("Error while sending message!");
+        printf("Error while sending message!\n");
         exit(1);
     }
 }
 
 void receive_msg(int q_id, message* msg, long type){
     if(msgrcv(q_id, msg, sizeof(message) - sizeof(long), type,0) == -1){
-        printf("Error while receiving message!");
+        printf("Error while receiving message!\n");
         exit(1);
     }
+}
+
+void receive_msg_nowait(int q_id, message* msg, long type){
+    if(msgrcv(q_id, msg, sizeof(message) - sizeof(long), type,IPC_NOWAIT) == -1){
+        printf("Error while receiving message (NOWAIT!\n");
+        exit(1);
+    }
+    printf("MSG received, q_id: %d\n", q_id);
 }
 
 char* get_home_path(){
