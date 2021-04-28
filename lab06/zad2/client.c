@@ -3,7 +3,6 @@
 //
 
 #include <sys/types.h>
-#include <sys/msg.h>
 #include <stdio.h>
 #include <signal.h>
 #include "common.h"
@@ -19,9 +18,6 @@ bool connected = false;
 char* connected_q_name;
 
 
-void delete_client_q(){
-    delete_queue(client_q);
-}
 
 void init(){
     message msg = {.q_id = client_q, .type = INIT};
@@ -102,15 +98,15 @@ void handle_INIT(message* msg){
 void handle_CONNECT(message* msg){
     printf("Client received CONNECT\n");
     connected = true;
-    connected_queue = msg->q_id;
     connected_q_name = msg->text;
     // open connected_q
-    if (mq_open(connected_q_name, O_WRONLY) == -1){
+    connected_queue = mq_open(connected_q_name, O_WRONLY);
+    if (connected_queue == -1){
         printf("Error while opening connected client queue\n");
         exit(-1);
     }
-    printf("Client [%s] connected with [%s]\n",
-           get_client_q_name(), connected_q_name);
+    printf("Client [%d  %s] connected with [%d  %s]\n",
+           client_q, get_client_q_name(), connected_queue, connected_q_name);
 
     printf("__________CHAT__________\n");
 }
@@ -142,7 +138,6 @@ bool is_empty(int q){
 
 void catcher(){
 
-//    printf("CATCHER HERE\n");
     while (!is_empty(client_q)){
         message msg;
         unsigned int type;
@@ -189,8 +184,6 @@ int main(){
     printf("---- CLIENT HERE ----\n");
 
     signal(SIGINT, handle_SIGINT);
-
-    atexit(delete_client_q);
 
     // server
     server_q = mq_open(SERVER_Q, O_WRONLY);

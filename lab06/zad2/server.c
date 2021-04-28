@@ -4,9 +4,6 @@
 
 
 #include <stdio.h>
-#include <sys/types.h>
-#include <sys/ipc.h>
-#include <sys/msg.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdbool.h>
@@ -80,6 +77,15 @@ void list_clients(message* msg){
 void connect_with_client(message* msg){
 
     printf("\nserver:  CONNECT received\n");
+
+    if (!clients[msg->to_connect_id].connected){
+        printf("Client [%d] not connected!\n", msg->to_connect_id);
+        return;
+    }
+    else if (!clients[msg->to_connect_id].available){
+        printf("Client [%d] not available!\n", msg->to_connect_id);
+        return;
+    }
 
     int q_id_to_connect = clients[msg->to_connect_id].q_id;
     int q_id_sender = clients[msg->sender_id].q_id;

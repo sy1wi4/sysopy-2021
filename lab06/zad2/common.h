@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <mqueue.h>
+#include <sys/msg.h>
 
 // mtypes:
 #define STOP 1
@@ -61,10 +62,6 @@ void receive_msg(int q_id, message* msg, unsigned int* type){
     }
 }
 
-
-void delete_queue(int q) {
-    msgctl(q, IPC_RMID, NULL);
-}
 
 
 char* get_client_q_name(){
