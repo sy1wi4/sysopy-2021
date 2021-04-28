@@ -27,7 +27,7 @@
 
 typedef struct {
     long type;    // message's type as specified by the sending process
-    char text[MSG_LEN];
+    char text[MAX_LEN];
     pid_t sender_pid;
     int q_id;
     int sender_id;

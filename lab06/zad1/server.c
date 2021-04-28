@@ -70,7 +70,7 @@ void list_clients(message* msg){
     for (int i = 0; i < MAX_CLIENTS; i++){
         if (clients[i].connected){
             printf("id: %d   q_id: %d   status: %s available\n", clients[i].id,
-                   clients[i]->q_id, clients[i].available ? "" : "not");
+                   clients[i].q_id, clients[i].available ? "" : "not");
         }
     }
     printf("-------------------------------------------\n");
