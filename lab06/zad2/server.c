@@ -21,7 +21,6 @@ client clients[MAX_CLIENTS];
 int server_q;
 
 
-
 void stop_server(){
 
     // close all opened queues and
@@ -70,8 +69,8 @@ void list_clients(message* msg){
     printf("\nCLIENTS:\n");
     for (int i = 0; i < MAX_CLIENTS; i++){
         if (clients[i].connected){
-            printf("id: %d   q_id: %d   status: %s available\n", clients[i].id,
-                   clients->q_id, clients[i].available ? "" : "not");
+            printf("id: %d  q_id: %d   status: %s available\n",
+                   clients[i].id, clients[i].q_id, clients[i].available ? "" : "not");
         }
     }
     printf("-------------------------------------------\n");
@@ -85,13 +84,15 @@ void connect_with_client(message* msg){
     int q_id_to_connect = clients[msg->to_connect_id].q_id;
     int q_id_sender = clients[msg->sender_id].q_id;
 
-    // send back q_id of the client to connect to
+    // send back q_id and q_name of the client to connect to
     message msg_back = {.q_id = q_id_to_connect, .type = CONNECT, .sender_id = msg->to_connect_id};
+    strcpy(msg_back.text, clients[msg->to_connect_id].q_name);
     send_msg(q_id_sender, &msg_back);
     printf("q_id of %d send to queue: %d\n", q_id_to_connect, q_id_sender);
 
-    // send q_id of sender to the client to connect to
+    // send q_id and q_name of sender to the client to connect to
     message to_send = {.q_id = q_id_sender, .type = CONNECT, .sender_id = msg->sender_id};
+    strcpy(to_send.text, clients[msg->sender_id].q_name);
     send_msg(q_id_to_connect, &to_send);
     printf("q_id of %d send to queue: %d\n", q_id_sender, q_id_to_connect);
 
@@ -123,6 +124,8 @@ void stop_sender(message* msg){
 
     int client_id = msg->sender_id;
     clients[client_id].connected = false;
+
+    mq_close(clients[client_id].q_id);
 }
 
 void init_client(message* msg){
@@ -136,9 +139,13 @@ void init_client(message* msg){
     client new_client = {.connected = true, .available = true, .id = id};
     strcpy(new_client.q_name, msg->text);
     clients[id] = new_client;
-    if ((clients[id].q_id = mq_open(msg->text, O_WRONLY)) == -1){
+    clients[id].q_id = mq_open(new_client.q_name, O_WRONLY);
+    if (clients[id].q_id == -1){
         printf("Error while creating client queue!\n");
         exit(1);
+    }
+    else{
+        printf("id: %d, Q_ID ON SEEEERVER: %d\n", id, clients[id].q_id);
     }
 
     // send back assigned id

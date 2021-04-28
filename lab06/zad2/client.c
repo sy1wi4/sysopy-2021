@@ -16,7 +16,7 @@ int client_q;
 int connected_queue;
 int id;
 bool connected = false;
-
+char* connected_q_name;
 
 
 void delete_client_q(){
@@ -36,11 +36,16 @@ void send_LIST(){
 }
 
 void send_STOP(){
-    // send back STOP to server, then server will to stop itself
+    // send STOP to server, then server will close client_q,
+    // then close and delete client_q here
+
     printf("Client send STOP\n");
     message msg = {.sender_id = id, .type = STOP};
     send_msg(server_q, &msg);
-    msgctl(client_q, IPC_RMID, NULL);
+
+    mq_close(server_q);
+    mq_close(client_q);
+    mq_unlink(get_client_q_name());
     exit(0);
 }
 
@@ -65,7 +70,6 @@ void send_CHAT_msg(){
         return;
     }
 
-
     printf("Enter msg:\n");
     message msg = {.sender_id = id, .type = CHAT};
     fgets(msg.text, MAX_LEN, stdin);
@@ -76,15 +80,22 @@ void send_CHAT_msg(){
 
 
 void handle_STOP(){
+    // close and remove client_q
+    // close server_q
+
     printf("Client received STOP\n");
-
-    // close client_q and server_q
     mq_close(client_q);
-
-    // usun kolejke klienta
-//    mq_unlink()
+    mq_unlink(get_client_q_name());
     mq_close(server_q);
     exit(0);
+}
+
+
+void handle_INIT(message* msg){
+    // sender_id is id assigned on server
+    printf("Client received INIT\n");
+    id = msg->sender_id;
+    printf("Assigned id: %d\n", id);
 }
 
 
@@ -92,7 +103,14 @@ void handle_CONNECT(message* msg){
     printf("Client received CONNECT\n");
     connected = true;
     connected_queue = msg->q_id;
-    printf("Client [%d] connected with [%d]\n", id, msg->sender_id);
+    connected_q_name = msg->text;
+    // open connected_q
+    if (mq_open(connected_q_name, O_WRONLY) == -1){
+        printf("Error while opening connected client queue\n");
+        exit(-1);
+    }
+    printf("Client [%s] connected with [%s]\n",
+           get_client_q_name(), connected_q_name);
 
     printf("__________CHAT__________\n");
 }
@@ -132,6 +150,9 @@ void catcher(){
 
         switch (msg.type)
         {
+            case INIT:
+                handle_INIT(&msg);
+                break;
             case STOP:
                 handle_STOP();
                 exit(0);
@@ -184,6 +205,8 @@ int main(){
 
     // set O_NONBLOCK so that mq_receive() call does not block process
     client_q = mq_open(get_client_q_name(),O_RDONLY | O_CREAT | O_EXCL | O_NONBLOCK, 0666, &attr);
+    char* name = get_client_q_name();
+    printf("client queue name: %s\n", name);
     printf("client queue id: %d\n", client_q);
 
 

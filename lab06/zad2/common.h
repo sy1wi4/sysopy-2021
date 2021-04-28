@@ -11,9 +11,6 @@
 #include <stdbool.h>
 #include <mqueue.h>
 
-#define ID 'S'
-#define CLIENT_ID getpid()
-
 // mtypes:
 #define STOP 1
 #define DISCONNECT 2
@@ -28,6 +25,7 @@
 
 #define SERVER_Q "/server_q"
 
+
 typedef struct {
     long type;    // message's type as specified by the sending process
     char text[MAX_LEN];
@@ -36,6 +34,7 @@ typedef struct {
     int sender_id;
     int to_connect_id;
 } message;
+
 
 typedef struct {
     int id;
@@ -46,12 +45,14 @@ typedef struct {
     char q_name[MAX_LEN];
 } client;
 
+
 void send_msg(int q_id, message* msg){
     if (mq_send(q_id, (char *) msg, sizeof(message), msg->type) == -1){
         printf("Error while sending message!\n");
         exit(1);
     }
 }
+
 
 void receive_msg(int q_id, message* msg, unsigned int* type){
     if(mq_receive(q_id, (char *) msg, sizeof(message), type) == -1){
@@ -64,6 +65,7 @@ void receive_msg(int q_id, message* msg, unsigned int* type){
 void delete_queue(int q) {
     msgctl(q, IPC_RMID, NULL);
 }
+
 
 char* get_client_q_name(){
     char* name = calloc(MAX_LEN, sizeof(char));
