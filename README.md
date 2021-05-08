@@ -5,3 +5,4 @@
 3. [Tworzenie procesów. Środowisko procesu, sterowanie procesami.](https://github.com/sy1wi4/sysopy-2021/tree/master/lab03)
 4. [Sygnały](https://github.com/sy1wi4/sysopy-2021/tree/master/lab04)
 5. [Potoki nazwane i nienazwane](https://github.com/sy1wi4/sysopy-2021/tree/master/lab05)
+6. [IPC - kolejki komunikatów](https://github.com/sy1wi4/sysopy-2021/tree/master/lab06)
