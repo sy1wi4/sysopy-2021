@@ -20,7 +20,7 @@ void set_oven(oven* o){
     }
     o->pizzas = 0;
     o->to_place_idx = 0;
-    o->to_take_out_idx = -1;
+    o->to_take_out_idx = 0;
 }
 
 void set_table(table* t){
@@ -29,7 +29,7 @@ void set_table(table* t){
     }
     t->pizzas = 0;
     t->to_place_idx = 0;
-    t->to_take_out_idx = -1;
+    t->to_take_out_idx = 0;
 }
 
 void create_sh_m_segment(){
@@ -79,8 +79,8 @@ void create_sem_set(){
         exit(1);
     }
 
-    // two semaphores for oven and table
-    if((sem_id = semget(key, 2, 0666 | IPC_CREAT)) == -1){
+
+    if((sem_id = semget(key, 5, 0666 | IPC_CREAT)) == -1){
         printf("Error while creating semaphore set!\n");
         printf("%s\n", strerror(errno));
         exit(1);
@@ -96,6 +96,27 @@ void create_sem_set(){
     }
 
     if (semctl(sem_id, TABLE_SEM, SETVAL,arg) == -1){
+        printf("Error while setting table semaphore value!\n");
+        printf("%s\n", strerror(errno));
+        exit(1);
+    }
+
+    arg.val = OVEN_SIZE;
+    if (semctl(sem_id, FULL_OVEN_SEM, SETVAL,arg) == -1){
+        printf("Error while setting table semaphore value!\n");
+        printf("%s\n", strerror(errno));
+        exit(1);
+    }
+
+    arg.val = TABLE_SIZE;
+    if (semctl(sem_id, FULL_TABLE_SEM, SETVAL,arg) == -1){
+        printf("Error while setting table semaphore value!\n");
+        printf("%s\n", strerror(errno));
+        exit(1);
+    }
+
+    arg.val = 0;
+    if (semctl(sem_id, EMPTY_TABLE_SEM, SETVAL,arg) == -1){
         printf("Error while setting table semaphore value!\n");
         printf("%s\n", strerror(errno));
         exit(1);
