@@ -12,11 +12,15 @@
 #include <sys/wait.h>
 #include "shared.h"
 
+int shm_oven_id, shm_table_id, sem_id;
+
 void set_oven(oven* o){
     for (int i = 0; i < OVEN_SIZE; i++){
         o->arr[i] = -1;
     }
     o->pizzas = 0;
+    o->to_place_idx = 0;
+    o->to_take_out_idx = -1;
 }
 
 void set_table(table* t){
@@ -24,6 +28,8 @@ void set_table(table* t){
         t->arr[i] = -1;
     }
     t->pizzas = 0;
+    t->to_place_idx = 0;
+    t->to_take_out_idx = -1;
 }
 
 void create_sh_m_segment(){
@@ -41,7 +47,7 @@ void create_sh_m_segment(){
         exit(1);
     }
 
-    int shm_oven_id, shm_table_id;
+    printf("o: %d, t: %d\n", key_o, key_t);
     if ((shm_oven_id = shmget(key_o, sizeof(oven), IPC_CREAT | 0666)) == -1){
         printf("Error while creating shared memory segment [oven]!\n");
         printf("%s\n", strerror(errno));
@@ -72,8 +78,6 @@ void create_sem_set(){
         printf("%s\n", strerror(errno));
         exit(1);
     }
-
-    int sem_id;
 
     // two semaphores for oven and table
     if((sem_id = semget(key, 2, 0666 | IPC_CREAT)) == -1){
@@ -135,6 +139,11 @@ int main(int argc, char* argv[]){
 
     for(int i = 0; i < cooks + suppliers; i++)
         wait(NULL);
+
+    //clear
+    semctl(sem_id, 0, IPC_RMID, NULL);
+    shmctl(shm_oven_id, IPC_RMID, NULL);
+    shmctl(shm_table_id, IPC_RMID, NULL);
 
 
     return 0;
