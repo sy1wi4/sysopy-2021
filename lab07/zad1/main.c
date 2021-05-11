@@ -70,7 +70,7 @@ void create_sh_m_segment(){
 
 }
 
-void create_sem_set(){
+void create_semaphores(){
     key_t key;
 
     if ((key = ftok(get_home_path(), ID)) == -1){
