@@ -22,9 +22,9 @@ Po zakończeniu pracy przez wszystkie stworzone wątki, wątek główny zapisuje
 
 Wykonaj pomiary czasu operacji w zależności od:
 
-1.     Stosunku rozmiaru obrazu do liczby wątkow (przy czym uwzględnij przynajmniej następującą liczbę wątkow: 1,2,4,8,16)
+1. Stosunku rozmiaru obrazu do liczby wątkow (przy czym uwzględnij przynajmniej następującą liczbę wątkow: 1,2,4,8,16)
 
-2.     metody podziału zadania na podzadania
+2. metody podziału zadania na podzadania
 
  Wyniki (czasy dla każdego wątku oraz całkowity czas wykonania zadania w zależności od wariantu) zamieść w pliku Times.txt i dołącz wraz z komentarzem do archiwum z rozwiązaniem zadania (20%).
 
@@ -32,11 +32,12 @@ Format wejścia-wyjścia
 
 Program powinien odczytywać i zapisywać obrazy w formacie ASCII PGM (Portable Gray Map). Pliki w tym formacie mają nagłówek postaci:
 
+```
 P2
 W H
 M
 ...
-
+```
 gdzie: W to szerokość obrazu w pikselach, H to wysokość obrazu w pikselach a M to maksymalna wartość piksela. Zakładamy, że obsługujemy jedynie obrazy w 256 odcieniach szarości: od 0 do 255 (a więc 𝑀=255). Po nagłówku, w pliku powinno być zapisanych W*H liczb całkowitych reprezentujących wartości kolejnych pikseli. Liczby rozdzielone są białymi znakami (np. spacją). Piksele odczytywane są wierszami, w kolejności od lewego górnego do prawego dolnego rogu obrazu.
 
 Przykładowe obrazy w formacie ASCII PGM (jak również opis formatu) można znaleźć pod adresem: http://people.sc.fsu.edu/~jburkardt/data/pgma/pgma.html 
