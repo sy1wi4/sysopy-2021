@@ -53,6 +53,9 @@ int main(){
         printf("[C]  (pid: %d timestamp: %s)  ->   Przygotowuje pizze: %d\n", getpid(), get_current_time(), type);
         sleep(PREPARATION_TIME);
 
+        // if full_oven_sem is 0, it blocks cook process
+        // so decrement value before placing in oven
+        lock_sem(full_oven_sem);
 
         // placing in oven
         lock_sem(oven_sem);
@@ -71,17 +74,21 @@ int main(){
         printf("[C]  (pid: %d timestamp: %s)  ->   Wyjalem pizze: %d. Liczba pizz w piecu: %d. Liczba pizz na stole: %d.\n", getpid(), get_current_time(), type, o->pizzas, t->pizzas);
         unlock_sem(oven_sem);
 
+        // pizza was taken out, so increment full_oven_sem
         unlock_sem(full_oven_sem);
 
+        // if full_table_sem is 0, it blocks cook process
+        // so decrement value before placing on the table
         lock_sem(full_table_sem);
 
         // placing on the table
         lock_sem(table_sem);
         place_on_table(t, type);
         printf("[C]  (pid: %d timestamp: %s)  ->   Umieszczam pizze na stole: %d. Liczba pizz w piecu: %d. Liczba pizz na stole: %d.\n", getpid(), get_current_time(), type, o->pizzas, t->pizzas);
-
         unlock_sem(table_sem);
 
+        // if empty_table_sem is 0, it blocks supplier process
+        // because pizza was placed on the table, let's increment its value - pizza can be taken by supplier
         unlock_sem(empty_table_sem);
 
     }

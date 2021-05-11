@@ -33,6 +33,9 @@
 #define FULL_TABLE_SEM "/FULL_TABLE_S"
 #define EMPTY_TABLE_SEM "/EMPTY_TABLE_S"
 
+#define OVEN_SHM "/shm_oven"
+#define TABLE_SHM "/shm_table"
+
 #define PREPARATION_TIME 1
 #define BAKING_TIME 4
 #define DELIVERY_TIME 4
@@ -53,40 +56,21 @@ typedef struct{
     int to_take_out_idx;
 } table;
 
-union semun {
-    int val;
-    struct semid_ds *buf;
-    unsigned short *array;
-    struct seminfo *__buf;
-} arg;
-
 
 void lock_sem(sem_t* sem){
-//    int val;
-//    sem_getvalue(sem, &val);
-//    printf("lock,  sem value: %d\n", val);
-
     // decrement sem
     if (sem_wait(sem) == -1){
         printf("Error while locking semaphore\n");
         exit(1);
     }
-//    sem_getvalue(sem, &val);
-//    printf("locked,  sem value: %d\n", val);
 }
 
 void unlock_sem(sem_t* sem) {
-//    int val;
-//    sem_getvalue(sem, &val);
-//    printf("unlock,  sem value: %d\n", val);
-
     // increment sem
     if (sem_post(sem) == -1){
         printf("Error while unlocking semaphore\n");
         exit(1);
     }
-//    sem_getvalue(sem, &val);
-//    printf("unlocked,  sem value: %d\n", val);
 }
 
 sem_t* get_sem(char* name){
@@ -97,15 +81,13 @@ sem_t* get_sem(char* name){
         printf("%s\n", strerror(errno));
         exit(1);
     }
-    int val;
-    sem_getvalue(sem, &val);
-    printf("sem: %s,  val: %d\n", name, val);
+
     return sem;
 }
 
 int get_shm_oven_fd(){
     int shm_oven_fd;
-    if ((shm_oven_fd = shm_open("/shm_oven", O_RDWR , 0666))== -1){
+    if ((shm_oven_fd = shm_open(OVEN_SHM, O_RDWR , 0666))== -1){
         printf("Error while getting oven id!\n");
         printf("%s\n", strerror(errno));
         exit(1);
@@ -117,7 +99,7 @@ int get_shm_oven_fd(){
 
 int get_shm_table_fd(){
     int shm_table_fd;
-    if ((shm_table_fd = shm_open("/shm_table", O_RDWR , 0666)) == -1){
+    if ((shm_table_fd = shm_open(TABLE_SHM, O_RDWR , 0666)) == -1){
         printf("Error while getting table id!\n");
         printf("%s\n", strerror(errno));
         exit(1);

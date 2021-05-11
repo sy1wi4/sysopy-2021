@@ -30,18 +30,21 @@ int main(){
 
     table* t = mmap(NULL, sizeof(table), PROT_READ | PROT_WRITE, MAP_SHARED, shm_table_fd, 0);
 
-
     int type;
 
     while(true) {
-        // taking out
+        // if empty_table_sem is 0, it blocks supplier process
+        // so decrement value before taking pizza out from table
         lock_sem(empty_table_sem);
 
+        // taking out
         lock_sem(table_sem);
         type = take_pizza(t);
         printf("[S]  (pid: %d timestamp: %s)  ->   Pobieram pizze: %d. Liczba pizz na stole: %d.\n", getpid(), get_current_time(), type, t->pizzas);
         unlock_sem(table_sem);
 
+        // if full_table_sem is 0, it blocks cook process
+        // because pizza was taken out of the table, let's increment its value - pizza can be placed by cook
         unlock_sem(full_table_sem);
 
         sleep(DELIVERY_TIME);
@@ -49,8 +52,6 @@ int main(){
         // delivery
         printf("[S]  (pid: %d timestamp: %s)  ->   Dostarczam pizze: %d.\n", getpid(), get_current_time(), type);
         sleep(RETURN_TIME);
-
     }
-
 
 }

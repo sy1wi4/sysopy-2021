@@ -12,7 +12,6 @@ compile:
 
 run: compile
 	./main $(ARGS)
-	@make --no-print-directory clean
 
 
 clean:

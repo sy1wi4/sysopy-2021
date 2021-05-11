@@ -5,8 +5,6 @@
 
 #include "shared.h"
 
-int shm_oven_id, shm_table_id, sem_id;
-
 void set_oven(oven* o){
     for (int i = 0; i < OVEN_SIZE; i++){
         o->arr[i] = -1;
@@ -28,11 +26,11 @@ void set_table(table* t){
 void create_sh_m_segment(){
     int shm_oven_fd,shm_table_fd;
 
-    if ((shm_oven_fd = shm_open("/shm_oven", O_RDWR | O_CREAT, 0666))== -1){
+    if ((shm_oven_fd = shm_open(OVEN_SHM, O_RDWR | O_CREAT, 0666))== -1){
         printf("Error while creating shared memory segment [oven]!\n");
         exit(1);
     }
-    if ((shm_table_fd = shm_open("/shm_table", O_RDWR | O_CREAT, 0666)) == -1){
+    if ((shm_table_fd = shm_open(TABLE_SHM, O_RDWR | O_CREAT, 0666)) == -1){
         printf("Error while creating shared memory segment [table]!\n");
         exit(1);
     };
@@ -83,18 +81,21 @@ void create_semaphores(){
         exit(1);
     }
 
+    // if oven is full, block cook process - cannot place pizza
     sem_t* full_oven_sem = sem_open(FULL_OVEN_SEM, O_CREAT, 0666, OVEN_SIZE);
     if (full_oven_sem == SEM_FAILED){
         printf("Error while creating [full_oven_sem] semaphore!\n");
         exit(1);
     }
 
+    // if table is full, block cook process - cannot place pizza
     sem_t* full_table_sem = sem_open(FULL_TABLE_SEM, O_CREAT, 0666, TABLE_SIZE);
     if (full_table_sem == SEM_FAILED){
         printf("Error while creating [full_table_sem] semaphore!\n");
         exit(1);
     }
 
+    // if table is empty, block supplier process - cannot take out pizza
     sem_t* empty_table_sem = sem_open(EMPTY_TABLE_SEM, O_CREAT, 0666, 0);
     if (empty_table_sem == SEM_FAILED){
         printf("Error while creating [empty_table_sem] semaphore!\n");
@@ -104,7 +105,15 @@ void create_semaphores(){
     printf("OK, semaphores created.\n\n");
 }
 
-
+void handler(int signum){
+    sem_unlink(OVEN_SEM);
+    sem_unlink(TABLE_SEM);
+    sem_unlink(FULL_OVEN_SEM);
+    sem_unlink(FULL_TABLE_SEM);
+    sem_unlink(EMPTY_TABLE_SEM);
+    shm_unlink("/shm_table");
+    shm_unlink("/shm_oven");
+}
 
 int main(int argc, char* argv[]){
 
@@ -112,6 +121,8 @@ int main(int argc, char* argv[]){
         printf("Wrong number of arguments!\n");
         return -1;
     }
+
+    signal(SIGINT, handler);
 
     int cooks = atoi(argv[1]);
     int suppliers = atoi(argv[2]);
@@ -124,7 +135,6 @@ int main(int argc, char* argv[]){
         if (pid == 0){
             execl("./cook", "./cook", NULL);
             printf("!!! Return not expected, execl() error !!!\n");
-
         }
     }
 
@@ -133,7 +143,6 @@ int main(int argc, char* argv[]){
         if (pid == 0){
             execl("./supplier", "./supplier", NULL);
             printf("!!! Return not expected, execl() error !!!\n");
-
         }
     }
 
