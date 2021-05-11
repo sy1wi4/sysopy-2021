@@ -2,11 +2,6 @@
 // Created by sylwia on 5/8/21.
 //
 
-
-#include <stdio.h>
-#include <string.h>
-#include <sys/shm.h>
-#include <stdbool.h>
 #include "shared.h"
 
 
@@ -54,6 +49,8 @@ int main(){
         printf("[C]  (pid: %d timestamp: %s)  ->   Przygotowuje pizze: %d\n", getpid(), get_current_time(), type);
         sleep(PREPARATION_TIME);
 
+        // if full_oven_sem is 0, it blocks cook process
+        // so decrement value before placing in oven
         lock_sem(sem_id, FULL_OVEN_SEM);
 
         // placing in oven
@@ -73,17 +70,21 @@ int main(){
         printf("[C]  (pid: %d timestamp: %s)  ->   Wyjalem pizze: %d. Liczba pizz w piecu: %d. Liczba pizz na stole: %d.\n", getpid(), get_current_time(), type, o->pizzas, t->pizzas);
         unlock_sem(sem_id, OVEN_SEM);
 
+        // pizza was taken out, so increment full_oven_sem
         unlock_sem(sem_id, FULL_OVEN_SEM);
 
+        // if full_table_sem is 0, it blocks cook process
+        // so decrement value before placing on the table
         lock_sem(sem_id, FULL_TABLE_SEM);
 
         // placing on the table
         lock_sem(sem_id, TABLE_SEM);
         place_on_table(t, type);
         printf("[C]  (pid: %d timestamp: %s)  ->   Umieszczam pizze na stole: %d. Liczba pizz w piecu: %d. Liczba pizz na stole: %d.\n", getpid(), get_current_time(), type, o->pizzas, t->pizzas);
-
         unlock_sem(sem_id, TABLE_SEM);
 
+        // if empty_table_sem is 0, it blocks supplier process
+        // because pizza was placed on the table, let's increment its value - pizza can be taken by supplier
         unlock_sem(sem_id, EMPTY_TABLE_SEM);
 
     }

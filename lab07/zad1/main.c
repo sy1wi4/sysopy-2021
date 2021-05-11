@@ -2,14 +2,7 @@
 // Created by sylwia on 5/8/21.
 //
 
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/sem.h>
-#include <sys/ipc.h>
-#include <sys/shm.h>
-#include <string.h>
-#include <errno.h>
-#include <sys/wait.h>
+
 #include "shared.h"
 
 int shm_oven_id, shm_table_id, sem_id;
@@ -70,7 +63,7 @@ void create_sh_m_segment(){
 
 }
 
-void create_semaphores(){
+void create_sem_set(){
     key_t key;
 
     if ((key = ftok(get_home_path(), ID)) == -1){
@@ -101,6 +94,7 @@ void create_semaphores(){
         exit(1);
     }
 
+    // if oven is full, block cook process - cannot place pizza
     arg.val = OVEN_SIZE;
     if (semctl(sem_id, FULL_OVEN_SEM, SETVAL,arg) == -1){
         printf("Error while setting table semaphore value!\n");
@@ -108,6 +102,7 @@ void create_semaphores(){
         exit(1);
     }
 
+    // if table is full, block cook process - cannot place pizza
     arg.val = TABLE_SIZE;
     if (semctl(sem_id, FULL_TABLE_SEM, SETVAL,arg) == -1){
         printf("Error while setting table semaphore value!\n");
@@ -115,6 +110,7 @@ void create_semaphores(){
         exit(1);
     }
 
+    // if table is empty, block cook process - cannot take out pizza
     arg.val = 0;
     if (semctl(sem_id, EMPTY_TABLE_SEM, SETVAL,arg) == -1){
         printf("Error while setting table semaphore value!\n");
@@ -125,6 +121,11 @@ void create_semaphores(){
     printf("OK, semaphore set created\nsem_id: %d\n\n", sem_id);
 }
 
+void handler(int signum){
+    semctl(sem_id, 0, IPC_RMID, NULL);
+    shmctl(shm_oven_id, IPC_RMID, NULL);
+    shmctl(shm_table_id, IPC_RMID, NULL);
+}
 
 
 int main(int argc, char* argv[]){
@@ -133,6 +134,8 @@ int main(int argc, char* argv[]){
         printf("Wrong number of arguments!\n");
         return -1;
     }
+
+    signal(SIGINT, handler);
 
     int cooks = atoi(argv[1]);
     int suppliers = atoi(argv[2]);
@@ -160,11 +163,6 @@ int main(int argc, char* argv[]){
 
     for(int i = 0; i < cooks + suppliers; i++)
         wait(NULL);
-
-    //clear
-    semctl(sem_id, 0, IPC_RMID, NULL);
-    shmctl(shm_oven_id, IPC_RMID, NULL);
-    shmctl(shm_table_id, IPC_RMID, NULL);
 
 
     return 0;

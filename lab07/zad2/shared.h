@@ -81,7 +81,6 @@ sem_t* get_sem(char* name){
         printf("%s\n", strerror(errno));
         exit(1);
     }
-
     return sem;
 }
 

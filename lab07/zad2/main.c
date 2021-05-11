@@ -111,8 +111,8 @@ void handler(int signum){
     sem_unlink(FULL_OVEN_SEM);
     sem_unlink(FULL_TABLE_SEM);
     sem_unlink(EMPTY_TABLE_SEM);
-    shm_unlink("/shm_table");
-    shm_unlink("/shm_oven");
+    shm_unlink(TABLE_SHM);
+    shm_unlink(OVEN_SHM);
 }
 
 int main(int argc, char* argv[]){
