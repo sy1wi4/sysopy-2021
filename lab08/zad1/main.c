@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <pthread.h>
+#include <math.h>
 
 #define ROW_LEN 256
 
@@ -104,9 +105,10 @@ void* numbers_method(void* arg){
     int pixel;
     for (int i = 0; i < h; i++){
         for (int j = 0; j < w; j++){
-            pixel = image[i][i];
+            pixel = image[i][j];
             if (pixel >= from && pixel < to){
                 negative_image[i][j] = 255 - pixel;
+//                printf("changed: %d, %d", pixel, negative_image[i][j]);
             }
         }
     }
@@ -117,6 +119,18 @@ void* block_method(void* arg) {
     int idx = *((int *) arg);
     printf("Hello from block method,   %d\n", idx);
 
+    int x_from = (idx) * ceil(w / threads_num);
+    int x_to = (idx != threads_num - 1) ? ((idx + 1)* ceil(w / threads_num) - 1) : w - 1;
+
+    printf("from: %d to: %d \n", x_from, x_to);
+
+    int pixel;
+    for (int i = 0; i < h; i++){
+        for (int j = x_from; j <= x_to; j++){
+            pixel = image[i][j];
+            negative_image[i][j] = 255 - pixel;
+        }
+    }
 
 }
 
@@ -173,7 +187,6 @@ int main(int argc, char* argv[]){
 
     for(int i = 0; i < threads_num; i++){
         threads_idx[i] = i;
-//        printf("Creating %d thread...\n", i);
 
         // idx as function argument
 
@@ -187,11 +200,11 @@ int main(int argc, char* argv[]){
     }
 
 
-
     // wait for threads to finish
     for(int i = 0; i < threads_num; i++) {
         pthread_join(threads[i], NULL);
     }
+
 
     save_negative(output_file);
 
