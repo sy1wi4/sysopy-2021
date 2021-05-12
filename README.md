@@ -7,3 +7,4 @@
 5. [Potoki nazwane i nienazwane](https://github.com/sy1wi4/sysopy-2021/tree/master/lab05)
 6. [IPC - kolejki komunikatów](https://github.com/sy1wi4/sysopy-2021/tree/master/lab06)
 7. [IPC - pamieć wspólna, semafory](https://github.com/sy1wi4/sysopy-2021/tree/master/lab07)
+8. [Wątki - podstawy](https://github.com/sy1wi4/sysopy-2021/tree/master/lab08)
