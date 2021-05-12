@@ -9,5 +9,10 @@ compile:
 run: compile
 	./main $(ARGS)
 
+run_v: compile
+	valgrind ./main $(ARGS)
+
+
+
 clean:
 	@rm -f main

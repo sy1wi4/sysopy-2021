@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include <pthread.h>
 #include <math.h>
+#include <sys/time.h>
 
 #define ROW_LEN 256
 
@@ -86,12 +87,15 @@ void load_image(char* filename){
         }
     }
 
-//    print_arr(image);
     fclose(f);
+
 }
 
 
 void* numbers_method(void* arg){
+//    struct timeval stop, start;
+//    gettimeofday(&start, NULL);
+
     int idx = *((int *) arg);
     printf("Hello from numbers method,   %d\n", idx);
 
@@ -108,21 +112,29 @@ void* numbers_method(void* arg){
             pixel = image[i][j];
             if (pixel >= from && pixel < to){
                 negative_image[i][j] = 255 - pixel;
-//                printf("changed: %d, %d", pixel, negative_image[i][j]);
             }
         }
     }
+
+//    gettimeofday(&stop, NULL);
+//    long unsigned int* t = malloc(sizeof(long unsigned int));
+//    *t = (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec;
+//    printf("time: %5lu [μs]\n", *t);
+//    pthread_exit(t);
 }
 
 
 void* block_method(void* arg) {
+//    struct timeval stop, start;
+//    gettimeofday(&start, NULL);
+
     int idx = *((int *) arg);
     printf("Hello from block method,   %d\n", idx);
 
     int x_from = (idx) * ceil(w / threads_num);
     int x_to = (idx != threads_num - 1) ? ((idx + 1)* ceil(w / threads_num) - 1) : w - 1;
 
-    printf("from: %d to: %d \n", x_from, x_to);
+    printf("from: [%d] to: [%d] \n", x_from, x_to);
 
     int pixel;
     for (int i = 0; i < h; i++){
@@ -132,6 +144,12 @@ void* block_method(void* arg) {
         }
     }
 
+
+//    gettimeofday(&stop, NULL);
+//    long unsigned int* t = malloc(sizeof(long unsigned int));
+//    *t = (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec;
+//    printf("time: %5lu [μs]\n", *t);
+//    pthread_exit(t);
 }
 
 
@@ -155,6 +173,7 @@ void save_negative(char* filename){
     }
 
 }
+
 
 
 int main(int argc, char* argv[]){
@@ -183,7 +202,7 @@ int main(int argc, char* argv[]){
 
     // create and start threads
     pthread_t* threads = calloc(threads_num, sizeof(pthread_t));
-    int* threads_idx = calloc(threads_num, sizeof(int));
+    int* threads_idx = calloc(1, sizeof(int));
 
     for(int i = 0; i < threads_num; i++){
         threads_idx[i] = i;
@@ -200,13 +219,17 @@ int main(int argc, char* argv[]){
     }
 
 
-    // wait for threads to finish
+    // wait for threads to finish and get value passed to pthread_exit() by the thread (return value)
     for(int i = 0; i < threads_num; i++) {
+//        long unsigned int* t;
         pthread_join(threads[i], NULL);
+//        pthread_join(threads[i], (void **) &t);
+//        printf("thread: %d,   time: %lu\n", i, *t);
     }
 
 
     save_negative(output_file);
+
 
     return 0;
 }
