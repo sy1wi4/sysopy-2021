@@ -17,15 +17,6 @@ int** negative_image;
 int w, h;
 int threads_num;
 
-void print_arr(int** arr){
-    for (int i = 0; i < h; i++){
-        printf("line %d: \n", i);
-        for (int j = 0; j < w; j++){
-            printf("%d ", arr[i][j]);
-        }
-        printf("\n\n\n");
-    }
-}
 
 void load_image(char* filename){
     FILE* f = fopen(filename, "r");
@@ -52,10 +43,9 @@ void load_image(char* filename){
     while(!read_image && fgets(buffer, ROW_LEN, f)){
         if (buffer[0] == '#') continue;
 
-        else if (!read_image && !get_M){
+        else if (!get_M){
             sscanf(buffer, "%d %d\n", &w, &h);
             printf("w: %d, h: %d\n", w, h);
-
             get_M = true;
         }
 
@@ -88,23 +78,21 @@ void load_image(char* filename){
     }
 
     fclose(f);
-
 }
 
 
 void* numbers_method(void* arg){
-//    struct timeval stop, start;
-//    gettimeofday(&start, NULL);
+    struct timeval stop, start;
+    gettimeofday(&start, NULL);
 
     int idx = *((int *) arg);
-    printf("Hello from numbers method,   %d\n", idx);
 
     // pixels from range [256/k*idx, 256/k*(idx+1)], where k is number of threads
     // last thread takes the rest of the range (up to 255 inclusive)
     int from = 256 / threads_num * idx;
     int to = (idx != threads_num - 1) ? (256 / threads_num * (idx + 1) ) : 256;
 
-    printf("from [%d] to [%d]\n", from, to);
+//    printf("from [%d] to [%d]\n", from, to);
 
     int pixel;
     for (int i = 0; i < h; i++){
@@ -116,25 +104,23 @@ void* numbers_method(void* arg){
         }
     }
 
-//    gettimeofday(&stop, NULL);
-//    long unsigned int* t = malloc(sizeof(long unsigned int));
-//    *t = (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec;
-//    printf("time: %5lu [μs]\n", *t);
-//    pthread_exit(t);
+    gettimeofday(&stop, NULL);
+    long unsigned int* t = malloc(sizeof(long unsigned int));
+    *t = (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec;
+    pthread_exit(t);
 }
 
 
 void* block_method(void* arg) {
-//    struct timeval stop, start;
-//    gettimeofday(&start, NULL);
+    struct timeval stop, start;
+    gettimeofday(&start, NULL);
 
     int idx = *((int *) arg);
-    printf("Hello from block method,   %d\n", idx);
 
     int x_from = (idx) * ceil(w / threads_num);
     int x_to = (idx != threads_num - 1) ? ((idx + 1)* ceil(w / threads_num) - 1) : w - 1;
 
-    printf("from: [%d] to: [%d] \n", x_from, x_to);
+//    printf("from: %d to: %d \n", x_from, x_to);
 
     int pixel;
     for (int i = 0; i < h; i++){
@@ -144,19 +130,17 @@ void* block_method(void* arg) {
         }
     }
 
-
-//    gettimeofday(&stop, NULL);
-//    long unsigned int* t = malloc(sizeof(long unsigned int));
-//    *t = (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec;
-//    printf("time: %5lu [μs]\n", *t);
-//    pthread_exit(t);
+    gettimeofday(&stop, NULL);
+    long unsigned int* t = malloc(sizeof(long unsigned int));
+    *t = (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec;
+    pthread_exit(t);
 }
 
 
-void save_negative(char* filename){
-    FILE* f = fopen(filename, "w");
+void save_negative(char* filename) {
+    FILE *f = fopen(filename, "w");
 
-    if (f == NULL){
+    if (f == NULL) {
         printf("Error while opening output file\n");
         exit(1);
     }
@@ -165,15 +149,15 @@ void save_negative(char* filename){
     fprintf(f, "%d %d\n", w, h);
     fprintf(f, "255\n");
 
-    for (int i = 0; i < h; i++){
+    for (int i = 0; i < h; i++) {
         for (int j = 0; j < w; j++) {
             fprintf(f, "%d ", negative_image[i][j]);
         }
         fprintf(f, "\n");
     }
 
+    fclose(f);
 }
-
 
 
 int main(int argc, char* argv[]){
@@ -202,7 +186,10 @@ int main(int argc, char* argv[]){
 
     // create and start threads
     pthread_t* threads = calloc(threads_num, sizeof(pthread_t));
-    int* threads_idx = calloc(1, sizeof(int));
+    int* threads_idx = calloc(threads_num, sizeof(int));
+
+    struct timeval stop, start;
+    gettimeofday(&start, NULL);
 
     for(int i = 0; i < threads_num; i++){
         threads_idx[i] = i;
@@ -219,18 +206,45 @@ int main(int argc, char* argv[]){
     }
 
 
+    FILE* times_f = fopen("times.txt", "a");
+
+    printf("#################################\n");
+    printf("THREADS:   %d\n", threads_num);
+    printf("METHOD:    %s\n", method);
+    printf("#################################\n\n");
+
+    fprintf(times_f, "#################################\n");
+    fprintf(times_f, "THREADS:   %d\n", threads_num);
+    fprintf(times_f, "METHOD:    %s\n", method);
+    fprintf(times_f, "#################################\n\n");
+
+
     // wait for threads to finish and get value passed to pthread_exit() by the thread (return value)
     for(int i = 0; i < threads_num; i++) {
-//        long unsigned int* t;
-        pthread_join(threads[i], NULL);
-//        pthread_join(threads[i], (void **) &t);
-//        printf("thread: %d,   time: %lu\n", i, *t);
+        long unsigned int* t;
+        pthread_join(threads[i], (void **) &t);
+        printf("thread: %3d     time: %5lu [μs]\n", i, *t);
+        fprintf(times_f, "thread: %3d,     time: %5lu [μs]\n", i, *t);
     }
+
+
+    gettimeofday(&stop, NULL);
+    long unsigned int* t = malloc(sizeof(long unsigned int));
+    *t = (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec;
+    printf("TOTAL TIME: %5lu [μs]\n", *t);
+    fprintf(times_f, "TOTAL TIME: %5lu [μs]\n\n\n", *t);
 
 
     save_negative(output_file);
 
+    fclose(times_f);
+
+    for (int i = 0; i < h; i++) {
+        free(image[i]);
+        free(negative_image[i]);
+    }
+    free(image);
+    free(negative_image);
 
     return 0;
 }
-

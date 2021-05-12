@@ -1,0 +1,372 @@
+KOMENTARZ:
+
+Przetestowane zostaly obie metody podziału zadania (numbers [1], block[2]).
+Zdecydowanie wolniejszy jest wariant [1], poniewaz kazdy watek
+przeglada caly obraz w poszukiwaniu pikseli z odpowiedniego dla siebie przedzialu.
+W metodzie [2] kazdy watek ma przydzielona dana czesc obrazu
+i tylko ja przeglada, przez co oszczedza na czasie.
+Pzry wiekszej liczbie watkow, calkowity czas wykonania jest dluzsza,
+co spowodowane jest narzutem zwiazanym z utworzeniem i zakończeniem
+poszczegolnych wątków.
+
+----------------------------------------------------------------------------
+
+
+TEST OUTPUT:
+
+#################################
+THREADS:   1
+METHOD:    numbers
+#################################
+
+thread:   0,     time:  1599 [μs]
+TOTAL TIME:  2571 [μs]
+
+
+#################################
+THREADS:   1
+METHOD:    block
+#################################
+
+thread:   0,     time:   987 [μs]
+TOTAL TIME:  1397 [μs]
+
+
+#################################
+THREADS:   2
+METHOD:    numbers
+#################################
+
+thread:   0,     time:  1714 [μs]
+thread:   1,     time:  1357 [μs]
+TOTAL TIME:  2012 [μs]
+
+
+#################################
+THREADS:   2
+METHOD:    block
+#################################
+
+thread:   0,     time:   572 [μs]
+thread:   1,     time:   583 [μs]
+TOTAL TIME:   979 [μs]
+
+
+#################################
+THREADS:   4
+METHOD:    numbers
+#################################
+
+thread:   0,     time:  1413 [μs]
+thread:   1,     time:  1443 [μs]
+thread:   2,     time:  1460 [μs]
+thread:   3,     time:  1103 [μs]
+TOTAL TIME:  1790 [μs]
+
+
+#################################
+THREADS:   4
+METHOD:    block
+#################################
+
+thread:   0,     time:   357 [μs]
+thread:   1,     time:   372 [μs]
+thread:   2,     time:   342 [μs]
+thread:   3,     time:   289 [μs]
+TOTAL TIME:  1001 [μs]
+
+
+#################################
+THREADS:   8
+METHOD:    numbers
+#################################
+
+thread:   0,     time:  1043 [μs]
+thread:   1,     time:  2252 [μs]
+thread:   2,     time:  1516 [μs]
+thread:   3,     time:  1746 [μs]
+thread:   4,     time:  3112 [μs]
+thread:   5,     time:  1380 [μs]
+thread:   6,     time:  1409 [μs]
+thread:   7,     time:  1382 [μs]
+TOTAL TIME:  4966 [μs]
+
+
+#################################
+THREADS:   8
+METHOD:    block
+#################################
+
+thread:   0,     time:   745 [μs]
+thread:   1,     time:   929 [μs]
+thread:   2,     time:   683 [μs]
+thread:   3,     time:   804 [μs]
+thread:   4,     time:   950 [μs]
+thread:   5,     time:   315 [μs]
+thread:   6,     time:   853 [μs]
+thread:   7,     time:   326 [μs]
+TOTAL TIME:  3626 [μs]
+
+
+#################################
+THREADS:   16
+METHOD:    numbers
+#################################
+
+thread:   0,     time:  1874 [μs]
+thread:   1,     time:  2635 [μs]
+thread:   2,     time:  6015 [μs]
+thread:   3,     time:  3908 [μs]
+thread:   4,     time:  4611 [μs]
+thread:   5,     time: 10006 [μs]
+thread:   6,     time:  1722 [μs]
+thread:   7,     time:  6062 [μs]
+thread:   8,     time:  9010 [μs]
+thread:   9,     time:  4517 [μs]
+thread:  10,     time:  1722 [μs]
+thread:  11,     time:  2153 [μs]
+thread:  12,     time:  5254 [μs]
+thread:  13,     time:  3575 [μs]
+thread:  14,     time:  2862 [μs]
+thread:  15,     time:  3399 [μs]
+TOTAL TIME: 13265 [μs]
+
+
+#################################
+THREADS:   16
+METHOD:    block
+#################################
+
+thread:   0,     time:   260 [μs]
+thread:   1,     time:   208 [μs]
+thread:   2,     time:   127 [μs]
+thread:   3,     time:   145 [μs]
+thread:   4,     time:   140 [μs]
+thread:   5,     time:   145 [μs]
+thread:   6,     time:   108 [μs]
+thread:   7,     time:   199 [μs]
+thread:   8,     time:   636 [μs]
+thread:   9,     time:   292 [μs]
+thread:  10,     time:   119 [μs]
+thread:  11,     time:   156 [μs]
+thread:  12,     time:   222 [μs]
+thread:  13,     time:   571 [μs]
+thread:  14,     time:   105 [μs]
+thread:  15,     time:   118 [μs]
+TOTAL TIME:  1904 [μs]
+
+
+#################################
+THREADS:   99
+METHOD:    numbers
+#################################
+
+thread:   0,     time:  1817 [μs]
+thread:   1,     time:  1709 [μs]
+thread:   2,     time:  2510 [μs]
+thread:   3,     time:  1145 [μs]
+thread:   4,     time:  1994 [μs]
+thread:   5,     time:  2150 [μs]
+thread:   6,     time:   970 [μs]
+thread:   7,     time:  2143 [μs]
+thread:   8,     time:  3849 [μs]
+thread:   9,     time:  1957 [μs]
+thread:  10,     time:  1095 [μs]
+thread:  11,     time:  2274 [μs]
+thread:  12,     time:  2208 [μs]
+thread:  13,     time:  1270 [μs]
+thread:  14,     time:  1238 [μs]
+thread:  15,     time:  1370 [μs]
+thread:  16,     time:  1038 [μs]
+thread:  17,     time:  1945 [μs]
+thread:  18,     time: 14202 [μs]
+thread:  19,     time:  1828 [μs]
+thread:  20,     time:  1638 [μs]
+thread:  21,     time:  1846 [μs]
+thread:  22,     time:  1752 [μs]
+thread:  23,     time:   994 [μs]
+thread:  24,     time:  1324 [μs]
+thread:  25,     time:  1081 [μs]
+thread:  26,     time:  1023 [μs]
+thread:  27,     time:  1958 [μs]
+thread:  28,     time:   992 [μs]
+thread:  29,     time:   961 [μs]
+thread:  30,     time:  2603 [μs]
+thread:  31,     time:  1066 [μs]
+thread:  32,     time:  2462 [μs]
+thread:  33,     time:  6505 [μs]
+thread:  34,     time:  1927 [μs]
+thread:  35,     time:  1917 [μs]
+thread:  36,     time:  1481 [μs]
+thread:  37,     time: 14082 [μs]
+thread:  38,     time:  4271 [μs]
+thread:  39,     time: 12237 [μs]
+thread:  40,     time:  1171 [μs]
+thread:  41,     time:  1136 [μs]
+thread:  42,     time:  1062 [μs]
+thread:  43,     time:  1102 [μs]
+thread:  44,     time:  1158 [μs]
+thread:  45,     time:  1436 [μs]
+thread:  46,     time:  2115 [μs]
+thread:  47,     time:  1963 [μs]
+thread:  48,     time: 14127 [μs]
+thread:  49,     time:  1100 [μs]
+thread:  50,     time:  1100 [μs]
+thread:  51,     time:  1127 [μs]
+thread:  52,     time:  1168 [μs]
+thread:  53,     time:  7673 [μs]
+thread:  54,     time:  1211 [μs]
+thread:  55,     time:  2242 [μs]
+thread:  56,     time:  1988 [μs]
+thread:  57,     time:  1936 [μs]
+thread:  58,     time: 11414 [μs]
+thread:  59,     time:  1954 [μs]
+thread:  60,     time:  2077 [μs]
+thread:  61,     time:  1139 [μs]
+thread:  62,     time:  1118 [μs]
+thread:  63,     time:  1423 [μs]
+thread:  64,     time:  1133 [μs]
+thread:  65,     time:  1159 [μs]
+thread:  66,     time:  1991 [μs]
+thread:  67,     time:  2351 [μs]
+thread:  68,     time:  1268 [μs]
+thread:  69,     time:  1952 [μs]
+thread:  70,     time:  2686 [μs]
+thread:  71,     time:  1121 [μs]
+thread:  72,     time:  1235 [μs]
+thread:  73,     time:  3141 [μs]
+thread:  74,     time:  2754 [μs]
+thread:  75,     time:  1809 [μs]
+thread:  76,     time:  1199 [μs]
+thread:  77,     time:  1346 [μs]
+thread:  78,     time:  2021 [μs]
+thread:  79,     time:  1310 [μs]
+thread:  80,     time:  1241 [μs]
+thread:  81,     time:  5200 [μs]
+thread:  82,     time:  2425 [μs]
+thread:  83,     time:  1276 [μs]
+thread:  84,     time:  3347 [μs]
+thread:  85,     time:  1584 [μs]
+thread:  86,     time:  3760 [μs]
+thread:  87,     time:  3011 [μs]
+thread:  88,     time:  1165 [μs]
+thread:  89,     time:  2936 [μs]
+thread:  90,     time:  6152 [μs]
+thread:  91,     time:  2247 [μs]
+thread:  92,     time:  9965 [μs]
+thread:  93,     time:  8082 [μs]
+thread:  94,     time:  2286 [μs]
+thread:  95,     time:  4717 [μs]
+thread:  96,     time:  1593 [μs]
+thread:  97,     time:  1985 [μs]
+thread:  98,     time:  1857 [μs]
+TOTAL TIME: 50829 [μs]
+
+
+#################################
+THREADS:   99
+METHOD:    block
+#################################
+
+thread:   0,     time:    61 [μs]
+thread:   1,     time:    44 [μs]
+thread:   2,     time:    31 [μs]
+thread:   3,     time:    16 [μs]
+thread:   4,     time:    17 [μs]
+thread:   5,     time:    21 [μs]
+thread:   6,     time:    22 [μs]
+thread:   7,     time:    88 [μs]
+thread:   8,     time:    34 [μs]
+thread:   9,     time:    20 [μs]
+thread:  10,     time:   101 [μs]
+thread:  11,     time:    21 [μs]
+thread:  12,     time:    21 [μs]
+thread:  13,     time:    21 [μs]
+thread:  14,     time:    21 [μs]
+thread:  15,     time:    21 [μs]
+thread:  16,     time:  2670 [μs]
+thread:  17,     time:    21 [μs]
+thread:  18,     time:    21 [μs]
+thread:  19,     time:    20 [μs]
+thread:  20,     time:    20 [μs]
+thread:  21,     time:    21 [μs]
+thread:  22,     time:    23 [μs]
+thread:  23,     time:    21 [μs]
+thread:  24,     time:    21 [μs]
+thread:  25,     time:    22 [μs]
+thread:  26,     time:    16 [μs]
+thread:  27,     time:    22 [μs]
+thread:  28,     time:    16 [μs]
+thread:  29,     time:    22 [μs]
+thread:  30,     time:    20 [μs]
+thread:  31,     time:    21 [μs]
+thread:  32,     time:    21 [μs]
+thread:  33,     time:    22 [μs]
+thread:  34,     time:    25 [μs]
+thread:  35,     time:    21 [μs]
+thread:  36,     time:    20 [μs]
+thread:  37,     time:    16 [μs]
+thread:  38,     time:    19 [μs]
+thread:  39,     time:    15 [μs]
+thread:  40,     time:    14 [μs]
+thread:  41,     time:    21 [μs]
+thread:  42,     time:    21 [μs]
+thread:  43,     time:    22 [μs]
+thread:  44,     time:    20 [μs]
+thread:  45,     time:    22 [μs]
+thread:  46,     time:    33 [μs]
+thread:  47,     time:    17 [μs]
+thread:  48,     time:    21 [μs]
+thread:  49,     time:    18 [μs]
+thread:  50,     time:    21 [μs]
+thread:  51,     time:    21 [μs]
+thread:  52,     time:    19 [μs]
+thread:  53,     time:    26 [μs]
+thread:  54,     time:    21 [μs]
+thread:  55,     time:    21 [μs]
+thread:  56,     time:    24 [μs]
+thread:  57,     time:    16 [μs]
+thread:  58,     time:    22 [μs]
+thread:  59,     time:    16 [μs]
+thread:  60,     time:    45 [μs]
+thread:  61,     time:    47 [μs]
+thread:  62,     time:    24 [μs]
+thread:  63,     time:    30 [μs]
+thread:  64,     time:    24 [μs]
+thread:  65,     time:    20 [μs]
+thread:  66,     time:    17 [μs]
+thread:  67,     time:    15 [μs]
+thread:  68,     time:    23 [μs]
+thread:  69,     time:    15 [μs]
+thread:  70,     time:    15 [μs]
+thread:  71,     time:    19 [μs]
+thread:  72,     time:    30 [μs]
+thread:  73,     time:    21 [μs]
+thread:  74,     time:    40 [μs]
+thread:  75,     time:    26 [μs]
+thread:  76,     time:    26 [μs]
+thread:  77,     time:    29 [μs]
+thread:  78,     time:    28 [μs]
+thread:  79,     time:    23 [μs]
+thread:  80,     time:   418 [μs]
+thread:  81,     time:    26 [μs]
+thread:  82,     time:    81 [μs]
+thread:  83,     time:    24 [μs]
+thread:  84,     time:   348 [μs]
+thread:  85,     time:    72 [μs]
+thread:  86,     time:    22 [μs]
+thread:  87,     time:    68 [μs]
+thread:  88,     time:    16 [μs]
+thread:  89,     time:    24 [μs]
+thread:  90,     time:    19 [μs]
+thread:  91,     time:    19 [μs]
+thread:  92,     time:    31 [μs]
+thread:  93,     time:    48 [μs]
+thread:  94,     time:    58 [μs]
+thread:  95,     time:    22 [μs]
+thread:  96,     time:    33 [μs]
+thread:  97,     time:    15 [μs]
+thread:  98,     time:   149 [μs]
+TOTAL TIME:  6632 [μs]
+
+
