@@ -1,11 +1,11 @@
 KOMENTARZ:
 
-Przetestowane zostaly obie metody podziału zadania (numbers [1], block[2]).
+Przetestowane zostaly obie metody podziału zadania (numbers [1], block [2]).
 Zdecydowanie wolniejszy jest wariant [1], poniewaz kazdy watek
 przeglada caly obraz w poszukiwaniu pikseli z odpowiedniego dla siebie przedzialu.
 W metodzie [2] kazdy watek ma przydzielona dana czesc obrazu
 i tylko ja przeglada, przez co oszczedza na czasie.
-Pzry wiekszej liczbie watkow, calkowity czas wykonania jest dluzsza,
+Przy wiekszej liczbie watkow, calkowity czas wykonania jest dluzszy,
 co spowodowane jest narzutem zwiazanym z utworzeniem i zakończeniem
 poszczegolnych wątków.
 
