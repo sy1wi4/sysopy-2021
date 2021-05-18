@@ -9,6 +9,7 @@ compile:
 
 run: compile
 	./main $(ARGS)
+	make clean
 
 clean:
 	rm -f main
