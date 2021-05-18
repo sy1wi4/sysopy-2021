@@ -1,0 +1,4 @@
+Obie wersje implementacji (System V oraz POSIX) dzialaja poprawnie.
+Zarowno dla ilosci kucharzy i dostawcow mniejszej niz rozmiary
+stolu i pieca, jak i wiekszej, liczba pizz nie przekracza rozmiaru tablicy,
+a dana tablice modyfikuje jednoczenie tylko jeden proces.
