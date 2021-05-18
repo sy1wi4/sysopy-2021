@@ -23,21 +23,23 @@
 int reindeer_back = 0;
 int elves_with_problem = 0;
 int deliveries = 0;
+int reindeer_waiting = false;
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond   = PTHREAD_COND_INITIALIZER;
 
+pthread_mutex_t mutex_r_wait = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond_r_wait   = PTHREAD_COND_INITIALIZER;
+
 
 
 void* santa(void* arg){
-//    printf("Santa here\n");
 
     // waiting for 9 reindeer
     while (deliveries < 3){
         pthread_mutex_lock(&mutex);
 
         if (reindeer_back < REINDEER_NUM){
-            printf("Mikolaj: śpię\n");
             pthread_cond_wait(&cond, &mutex);
         }
 
@@ -47,6 +49,13 @@ void* santa(void* arg){
         printf("Mikołaj: dostarczam zabawki [delivery no: %d]\n", deliveries);
         sleep(DELIVERING_TOYS);
         reindeer_back = 0;
+
+        // notify waiting reindeer that other reindeer are no longer waiting for santa
+        pthread_mutex_lock(&mutex_r_wait);
+        reindeer_waiting = false;
+        pthread_cond_broadcast(&cond_r_wait);
+        pthread_mutex_unlock(&mutex_r_wait);
+
         printf("Mikołaj: zasypiam\n\n\n");
         pthread_mutex_unlock(&mutex);
     }
@@ -57,15 +66,26 @@ _Noreturn void* reindeer(void* arg){
     int ID = *((int *) arg);
 
     while(true){
+
+        // if reindeer are waiting for Santa wait here
+        pthread_mutex_lock(&mutex_r_wait);
+        while (reindeer_waiting) {
+            pthread_cond_wait(&cond_r_wait, &mutex_r_wait);
+        }
+        pthread_mutex_unlock(&mutex_r_wait);
+
         sleep(REINDEER_ON_HOLIDAY);
+
 
         pthread_mutex_lock(&mutex);
         reindeer_back++;
         printf("Renifer: czeka [%d] reniferów na Mikołaja, %d\n", reindeer_back, ID);
+        reindeer_waiting = true;
+
         if (reindeer_back == REINDEER_NUM) {
             printf("Renifer: wybudzam Mikołaja, %d\n", ID);
             pthread_cond_broadcast(&cond);
-//        sleep(DELIVERING_TOYS);
+        sleep(DELIVERING_TOYS);
         }
         pthread_mutex_unlock(&mutex);
     }
