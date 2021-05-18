@@ -33,10 +33,11 @@ void* santa(void* arg){
 //    printf("Santa here\n");
 
     // waiting for 9 reindeer
-    while (deliveries != 3){
+    while (deliveries < 3){
         pthread_mutex_lock(&mutex);
 
         if (reindeer_back < REINDEER_NUM){
+            printf("Mikolaj: śpię\n");
             pthread_cond_wait(&cond, &mutex);
         }
 
@@ -100,8 +101,6 @@ int main(){
 //        elves_IDs[i] = i;
 //        pthread_create(&elves_t[i], NULL, &elf, elves_IDs[i]);
 //    }
-
-
 
     // wait for threads to finish
 
