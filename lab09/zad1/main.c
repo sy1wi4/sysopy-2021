@@ -149,13 +149,15 @@ void* elf(void* arg){
 
 
         pthread_mutex_lock(&mutex_e);
-        printf("Elf: czeka [%d] elfów na Mikołaja, ID: %d\n", elves_waiting_for_santa, ID);
-        elves_queue[elves_waiting_for_santa] = ID;
-        elves_waiting_for_santa++;
-        if (elves_waiting_for_santa == ELVES_WAITING_FOR_SANTA){
-            printf("Elf: wybudzam Mikołaja, ID: %d\n", ID);
-            elves_queue_full = true;
-            pthread_cond_broadcast(&cond_e);
+
+        if (elves_waiting_for_santa < 3){
+            printf("Elf: czeka [%d] elfów na Mikołaja, ID: %d\n", elves_waiting_for_santa, ID);
+            elves_queue[elves_waiting_for_santa] = ID;
+            elves_waiting_for_santa++;
+            if (elves_waiting_for_santa == 3){
+                printf("Elf: wybudzam Mikołaja, ID: %d\n", ID);
+                pthread_cond_broadcast(&cond_e);
+            }
         }
 
         pthread_mutex_unlock(&mutex_e);
