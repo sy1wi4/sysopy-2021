@@ -9,7 +9,7 @@ compile:
 
 run: compile
 	./main $(ARGS)
-	make clean
+	make --no-print-directory clean
 
 clean:
 	rm -f main
