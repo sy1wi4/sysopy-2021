@@ -10,4 +10,4 @@ server:
 	./server $(ARGS)
 
 clean:
-	rm -f server client
+	rm -f server client socket
