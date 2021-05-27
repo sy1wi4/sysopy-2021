@@ -9,3 +9,4 @@
 7. [IPC - pamieć wspólna, semafory](https://github.com/sy1wi4/sysopy-2021/tree/master/lab07)
 8. [Wątki - podstawy](https://github.com/sy1wi4/sysopy-2021/tree/master/lab08)
 9. [Wątki - metody synchronizacji](https://github.com/sy1wi4/sysopy-2021/tree/master/lab09)
+10. [Sockety](https://github.com/sy1wi4/sysopy-2021/tree/master/lab10)
