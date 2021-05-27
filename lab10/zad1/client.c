@@ -74,5 +74,10 @@ int main(int argc, char* argv[]){
     }
 
 
+    // add client
+    char buffer[NAME_LEN + 5];
+    sprintf(buffer, "add: %s", name);
+    send(sock_fd, buffer, NAME_LEN + 5, 0);
+
     return 0;
 }
