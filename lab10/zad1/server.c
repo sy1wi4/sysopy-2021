@@ -10,6 +10,10 @@
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 client clients[MAX_CLIENTS];
+int idx_to_add = 0;
+char* command;
+char* arg;
+
 
 int set_local_socket(char* socket_path){
 
@@ -75,6 +79,12 @@ int set_inet_socket(int port_number){
         exit(1);
     }
 
+    // listen for connections on a socket
+    if ((listen(sock_fd, MAX_CLIENTS)) == -1){
+        printf("Listen on INET socket failed\n");
+        exit(1);
+    }
+
     printf("INET socket fd: %d\n", sock_fd);
 
     return sock_fd;
@@ -84,20 +94,19 @@ int wait_for_messages(int local_socket, int inet_socket) {
     // monitor both sockets at once
 
     // set of file descriptors to be monitored
-    struct pollfd fds[2 + MAX_CLIENTS];
+//    struct pollfd fds[2 + MAX_CLIENTS];
+    struct pollfd *fds = calloc(2 + MAX_CLIENTS, sizeof(struct pollfd));
+
     fds[0].fd = local_socket;
     fds[1].fd = inet_socket;
     fds[0].events = POLLIN;
     fds[1].events = POLLIN;
-    fds[0].revents = 0;
-    fds[1].revents = 0;
     pthread_mutex_lock(&mutex);
 
 
     for (int i = 0; i < MAX_CLIENTS; i++) {
         fds[i + 2].fd = clients[i].fd;
         fds[i + 2].events = POLLIN;
-        fds[i + 2].revents = 0;
     }
 
     pthread_mutex_unlock(&mutex);
@@ -112,17 +121,66 @@ int wait_for_messages(int local_socket, int inet_socket) {
         // sth to read
         if (fds[i].revents & POLLIN) {
             fd = fds[i].fd;
-            if(fds[i].fd == local_socket || fds[i].fd == inet_socket){
+            printf("NEW MSG CLIENT, fd: %d\n", fd);
+
+            if(fd == local_socket || fd == inet_socket){
                 printf("NEW MSG, fd: %d\n", fd);
                 fd = accept(fd, NULL, NULL);
             }
             break;
         }
     }
-
+    free(fds);
     return fd;
 }
 
+
+void parse_msg(char* msg){
+    printf("msg -> %s\n", msg);
+
+    char* buff = calloc(sizeof(char), MAX_MSG_LEN);
+    strcpy(buff, msg);
+
+    command = strtok(buff," ");
+    arg = strtok(NULL, " ");
+
+    printf("parsed msg -> command: %s, arg: %s,  <%s> <%s>\n", command, arg, msg, buff);
+}
+
+void add_client(int client_fd, char* name){
+    // ????????????????????????
+    printf("idx %d  fd %d\n", idx_to_add, client_fd);
+    clients[idx_to_add].fd = client_fd;
+//    char* buff = calloc(sizeof(char), MAX_MSG_LEN);
+//    strcpy(buff, name);
+//    clients[idx_to_add].name = buff;
+
+    printf("Added client od idx [%d].\n", idx_to_add);
+
+    // TODO
+    idx_to_add++;
+
+    print_clients(clients);
+
+}
+
+bool check_name(char* name){
+    for(int i = 0; i < MAX_CLIENTS; i++) {
+        if (clients[i].fd != -1 && strcmp(clients[i].name, name) == 0){
+            printf("Client [%s] exist!\n", name);
+            return false;
+        }
+    }
+    return true;
+}
+
+
+void init_clients(){
+    for(int i = 0; i < MAX_CLIENTS; i++){
+        clients[i].fd = -1;
+        clients[i].name = NULL;
+    }
+}
 
 int main(int argc, char* argv[]){
     if (argc != 3){
@@ -136,13 +194,41 @@ int main(int argc, char* argv[]){
     int local_socket = set_local_socket(socket_path);
     int inet_socket = set_inet_socket(port_number);
 
+    init_clients();
+
+
     while(true){
+        printf("x\n");
         int client_fd = wait_for_messages(local_socket, inet_socket);
-        char buffer[NAME_LEN + 5];
-        recv(client_fd, buffer, NAME_LEN + 5, 0);
-        if (client_fd) {
-            printf("%s\n", buffer);
-        }
+        printf("new messss  (%d)\n", client_fd);
+        char msg[MAX_MSG_LEN];
+
+        // if no messages are available at the socket, wait for a msg to arrive
+        recv(client_fd, msg, MAX_MSG_LEN, 0);
+        printf("message: %s\n", msg);
+
+
+//        if (client_fd) {
+            parse_msg(msg);
+
+            pthread_mutex_lock(&mutex);
+            if (strcmp(command, "add") == 0){
+                if (check_name(arg)) {
+                    add_client(client_fd, arg);
+                }
+                else {
+                    char buffer[MAX_MSG_LEN];
+                    sprintf(buffer, "name_taken %s", arg);
+                    send(client_fd, buffer, MAX_MSG_LEN , 0);
+
+                }
+            }
+
+            printf("ELO KONIEC \n\n");
+
+//        }
+        pthread_mutex_unlock(&mutex);
+
     }
 
 }

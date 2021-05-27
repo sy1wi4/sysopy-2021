@@ -74,10 +74,13 @@ int main(int argc, char* argv[]){
     }
 
 
+    printf("Going to add client to server [%s]\n", name);
     // add client
-    char buffer[NAME_LEN + 5];
-    sprintf(buffer, "add: %s", name);
-    send(sock_fd, buffer, NAME_LEN + 5, 0);
+    char buffer[MAX_MSG_LEN];
+    sprintf(buffer, "add %s", name);
+    send(sock_fd, buffer, MAX_MSG_LEN, 0);
+
+    printf("OK\n");
 
     return 0;
 }

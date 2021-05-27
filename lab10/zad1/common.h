@@ -17,11 +17,26 @@
 #include <netinet/in.h>
 
 
-#define NAME_LEN 32
-#define MAX_CLIENTS 15
+#define MAX_MSG_LEN 128
+#define MAX_CLIENTS 7
 
 typedef struct client {
     int fd;
+    char* name;
 } client;
+
+
+void print_clients(client clients[MAX_CLIENTS]){
+    for (int i = 0; i < MAX_CLIENTS; i++){
+        printf("%s | ", clients[i].name);
+    }
+    printf("\n");
+
+    for (int i = 0; i < MAX_CLIENTS; i++){
+        printf("%d | ", clients[i].fd);
+    }
+    printf("\n");
+}
+
 
 #endif //LAB10_COMMON_H
