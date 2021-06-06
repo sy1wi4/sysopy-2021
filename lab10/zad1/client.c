@@ -1,44 +1,73 @@
-//
-// Created by sylwia on 5/26/21.
-//
 
-#include <errno.h>
+#include <arpa/inet.h>
 #include "common.h"
 
-char* name;
-int sock_fd;
+int server_socket;
+char buffer[MAX_MSG_LEN+ 1];
+char *name;
 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
-void connect_local(char* path){
-    printf("connect LOCALLY\n");
+char *command, *arg;
 
-    // create unix socket
-    if ((sock_fd = socket(AF_UNIX, SOCK_STREAM, 0)) == -1){
-        printf("Could not create socket\n");
-        exit(1);
+void parse_msg(char* msg){
+    command = strtok(msg, ":");
+    arg = strtok(NULL, ":");
+}
+
+void init_server_connection(char *type, char *destination){
+
+    if (strcmp(type, "unix") == 0) {
+        server_socket = socket(AF_UNIX, SOCK_STREAM, 0);
+
+        struct sockaddr_un local_sockaddr;
+        memset(&local_sockaddr, 0, sizeof(struct sockaddr_un));
+        local_sockaddr.sun_family = AF_UNIX;
+        strcpy(local_sockaddr.sun_path, destination);
+
+        connect(server_socket, (struct sockaddr *)&local_sockaddr,
+                sizeof(struct sockaddr_un));
     }
-    else{
-        printf("Socket created\n");
+    else {
+        struct addrinfo *info;
 
-    }
+        struct addrinfo hints;
+        memset(&hints, 0, sizeof(struct addrinfo));
+        hints.ai_family = AF_UNSPEC;
+        hints.ai_socktype = SOCK_STREAM;
 
-    // unix socket address
-    struct sockaddr_un sock_addr;
-    memset(&sock_addr, 0, sizeof(struct sockaddr_un));
-    sock_addr.sun_family = AF_UNIX;
-    strcpy(sock_addr.sun_path, path);
+        getaddrinfo("localhost", destination, &hints, &info);
 
-    // connect to socket
-    if (connect(sock_fd, (struct sockaddr *)&sock_addr, sizeof(sock_addr)) == -1) {
-        printf("Error while connecting to socket (%s)\n", strerror(errno));
-        exit(1);
+        server_socket =
+                socket(info->ai_family, info->ai_socktype, info->ai_protocol);
+
+        connect(server_socket, info->ai_addr, info->ai_addrlen);
+
+        freeaddrinfo(info);
+
+//        int sock_fd = socket(AF_INET , SOCK_STREAM, 0);
+//
+//        if (sock_fd  == -1){
+//            printf("Could not create INET socket\n");
+//            exit(1);
+//        }
+//        else{
+//            printf("INET socket created\n");
+//        }
+//
+//        struct sockaddr_in sock_addr;
+//        sock_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+//        sock_addr.sin_family = AF_INET;
+//        sock_addr.sin_port = htons(atoi(destination));
+//
+//        if (connect(sock_fd, (struct sockaddr *)&sock_addr, sizeof(sock_addr)) == -1) {
+//            printf("Error while connecting to socket (%s)\n", strerror(errno));
+//            exit(1);
+//        }
     }
 }
 
-void connect_inet(char* address, int port_number){
-    printf("connect via INTERNET\n");
-
-}
 
 
 int main(int argc, char* argv[]){
@@ -48,39 +77,18 @@ int main(int argc, char* argv[]){
         exit(1);
     }
 
-    // name
     name = argv[1];
+    char *type = argv[2];
+    char *destination = argv[3];
 
-    // connection method - inet/unix
-    if (strcmp(argv[2], "unix") == 0){
+    // handle SIGINT
 
-        // server address
-        char* path = argv[3];
+    init_server_connection(type, destination);
+    char buffer[MAX_MSG_LEN + 1];
+    sprintf(buffer, "add: :%s", name);
+    send(server_socket, buffer, MAX_MSG_LEN, 0);
 
-        connect_local(path);
-
-    }
-    else if (strcmp(argv[2], "inet") == 0){
-
-        // server address
-        char* IPv4_address = argv[3];
-        int port_number = atoi(argv[4]);
-
-        connect_inet(IPv4_address, port_number);
-    }
-    else{
-        printf("Wrong method - choose [inet] or [unix]!\n");
-        exit(1);
-    }
-
-
-    printf("Going to add client to server [%s]\n", name);
-    // add client
-    char buffer[MAX_MSG_LEN];
-    sprintf(buffer, "add %s", name);
-    send(sock_fd, buffer, MAX_MSG_LEN, 0);
-
-    printf("OK\n");
+    // listen server
 
     return 0;
 }

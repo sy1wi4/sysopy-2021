@@ -6,37 +6,32 @@
 #define LAB10_COMMON_H
 
 
+#include <netdb.h>
+#include <poll.h>
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/un.h>
-#include <errno.h>
+#include <time.h>
 #include <unistd.h>
-#include <arpa/inet.h>
-#include <netinet/in.h>
+#include <errno.h>
+#include <signal.h>
+#include <stdbool.h>
 
 
-#define MAX_MSG_LEN 128
-#define MAX_CLIENTS 7
+#define MAX_CLIENTS 20
+#define MAX_MSG_LEN 256
 
-typedef struct client {
+
+typedef struct{
+    char *name;
     int fd;
-    char* name;
+    int online;
 } client;
 
 
-void print_clients(client clients[MAX_CLIENTS]){
-    for (int i = 0; i < MAX_CLIENTS; i++){
-        printf("%s | ", clients[i].name);
-    }
-    printf("\n");
-
-    for (int i = 0; i < MAX_CLIENTS; i++){
-        printf("%d | ", clients[i].fd);
-    }
-    printf("\n");
-}
 
 
 #endif //LAB10_COMMON_H
