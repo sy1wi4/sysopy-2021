@@ -16,57 +16,41 @@ void parse_msg(char* msg){
     arg = strtok(NULL, ":");
 }
 
-void init_server_connection(char *type, char *destination){
+void connect_local(char* path){
+    server_socket = socket(AF_UNIX, SOCK_STREAM, 0);
 
-    if (strcmp(type, "unix") == 0) {
-        server_socket = socket(AF_UNIX, SOCK_STREAM, 0);
+    struct sockaddr_un sock_addr;
+    memset(&sock_addr, 0, sizeof(struct sockaddr_un));
+    sock_addr.sun_family = AF_UNIX;
+    strcpy(sock_addr.sun_path, path);
 
-        struct sockaddr_un local_sockaddr;
-        memset(&local_sockaddr, 0, sizeof(struct sockaddr_un));
-        local_sockaddr.sun_family = AF_UNIX;
-        strcpy(local_sockaddr.sun_path, destination);
-
-        connect(server_socket, (struct sockaddr *)&local_sockaddr,
-                sizeof(struct sockaddr_un));
-    }
-    else {
-        struct addrinfo *info;
-
-        struct addrinfo hints;
-        memset(&hints, 0, sizeof(struct addrinfo));
-        hints.ai_family = AF_UNSPEC;
-        hints.ai_socktype = SOCK_STREAM;
-
-        getaddrinfo("localhost", destination, &hints, &info);
-
-        server_socket =
-                socket(info->ai_family, info->ai_socktype, info->ai_protocol);
-
-        connect(server_socket, info->ai_addr, info->ai_addrlen);
-
-        freeaddrinfo(info);
-
-//        int sock_fd = socket(AF_INET , SOCK_STREAM, 0);
-//
-//        if (sock_fd  == -1){
-//            printf("Could not create INET socket\n");
-//            exit(1);
-//        }
-//        else{
-//            printf("INET socket created\n");
-//        }
-//
-//        struct sockaddr_in sock_addr;
-//        sock_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-//        sock_addr.sin_family = AF_INET;
-//        sock_addr.sin_port = htons(atoi(destination));
-//
-//        if (connect(sock_fd, (struct sockaddr *)&sock_addr, sizeof(sock_addr)) == -1) {
-//            printf("Error while connecting to socket (%s)\n", strerror(errno));
-//            exit(1);
-//        }
+    if (connect(server_socket, (struct sockaddr *)&sock_addr, sizeof(sock_addr)) == -1) {
+        printf("Error while connecting to LOCAL socket (%s)\n", strerror(errno));
+        exit(1);
     }
 }
+
+void connect_inet(char* port){
+
+    struct addrinfo *info;
+    struct addrinfo hints;
+    memset(&hints, 0, sizeof(struct addrinfo));
+    hints.ai_family = AF_UNSPEC;
+    hints.ai_socktype = SOCK_STREAM;
+
+    getaddrinfo("localhost", port, &hints, &info);
+
+    server_socket = socket(info->ai_family, info->ai_socktype, info->ai_protocol);
+
+    if (connect(server_socket, info->ai_addr, info->ai_addrlen) == -1){
+        printf("Error while connecting to INET socket (%s)\n", strerror(errno));
+        exit(1);
+    }
+
+    freeaddrinfo(info);
+}
+
+
 
 
 
@@ -78,12 +62,27 @@ int main(int argc, char* argv[]){
     }
 
     name = argv[1];
-    char *type = argv[2];
-    char *destination = argv[3];
+
+    // connection method - inet/unix
+    if (strcmp(argv[2], "unix") == 0){
+        char* path = argv[3];
+        connect_local(path);
+    }
+
+    else if (strcmp(argv[2], "inet") == 0){
+        char* port = argv[3];
+        connect_inet(port);
+    }
+
+    else{
+        printf("Wrong method - choose [inet] or [unix]!\n");
+        exit(1);
+    }
+
 
     // handle SIGINT
 
-    init_server_connection(type, destination);
+
     char buffer[MAX_MSG_LEN + 1];
     sprintf(buffer, "add: :%s", name);
     send(server_socket, buffer, MAX_MSG_LEN, 0);

@@ -26,7 +26,7 @@
 
 
 typedef struct{
-    char *name;
+    char* name;
     int fd;
     int online;
 } client;
