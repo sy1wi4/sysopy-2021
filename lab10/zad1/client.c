@@ -50,6 +50,10 @@ void connect_inet(char* port){
     freeaddrinfo(info);
 }
 
+void send_back_ping(){
+    sprintf(msg, "ping: :%s", name);
+    send(server_socket, msg, MAX_MSG_LEN, 0);
+}
 
 void listen_for_msg(){
     while(true){
@@ -60,7 +64,8 @@ void listen_for_msg(){
         pthread_mutex_lock(&mutex);
         // handle commands
         if (strcmp(command, "add") == 0){
-            printf("dodaj tu\n");
+            if (strcmp(arg, "X") == 0) printf("PLAY X\n");
+            else if (strcmp(arg, "O") == 0) printf("PLAY O\n");
         }
 
         else if (strcmp(command, "turn") == 0){
@@ -70,13 +75,15 @@ void listen_for_msg(){
 
         else if (strcmp(command, "ping") == 0){
             printf("ping\n");
-
+            send_back_ping();
         }
 
         else if (strcmp(command, "end") == 0){
             printf("koniec\n");
-
         }
+
+        pthread_cond_signal(&cond);
+        pthread_mutex_unlock(&mutex);
     }
 }
 
@@ -96,6 +103,9 @@ int main(int argc, char* argv[]){
 
     name = argv[1];
 
+    // handle SIGINT
+    signal(SIGINT, end);
+
     // connection method - inet/unix
     if (strcmp(argv[2], "unix") == 0){
         char* path = argv[3];
@@ -111,10 +121,6 @@ int main(int argc, char* argv[]){
         printf("Wrong method - choose [inet] or [unix]!\n");
         exit(1);
     }
-
-
-    // handle SIGINT
-    signal(SIGINT, end);
 
 
     char msg[MAX_MSG_LEN];

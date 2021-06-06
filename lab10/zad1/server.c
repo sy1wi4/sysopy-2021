@@ -91,10 +91,68 @@ int set_network_socket(char *port){
 
 }
 
+int find_client(char* name){
+    for (int i = 0; i < MAX_CLIENTS; i++){
+        if (clients[i] != NULL && strcmp(clients[i]->name, name) == 0){
+            return i;
+        }
+    }
+    return -1;
+}
 
+
+void delete_client(char* name){
+    printf("Deleting client [%s]...\n", name);
+    int idx = find_client(name);
+    int opponent = clients[idx]->opponent_idx;
+    printf("id %d, opponent %d\n", idx,opponent);
+    free(clients[idx]->name);
+    free(clients[idx]);
+    clients[idx] = NULL;
+    clients_ctr--;
+    if (waiting_idx == idx) waiting_idx = -1;
+
+    // delete opponent if exists
+    if (opponent != -1){
+        printf("Deleting opponent [%s]...\n", clients[opponent]->name);
+        free(clients[opponent]->name);
+        free(clients[opponent]);
+        clients[opponent] = NULL;
+        clients_ctr--;
+    }
+    print_clients();
+
+}
+
+void delete_not_available_clients(){
+    for (int i = 0; i < MAX_CLIENTS; i++){
+        if (clients[i] && ! clients[i]->available){
+            printf("not available\n");
+            delete_client(clients[i]->name);
+        }
+    }
+}
+
+void send_pings(){
+    for (int i = 0; i < MAX_CLIENTS; i++){
+        if (clients[i]){
+            printf("Sending ping to %s\n", clients[i]->name);
+            send(clients[i]->fd, "ping: ", MAX_MSG_LEN, 0);
+            clients[i]->available = false;
+        }
+    }
+}
 
 void* ping(){
+    while (true){
+        printf("PING\n");
+        pthread_mutex_lock(&mutex);
+        delete_not_available_clients();
+        send_pings();
+        pthread_mutex_unlock(&mutex);
 
+        sleep(10);
+    }
 }
 
 
@@ -159,43 +217,18 @@ int add_client(char* name, int client_fd){
     }
     else{
         // connect
+
+        // TODO: random sign
         send(client_fd, "add:O", MAX_MSG_LEN, 0);
         send(clients[waiting_idx]->fd, "add:X", MAX_MSG_LEN, 0);
         clients[free_idx]->opponent_idx = waiting_idx;
+        clients[waiting_idx]->opponent_idx = free_idx;
         printf("Playing: %s vs %s\n", name, clients[waiting_idx]->name);
         waiting_idx = -1;
     }
     free_idx++;
 }
 
-int find_client(char* name){
-    for (int i = 0; i < MAX_CLIENTS; i++){
-        if (clients[i] != NULL && strcmp(clients[i]->name, name) == 0){
-            return i;
-        }
-    }
-    return -1;
-}
-
-void delete_client(char* name){
-    printf("Deleting client [%s]...\n", name);
-    int idx = find_client(name);
-    int opponent = clients[idx]->opponent_idx;
-    free(clients[idx]->name);
-    free(clients[idx]);
-    clients[idx] = NULL;
-    clients_ctr--;
-    if (waiting_idx == idx) waiting_idx = -1;
-
-    // delete opponent if exists
-    if (opponent != -1){
-        printf("Deleting opponent [%s]...\n", clients[opponent]->name);
-        free(clients[opponent]->name);
-        free(clients[opponent]);
-        clients[opponent] = NULL;
-        clients_ctr--;
-    }
-}
 
 int main(int argc, char* argv[]){
     if (argc != 3){
@@ -230,14 +263,15 @@ int main(int argc, char* argv[]){
         pthread_mutex_lock(&mutex);
         if (strcmp(command, "add") == 0){
             printf("dodaj\n");
-            print_clients();
             if (client_exists(name)) {
-                printf("KLIENT JUZ ISTNIEJE\n");
                 send(client_fd, "add:exists", MAX_MSG_LEN, 0);
                 close(client_fd);
             }
 
             else add_client(name, client_fd);
+
+            print_clients();
+
         }
 
         else if (strcmp(command, "turn") == 0){
@@ -245,7 +279,9 @@ int main(int argc, char* argv[]){
         }
 
         else if (strcmp(command, "ping") == 0){
-            printf("ping\n");
+            printf("Ping back from [%s]\n", name);
+            int idx = find_client(name);
+            clients[idx]->available = true;
         }
 
         else if (strcmp(command, "end") == 0){
