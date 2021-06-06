@@ -20,17 +20,15 @@
 #include <signal.h>
 #include <stdbool.h>
 
-
-#define MAX_CLIENTS 20
+#define MAX_CLIENTS 10
 #define MAX_MSG_LEN 256
-
 
 typedef struct{
     char* name;
     int fd;
-    int online;
+    bool available;
+    int opponent_idx;
 } client;
-
 
 
 

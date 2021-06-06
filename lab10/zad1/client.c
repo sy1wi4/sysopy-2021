@@ -3,7 +3,7 @@
 #include "common.h"
 
 int server_socket;
-char buffer[MAX_MSG_LEN+ 1];
+char msg[MAX_MSG_LEN+ 1];
 char *name;
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -11,8 +11,8 @@ pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
 char *command, *arg;
 
-void parse_msg(char* msg){
-    command = strtok(msg, ":");
+void parse_msg(char* message){
+    command = strtok(message, ":");
     arg = strtok(NULL, ":");
 }
 
@@ -51,8 +51,41 @@ void connect_inet(char* port){
 }
 
 
+void listen_for_msg(){
+    while(true){
+        printf("CZEKAM\n");
+        recv(server_socket, msg, MAX_MSG_LEN, 0);
+        parse_msg(msg);
 
+        pthread_mutex_lock(&mutex);
+        // handle commands
+        if (strcmp(command, "add") == 0){
+            printf("dodaj tu\n");
+        }
 
+        else if (strcmp(command, "turn") == 0){
+            printf("ruch\n");
+
+        }
+
+        else if (strcmp(command, "ping") == 0){
+            printf("ping\n");
+
+        }
+
+        else if (strcmp(command, "end") == 0){
+            printf("koniec\n");
+
+        }
+    }
+}
+
+void end(){
+    char message[MAX_MSG_LEN];
+    sprintf(message, "end: :%s", name);
+    send(server_socket, message, MAX_MSG_LEN, 0);
+    exit(0);
+}
 
 int main(int argc, char* argv[]){
 
@@ -81,13 +114,15 @@ int main(int argc, char* argv[]){
 
 
     // handle SIGINT
+    signal(SIGINT, end);
 
 
-    char buffer[MAX_MSG_LEN + 1];
-    sprintf(buffer, "add: :%s", name);
-    send(server_socket, buffer, MAX_MSG_LEN, 0);
+    char msg[MAX_MSG_LEN];
+    sprintf(msg, "add: :%s", name);
+    send(server_socket, msg, MAX_MSG_LEN, 0);
 
-    // listen server
+    // listen_for_msg server
+    listen_for_msg();
 
     return 0;
 }
