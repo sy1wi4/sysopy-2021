@@ -19,6 +19,7 @@
 #include <errno.h>
 #include <signal.h>
 #include <stdbool.h>
+#include <arpa/inet.h>
 
 #define MAX_CLIENTS 10
 #define MAX_MSG_LEN 256
@@ -29,6 +30,27 @@ typedef struct{
     bool available;
     int opponent_idx;
 } client;
+
+typedef enum{
+    START,
+    WAIT_FOR_OPPONENT,
+    WAIT_FOR_MOVE,
+    OPPONENT_MOVE,
+    MOVE,
+    QUIT
+} state;
+
+typedef enum{
+    FREE,
+    O,
+    X
+} sign;
+
+typedef struct{
+    int move;
+    sign objects[9];
+
+} game_board;
 
 
 
