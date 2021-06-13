@@ -11,8 +11,7 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
 int move(game_board *board, int position){
-    if (position < 0 || position > 9 || board->objects[position] != FREE)
-        return 0;
+    if (position < 0 || position > 9 || board->objects[position] != FREE) return 0;
 
     board->objects[position] = board->move ? O : X;
     board->move = !board->move;
